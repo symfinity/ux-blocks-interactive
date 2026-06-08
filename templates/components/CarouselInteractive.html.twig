@@ -1,0 +1,30 @@
+<div
+    data-ui-role="carousel-interactive"
+    data-ui-fragment="blocks.int.carousel-interactive"
+    data-controller="symfony--ux-blocks-interactive--carousel-interactive"
+    tabindex="0"
+    {{ attributes }}
+>
+    <div
+        data-ui-role="carousel-interactive-viewport"
+        data-symfony--ux-blocks-interactive--carousel-interactive-target="viewport"
+    >
+        {% block content %}{% endblock %}
+    </div>
+    <div data-ui-role="carousel-interactive-controls">
+        <button
+            type="button"
+            data-ui-role="button"
+            data-ui-variant="outline"
+            data-carousel-action="prev"
+            data-action="click->symfony--ux-blocks-interactive--carousel-interactive#prev"
+        >Previous</button>
+        <button
+            type="button"
+            data-ui-role="button"
+            data-ui-variant="outline"
+            data-carousel-action="next"
+            data-action="click->symfony--ux-blocks-interactive--carousel-interactive#next"
+        >Next</button>
+    </div>
+</div>

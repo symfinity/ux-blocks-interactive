@@ -1,0 +1,13 @@
+<button
+    data-ui-role="toggle"
+    data-ui-fragment="blocks.int.toggle"
+    data-ui-variant="{{ semantic_variant }}"
+    data-controller="symfony--ux-blocks-interactive--toggle"
+    data-symfony--ux-blocks-interactive--toggle-pressed-value="{{ pressed ? 'true' : 'false' }}"
+    type="button"
+    aria-pressed="{{ pressed ? 'true' : 'false' }}"
+    data-action="click->symfony--ux-blocks-interactive--toggle#toggle"
+    {{ attributes }}
+>
+    {% block content %}{% endblock %}
+</button>

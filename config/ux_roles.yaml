@@ -1,0 +1,349 @@
+ux_role_registry: "1.3"
+registry_prefix: blocks.int
+roles:
+  - role: collapsible
+    twig_component: Collapsible
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Collapsible
+    fragment_id: blocks.int.collapsible
+    fragment_pattern: "blocks.int.collapsible.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: tabs
+    twig_component: Tabs
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Tabs
+    fragment_id: blocks.int.tabs
+    fragment_pattern: "blocks.int.tabs.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: alert-dialog-enhanced
+    twig_component: AlertDialog
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\AlertDialog
+    fragment_id: blocks.int.alert-dialog-enhanced
+    fragment_pattern: "blocks.int.alert-dialog-enhanced.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: drawer
+    twig_component: Drawer
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Drawer
+    fragment_id: blocks.int.drawer
+    fragment_pattern: "blocks.int.drawer.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: sheet
+    twig_component: Sheet
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Sheet
+    fragment_id: blocks.int.sheet
+    fragment_pattern: "blocks.int.sheet.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: dropdown-menu
+    twig_component: DropdownMenu
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\DropdownMenu
+    fragment_id: blocks.int.dropdown-menu
+    fragment_pattern: "blocks.int.dropdown-menu.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: slider
+    twig_component: Slider
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Slider
+    fragment_id: blocks.int.slider
+    fragment_pattern: "blocks.int.slider.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: toggle
+    twig_component: Toggle
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Toggle
+    fragment_id: blocks.int.toggle
+    fragment_pattern: "blocks.int.toggle.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: toggle-group
+    twig_component: ToggleGroup
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\ToggleGroup
+    fragment_id: blocks.int.toggle-group
+    fragment_pattern: "blocks.int.toggle-group.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: calendar
+    twig_component: Calendar
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Calendar
+    fragment_id: blocks.int.calendar
+    fragment_pattern: "blocks.int.calendar.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: input-otp
+    twig_component: InputOtp
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\InputOtp
+    fragment_id: blocks.int.input-otp
+    fragment_pattern: "blocks.int.input-otp.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: sidebar
+    twig_component: Sidebar
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Sidebar
+    fragment_id: blocks.int.sidebar
+    fragment_pattern: "blocks.int.sidebar.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: stacked-layout-interactive
+    twig_component: StackedLayoutInteractive
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\StackedLayoutInteractive
+    fragment_id: blocks.int.stacked-layout-interactive
+    fragment_pattern: "blocks.int.stacked-layout-interactive.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: command-palette
+    twig_component: CommandPalette
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\CommandPalette
+    fragment_id: blocks.int.command-palette
+    fragment_pattern: "blocks.int.command-palette.{n}"
+    interaction: stl, runtime
+    stage: A
+    status: shipped
+  - role: toast
+    twig_component: Toast
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Toast
+    fragment_id: blocks.int.toast
+    fragment_pattern: "blocks.int.toast.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: context-menu
+    twig_component: ContextMenu
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\ContextMenu
+    fragment_id: blocks.int.context-menu
+    fragment_pattern: "blocks.int.context-menu.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: hover-card
+    twig_component: HoverCard
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\HoverCard
+    fragment_id: blocks.int.hover-card
+    fragment_pattern: "blocks.int.hover-card.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: resizable
+    twig_component: Resizable
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Resizable
+    fragment_id: blocks.int.resizable
+    fragment_pattern: "blocks.int.resizable.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: menubar
+    twig_component: Menubar
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Menubar
+    fragment_id: blocks.int.menubar
+    fragment_pattern: "blocks.int.menubar.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: navigation-menu
+    twig_component: NavigationMenu
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\NavigationMenu
+    fragment_id: blocks.int.navigation-menu
+    fragment_pattern: "blocks.int.navigation-menu.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: carousel-interactive
+    twig_component: CarouselInteractive
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\CarouselInteractive
+    fragment_id: blocks.int.carousel-interactive
+    fragment_pattern: "blocks.int.carousel-interactive.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: rating
+    twig_component: Rating
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\Rating
+    fragment_id: blocks.int.rating
+    fragment_pattern: "blocks.int.rating.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: filter-chips
+    twig_component: FilterChips
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\FilterChips
+    fragment_id: blocks.int.filter-chips
+    fragment_pattern: "blocks.int.filter-chips.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: table-of-contents
+    twig_component: TableOfContents
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\TableOfContents
+    fragment_id: blocks.int.table-of-contents
+    fragment_pattern: "blocks.int.table-of-contents.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: tree-view
+    twig_component: TreeView
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\TreeView
+    fragment_id: blocks.int.tree-view
+    fragment_pattern: "blocks.int.tree-view.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+    ref: kibo-ui
+deprecated_fragment_aliases:
+  - from: blocks.ext.tabs
+    to: blocks.int.tabs
+    sunset: next-minor
+  - from: blocks.ext.alert-dialog-enhanced
+    to: blocks.int.alert-dialog-enhanced
+    sunset: next-minor
+  - from: blocks.ext.drawer
+    to: blocks.int.drawer
+    sunset: next-minor
+  - from: blocks.ext.sheet
+    to: blocks.int.sheet
+    sunset: next-minor
+  - from: blocks.ext.dropdown-menu
+    to: blocks.int.dropdown-menu
+    sunset: next-minor
+  - from: blocks.ext.slider
+    to: blocks.int.slider
+    sunset: next-minor
+  - from: blocks.ext.toggle
+    to: blocks.int.toggle
+    sunset: next-minor
+  - from: blocks.ext.toggle-group
+    to: blocks.int.toggle-group
+    sunset: next-minor
+  - from: blocks.ext.calendar
+    to: blocks.int.calendar
+    sunset: next-minor
+  - from: blocks.ext.input-otp
+    to: blocks.int.input-otp
+    sunset: next-minor
+  - from: blocks.ext.sidebar
+    to: blocks.int.sidebar
+    sunset: next-minor
+  - from: blocks.ext.stacked-layout-interactive
+    to: blocks.int.stacked-layout-interactive
+    sunset: next-minor
+  - from: blocks.ext.command-palette
+    to: blocks.int.command-palette
+    sunset: next-minor
+  - from: blocks.ext.toast
+    to: blocks.int.toast
+    sunset: next-minor
+  - from: blocks.ext.context-menu
+    to: blocks.int.context-menu
+    sunset: next-minor
+  - from: blocks.ext.hover-card
+    to: blocks.int.hover-card
+    sunset: next-minor
+  - from: blocks.ext.resizable
+    to: blocks.int.resizable
+    sunset: next-minor
+  - from: blocks.ext.menubar
+    to: blocks.int.menubar
+    sunset: next-minor
+  - from: blocks.ext.navigation-menu
+    to: blocks.int.navigation-menu
+    sunset: next-minor
+  - from: blocks.ext.carousel-interactive
+    to: blocks.int.carousel-interactive
+    sunset: next-minor
+  - from: blocks.ext.rating
+    to: blocks.int.rating
+    sunset: next-minor
+  - from: blocks.ext.filter-chips
+    to: blocks.int.filter-chips
+    sunset: next-minor
+  - from: blocks.ext.table-of-contents
+    to: blocks.int.table-of-contents
+    sunset: next-minor
+  - from: blocks.ext.tree-view
+    to: blocks.int.tree-view
+    sunset: next-minor
+  - from: blocks.live.tabs
+    to: blocks.int.tabs
+    sunset: next-minor
+  - from: blocks.live.alert-dialog-enhanced
+    to: blocks.int.alert-dialog-enhanced
+    sunset: next-minor
+  - from: blocks.live.drawer
+    to: blocks.int.drawer
+    sunset: next-minor
+  - from: blocks.live.sheet
+    to: blocks.int.sheet
+    sunset: next-minor
+  - from: blocks.live.dropdown-menu
+    to: blocks.int.dropdown-menu
+    sunset: next-minor
+  - from: blocks.live.slider
+    to: blocks.int.slider
+    sunset: next-minor
+  - from: blocks.live.toggle
+    to: blocks.int.toggle
+    sunset: next-minor
+  - from: blocks.live.toggle-group
+    to: blocks.int.toggle-group
+    sunset: next-minor
+  - from: blocks.live.calendar
+    to: blocks.int.calendar
+    sunset: next-minor
+  - from: blocks.live.input-otp
+    to: blocks.int.input-otp
+    sunset: next-minor
+  - from: blocks.live.sidebar
+    to: blocks.int.sidebar
+    sunset: next-minor
+  - from: blocks.live.stacked-layout-interactive
+    to: blocks.int.stacked-layout-interactive
+    sunset: next-minor
+  - from: blocks.live.command-palette
+    to: blocks.int.command-palette
+    sunset: next-minor
+  - from: blocks.live.toast
+    to: blocks.int.toast
+    sunset: next-minor
+  - from: blocks.live.context-menu
+    to: blocks.int.context-menu
+    sunset: next-minor
+  - from: blocks.live.hover-card
+    to: blocks.int.hover-card
+    sunset: next-minor
+  - from: blocks.live.resizable
+    to: blocks.int.resizable
+    sunset: next-minor
+  - from: blocks.live.menubar
+    to: blocks.int.menubar
+    sunset: next-minor
+  - from: blocks.live.navigation-menu
+    to: blocks.int.navigation-menu
+    sunset: next-minor
+  - from: blocks.live.carousel-interactive
+    to: blocks.int.carousel-interactive
+    sunset: next-minor
+  - from: blocks.live.rating
+    to: blocks.int.rating
+    sunset: next-minor
+  - from: blocks.live.filter-chips
+    to: blocks.int.filter-chips
+    sunset: next-minor
+  - from: blocks.live.table-of-contents
+    to: blocks.int.table-of-contents
+    sunset: next-minor
+  - from: blocks.live.tree-view
+    to: blocks.int.tree-view
+    sunset: next-minor

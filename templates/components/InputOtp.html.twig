@@ -1,0 +1,10 @@
+<div
+    data-ui-role="input-otp"
+    data-ui-fragment="blocks.int.input-otp"
+    data-controller="symfony--ux-blocks-interactive--input-otp"
+    data-symfony--ux-blocks-interactive--input-otp-length-value="{{ length }}"
+    {{ attributes }}
+>
+    <input type="hidden" name="otp" value="" data-symfony--ux-blocks-interactive--input-otp-target="hidden" />
+    {% block content %}{% endblock %}
+</div>

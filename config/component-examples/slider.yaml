@@ -1,0 +1,37 @@
+schema: showcase-examples/1.0
+role: slider
+twig_name: Slider
+requires_stimulus: true
+sections:
+  - id: colors
+    title: Semantic colours
+    layout: stack
+    items:
+      - variant: primary
+        label: Primary
+        props: { variant: default, min: 0, max: 100, step: 1, value: 40 }
+      - variant: secondary
+        label: Secondary
+        props: { variant: secondary, min: 0, max: 100, step: 1, value: 55 }
+      - variant: success
+        label: Success
+        props: { variant: success, min: 0, max: 100, step: 1, value: 70 }
+      - variant: info
+        label: Info
+        props: { variant: info, min: 0, max: 100, step: 1, value: 45 }
+      - variant: warning
+        label: Warning
+        props: { variant: warning, min: 0, max: 100, step: 1, value: 60 }
+      - variant: destructive
+        label: Destructive
+        props: { variant: destructive, min: 0, max: 100, step: 1, value: 25 }
+  - id: ranges
+    title: Range presets
+    layout: stack
+    items:
+      - variant: volume
+        label: Volume (0–10)
+        props: { variant: default, min: 0, max: 10, step: 1, value: 7 }
+      - variant: fine
+        label: Fine steps
+        props: { variant: secondary, min: 0, max: 100, step: 5, value: 25 }

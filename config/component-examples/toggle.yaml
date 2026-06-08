@@ -1,0 +1,25 @@
+schema: showcase-examples/1.0
+role: toggle
+twig_name: Toggle
+requires_stimulus: true
+sections:
+  - id: colors
+    title: Semantic colours
+    layout: stack
+    items:
+      - variant: primary-off
+        label: Primary (off)
+        props: { variant: default, pressed: false }
+        slot_text: Bold
+      - variant: primary-on
+        label: Primary (on)
+        props: { variant: default, pressed: true }
+        slot_text: Bold
+      - variant: success-on
+        label: Success (on)
+        props: { variant: success, pressed: true }
+        slot_text: Published
+      - variant: destructive-on
+        label: Destructive (on)
+        props: { variant: destructive, pressed: true }
+        slot_text: Delete mode
