@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import { applyRovingTabindex, rovingKeydown } from './shared/menu-roving.js';
 import { restoreFocus, trapFocus } from './shared/overlay-base.js';
+import { uiZIndex } from './shared/kernel_tokens.js';
 
 export default class extends Controller {
     static targets = ['trigger', 'content', 'item'];
@@ -41,7 +42,7 @@ export default class extends Controller {
         menu.style.position = 'fixed';
         menu.style.left = `${x}px`;
         menu.style.top = `${y}px`;
-        menu.style.zIndex = 'var(--ui-z-popover, 1100)';
+        menu.style.zIndex = uiZIndex('popover');
 
         const items = this.itemTargets.filter((el) => !el.disabled);
         if (items.length > 0) {

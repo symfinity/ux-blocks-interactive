@@ -1,4 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
+import { uiZIndex } from './shared/kernel_tokens.js';
 
 export default class extends Controller {
     static targets = ['trigger', 'content'];
@@ -65,7 +66,7 @@ export default class extends Controller {
         const content = this.contentTarget;
         content.hidden = false;
         content.style.position = 'absolute';
-        content.style.zIndex = 'var(--ui-z-popover, 1100)';
+        content.style.zIndex = uiZIndex('popover');
         content.style.marginBlockStart = 'var(--ui-space-xs)';
 
         if (this.hasTriggerTarget) {

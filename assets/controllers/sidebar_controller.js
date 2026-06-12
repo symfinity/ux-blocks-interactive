@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 import { restoreFocus, trapFocus } from './shared/overlay-base.js';
+import { uiZIndex } from './shared/kernel_tokens.js';
 
 export default class extends Controller {
     static targets = ['trigger', 'content', 'close'];
@@ -35,15 +36,15 @@ export default class extends Controller {
         panel.dataset.uiSide = this.sideValue;
         panel.setAttribute('aria-hidden', 'false');
         panel.style.position = 'fixed';
-        panel.style.zIndex = 'var(--ui-z-modal, 1000)';
+        panel.style.zIndex = uiZIndex('modal');
         panel.style.insetBlockStart = '0';
         panel.style.insetBlockEnd = '0';
         panel.style.maxWidth = '24rem';
         panel.style.width = '100%';
-        panel.style.background = 'var(--ui-overlay-surface, var(--ui-color-surface-elevated))';
-        panel.style.border = '1px solid var(--ui-overlay-border, var(--ui-color-border))';
+        panel.style.background = 'var(--ui-overlay-surface)';
+        panel.style.border = '1px solid var(--ui-overlay-border)';
         panel.style.padding = 'var(--ui-space-lg)';
-        panel.style.boxShadow = 'var(--ui-overlay-shadow, 0 8px 24px rgba(0,0,0,.15))';
+        panel.style.boxShadow = 'var(--ui-overlay-shadow)';
 
         if (this.sideValue === 'right') {
             panel.style.insetInlineEnd = '0';
@@ -104,7 +105,7 @@ export default class extends Controller {
         }
         this._backdrop = document.createElement('div');
         this._backdrop.dataset.uiOverlayBackdrop = '';
-        this._backdrop.style.cssText = 'position:fixed;inset:0;background:color-mix(in srgb, var(--ui-color-text, #000) 40%, transparent);z-index:calc(var(--ui-z-modal, 1000) - 1);';
+        this._backdrop.style.cssText = `position:fixed;inset:0;background:var(--ui-backdrop-color);z-index:${uiZIndex('modal-backdrop')};`;
         document.body.appendChild(this._backdrop);
     }
 
