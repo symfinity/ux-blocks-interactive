@@ -2,7 +2,7 @@
 
 - **Twig:** `<twig:Combobox />`
 - **Fragment:** `blocks.int.combobox`
-- **Stimulus:** `symfony--ux-blocks-interactive--combobox`
+- **Stimulus:** `symfinity--ux-blocks-interactive--combobox`
 - **Interaction:** stl
 - **A11y pattern:** `aria-activedescendant` on the combobox input when the listbox is open (see [a11y-listbox-hardening](../../../../../specs/symfinity/symfinity/046-ux-blocks-interactive-r2/contracts/a11y-listbox-hardening.md))
 

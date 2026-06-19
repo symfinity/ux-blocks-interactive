@@ -1,8 +1,11 @@
 <div
+    id="{{ outerScope.dropdown_menu_id|default('') }}"
+    popover
     role="menu"
-    hidden
-    data-ui-role="dropdown-menu-content"
-    data-symfony--ux-blocks-interactive--dropdown-menu-target="content"
+    anchor="{{ outerScope.dropdown_menu_id|default('') }}-trigger"
+    data-ui-role="menu"
+    data-ui-fragment="blocks.int.dropdown-menu"
+    data-symfinity--ux-blocks-interactive--dropdown-menu-target="content"
     {{ attributes }}
 >
     {% block content %}{% endblock %}

@@ -1,7 +1,15 @@
 <button
     type="button"
     data-ui-role="command-palette-item"
-    data-symfony--ux-blocks-interactive--command-palette-target="item"
-    data-action="click->symfony--ux-blocks-interactive--command-palette#visit"
+    data-symfinity--ux-blocks-interactive--command-palette-target="item"
+    data-action="click->symfinity--ux-blocks-interactive--command-palette#visit"
     {{ attributes }}
->{% block content %}{% endblock %}</button>
+>
+    <span data-ui-part="menu-item-body">
+        {% include '@UxBlocksInteractive/components/_shared/p_menu_item_icon.html.twig' with {
+            iconName: resolved_menu_item_icon,
+            iconDecorative: iconDecorative,
+        } only %}
+        <span data-ui-part="content">{% block content %}{% endblock %}</span>
+    </span>
+</button>

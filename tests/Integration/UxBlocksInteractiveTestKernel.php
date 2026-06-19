@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Symfinity\UxBlocksInteractive\Tests\Integration;
 
+use Symfinity\UiKernel\UiKernelBundle;
 use Symfinity\UxBlocksCore\SymfinityUxBlocksCoreBundle;
 use Symfinity\UxBlocksExtended\SymfinityUxBlocksExtendedBundle;
 use Symfinity\UxBlocksInteractive\SymfinityUxBlocksInteractiveBundle;
@@ -37,6 +38,7 @@ final class UxBlocksInteractiveTestKernel extends Kernel
             new TwigBundle(),
             new StimulusBundle(),
             new TwigComponentBundle(),
+            new UiKernelBundle(),
             new SymfinityUxBlocksCoreBundle(),
             new SymfinityUxBlocksExtendedBundle(),
             new SymfinityUxBlocksInteractiveBundle(),
@@ -50,6 +52,12 @@ final class UxBlocksInteractiveTestKernel extends Kernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
+        $container->extension('symfinity_ui_kernel', [
+            'schema_version' => '1.0',
+            'default_theme' => 'default',
+            'default_variant' => 'default',
+        ]);
+
         $container->extension('framework', [
             'secret' => 'test-secret',
             'test' => true,

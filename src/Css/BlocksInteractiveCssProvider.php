@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Symfinity\UxBlocksInteractive\Css;
 
+/**
+ * Inline role CSS for workshop previews and hosts without AssetMapper link tags.
+ * Themed apps SHOULD load {@see assetPath()} via AssetMapper after kernel tokens.
+ */
 final class BlocksInteractiveCssProvider
 {
     public function __construct(
@@ -18,11 +22,34 @@ final class BlocksInteractiveCssProvider
 
     public function stylesheet(): string
     {
-        $bundle = $this->packageDir . '/assets/styles/roles/_bundle.css';
-        if (!is_readable($bundle)) {
+        $entry = $this->packageDir . '/assets/styles/blocks-interactive.css';
+        if (!is_readable($entry)) {
+            return $this->readRoleFile('roles/_bundle.css');
+        }
+
+        $content = (string) file_get_contents($entry);
+        if (!preg_match_all("/@import\\s+url\\('([^']+)'\\)\\s*;/", $content, $matches)) {
+            return $this->readRoleFile('roles/_bundle.css');
+        }
+
+        $css = '';
+        foreach ($matches[1] as $importPath) {
+            $css .= $this->readRoleFile($importPath);
+            if ('' !== $css && !str_ends_with($css, "\n")) {
+                $css .= "\n";
+            }
+        }
+
+        return $css;
+    }
+
+    private function readRoleFile(string $relativeToStylesDir): string
+    {
+        $path = $this->packageDir . '/assets/styles/' . $relativeToStylesDir;
+        if (!is_readable($path)) {
             return '';
         }
 
-        return (string) file_get_contents($bundle);
+        return (string) file_get_contents($path);
     }
 }

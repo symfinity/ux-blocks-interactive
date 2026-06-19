@@ -15,7 +15,11 @@ Symfinity UX Blocks Interactive ships Stimulus-backed interactive widgets with `
 
 ## Registry
 
-See `config/ux_roles.yaml` — **25** shipped `stl` roles (including `command-palette` UI chrome).
+See `config/ux_roles.yaml` — **26** shipped `stl` roles (including `scheme-switch` and `command-palette` UI chrome).
+
+## SchemeSwitch
+
+Binary ghost light/dark toggle with Stimulus PATCH to `/_ui/theme/scheme` when **symfinity/ui-kernel** is installed. Import `config/routes/theme-scheme.yaml` in the host app. Wire props from `ui_kernel_theme_shell()` or equivalent; non-interactive hosts should use ui-kernel redirect links or boot script instead.
 
 Deprecated one-cycle aliases: `blocks.live.{role}` → `blocks.int.{role}` for former live-tier stl roles.
 

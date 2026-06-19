@@ -21,9 +21,22 @@ abstract class ComponentTestCase extends KernelTestCase
      * @param class-string|non-empty-string $name
      * @param array<string, mixed>          $data
      */
-    protected function renderComponent(string $name, array $data = []): string
+    protected function renderComponent(string $name, array $data = [], ?string $content = null): string
     {
-        return (string) $this->renderTwigComponent($name, $data);
+        if (null === $content) {
+            return (string) $this->renderTwigComponent($name, $data);
+        }
+
+        return (string) $this->renderTwigComponent($name, $data, $content);
+    }
+
+    protected function renderTwig(string $template): string
+    {
+        if (static::$booted === false) {
+            self::bootKernel();
+        }
+
+        return (string) self::getContainer()->get('twig')->createTemplate($template)->render([]);
     }
 
     protected function assertRootAttributes(string $html, string $role, string $fragment): void

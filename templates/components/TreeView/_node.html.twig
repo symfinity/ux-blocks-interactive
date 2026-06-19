@@ -11,8 +11,8 @@
     {% if isSelected %}aria-selected="true"{% elseif selectable %}aria-selected="false"{% endif %}
     {% if node.disabled|default(false) %}aria-disabled="true" data-ui-state="disabled"{% endif %}
     tabindex="{{ depth == 0 ? '0' : '-1' }}"
-    data-symfony--ux-blocks-interactive--tree-view-target="item"
-    data-action="click->symfony--ux-blocks-interactive--tree-view#activate keydown->symfony--ux-blocks-interactive--tree-view#keydown"
+    data-symfinity--ux-blocks-interactive--tree-view-target="item"
+    data-action="click->symfinity--ux-blocks-interactive--tree-view#activate keydown->symfinity--ux-blocks-interactive--tree-view#keydown"
 >
     <span data-ui-part="label">{{ node.label }}</span>
     {% if hasChildren %}

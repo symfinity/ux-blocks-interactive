@@ -11,3 +11,11 @@ sections:
         label: Dropdown Menu
         props: {}
         render_partial: showcase/_compounds/by_twig.html.twig
+  - id: icons
+    title: Item icons
+    layout: stack
+    items:
+      - variant: item-icon
+        label: Copy item
+        props: {}
+        render_partial: showcase/_compounds/dropdown_menu_item_icon.html.twig

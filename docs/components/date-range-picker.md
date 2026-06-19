@@ -2,7 +2,7 @@
 
 - **Twig:** `<twig:DateRangePicker />`
 - **Fragment:** `blocks.int.date-range-picker`
-- **Stimulus:** `symfony--ux-blocks-interactive--date-range-picker`
+- **Stimulus:** `symfinity--ux-blocks-interactive--date-range-picker`
 - **Interaction:** stl
 - **Contract:** [extended-r2-role-registry](../../../../../specs/symfinity/symfinity/046-ux-blocks-interactive-r2/contracts/extended-r2-role-registry.md)
 

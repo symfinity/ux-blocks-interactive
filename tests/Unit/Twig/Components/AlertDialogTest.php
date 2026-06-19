@@ -15,7 +15,7 @@ final class AlertDialogTest extends ComponentTestCase
         $html = $this->renderComponent('AlertDialog');
 
         $this->assertRootAttributes($html, 'alert-dialog-enhanced', 'blocks.int.alert-dialog-enhanced');
-        self::assertStringContainsString('data-controller="symfony--ux-blocks-interactive--alert-dialog"', $html);
+        self::assertStringContainsString('data-controller="symfinity--ux-blocks-interactive--alert-dialog"', $html);
     }
 
     #[Test]

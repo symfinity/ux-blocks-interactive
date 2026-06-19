@@ -1,1 +1,14 @@
-<div data-ui-role="toast-item" data-symfony--ux-blocks-interactive--toast-target="item" {{ attributes }}>{% block content %}{% endblock %}</div>
+<div
+    data-ui-role="toast-item"
+    data-ui-variant="{{ variant }}"
+    data-symfinity--ux-blocks-interactive--toast-target="item"
+    {{ attributes }}
+>
+    <div data-ui-part="toast-body">
+        {% include '@UxBlocksCore/components/_shared/p_icon_slot.html.twig' with {
+            iconName: resolved_toast_icon,
+            iconDecorative: iconDecorative,
+        } only %}
+        <span data-ui-part="content">{% block content %}{% endblock %}</span>
+    </div>
+</div>

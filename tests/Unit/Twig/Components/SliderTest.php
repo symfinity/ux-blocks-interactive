@@ -19,9 +19,9 @@ final class SliderTest extends ComponentTestCase
         ]);
 
         $this->assertRootAttributes($html, 'slider', 'blocks.int.slider');
-        self::assertStringContainsString('data-symfony--ux-blocks-interactive--slider-min-value="10"', $html);
-        self::assertStringContainsString('data-symfony--ux-blocks-interactive--slider-max-value="90"', $html);
-        self::assertStringContainsString('data-symfony--ux-blocks-interactive--slider-step-value="5"', $html);
+        self::assertStringContainsString('data-symfinity--ux-blocks-interactive--slider-min-value="10"', $html);
+        self::assertStringContainsString('data-symfinity--ux-blocks-interactive--slider-max-value="90"', $html);
+        self::assertStringContainsString('data-symfinity--ux-blocks-interactive--slider-step-value="5"', $html);
         self::assertStringContainsString('min="10"', $html);
         self::assertStringContainsString('max="90"', $html);
         self::assertStringContainsString('step="5"', $html);

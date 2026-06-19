@@ -3,8 +3,14 @@
     role="menuitem"
     {% if disabled %}disabled aria-disabled="true"{% endif %}
     data-ui-role="context-menu-item"
-    data-symfony--ux-blocks-interactive--context-menu-target="item"
+    data-symfinity--ux-blocks-interactive--context-menu-target="item"
     {{ attributes }}
 >
-    {% block content %}{% endblock %}
+    <span data-ui-part="menu-item-body">
+        {% include '@UxBlocksInteractive/components/_shared/p_menu_item_icon.html.twig' with {
+            iconName: resolved_menu_item_icon,
+            iconDecorative: iconDecorative,
+        } only %}
+        <span data-ui-part="content">{% block content %}{% endblock %}</span>
+    </span>
 </button>

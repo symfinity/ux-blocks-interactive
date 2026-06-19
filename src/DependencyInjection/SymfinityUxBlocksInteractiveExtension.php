@@ -18,7 +18,7 @@ final class SymfinityUxBlocksInteractiveExtension extends Extension implements P
             $container->prependExtensionConfig('framework', [
                 'asset_mapper' => [
                     'paths' => [
-                        \dirname(__DIR__, 2).'/assets' => 'ux-blocks-interactive',
+                        \dirname(__DIR__, 2) . '/assets' => 'ux-blocks-interactive',
                     ],
                 ],
             ]);
@@ -41,7 +41,12 @@ final class SymfinityUxBlocksInteractiveExtension extends Extension implements P
 
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new YamlFileLoader($container, new FileLocator(\dirname(__DIR__, 2) . '/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../../config'));
         $loader->load('services.yaml');
+
+        $bundles = $container->getParameter('kernel.bundles');
+        if (\is_array($bundles) && isset($bundles['Symfinity\\UiKernel\\SymfinityUiKernelBundle'])) {
+            $loader->load('services_theme_scheme.yaml');
+        }
     }
 }

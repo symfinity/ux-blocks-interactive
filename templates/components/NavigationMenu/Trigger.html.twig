@@ -1,10 +1,17 @@
+{% set panel_id = outerScope.navigation_menu_panel_id|default('') %}
 <button
     type="button"
     aria-haspopup="true"
     aria-expanded="false"
     data-ui-role="navigation-menu-trigger"
-    data-action="click->symfony--ux-blocks-interactive--navigation-menu#open"
-    data-symfony--ux-blocks-interactive--navigation-menu-target="trigger"
+    {% if panel_id %}
+        popovertarget="{{ panel_id }}"
+        data-ui-anchor="trigger"
+        data-symfinity--ux-blocks-interactive--navigation-menu-target="trigger"
+    {% else %}
+        data-action="click->symfinity--ux-blocks-interactive--navigation-menu#open"
+        data-symfinity--ux-blocks-interactive--navigation-menu-target="trigger"
+    {% endif %}
     {{ attributes }}
 >
     {% block content %}{% endblock %}

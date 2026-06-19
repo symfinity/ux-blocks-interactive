@@ -23,9 +23,16 @@ export default class extends Controller {
         this._onDocumentKeydown = this._onDocumentKeydown.bind(this);
         this._onDocumentClick = this._onDocumentClick.bind(this);
         this._onNavKeydown = this._onNavKeydown.bind(this);
+        this._onPanelToggle = this._onPanelToggle.bind(this);
 
         hideAllContents(this.contentTargets);
         collapseTriggers(this.triggerTargets);
+
+        this.contentTargets.forEach((content) => {
+            if (content.hasAttribute('popover')) {
+                content.addEventListener('toggle', this._onPanelToggle);
+            }
+        });
 
         const triggers = enabledTriggers(this.triggerTargets);
         if (triggers.length > 0) {
@@ -39,7 +46,33 @@ export default class extends Controller {
     disconnect() {
         this.closePanel(false);
         this.element.removeEventListener('keydown', this._onNavKeydown);
+        this.contentTargets.forEach((content) => {
+            if (content.hasAttribute('popover')) {
+                content.removeEventListener('toggle', this._onPanelToggle);
+            }
+        });
         unbindDocumentClose(this._onDocumentKeydown, this._onDocumentClick);
+    }
+
+    _onPanelToggle(event) {
+        const content = event.target;
+        const index = this.contentTargets.indexOf(content);
+        const trigger = index >= 0 ? this.triggerTargets[index] : null;
+
+        if (trigger) {
+            trigger.setAttribute('aria-expanded', event.newState === 'open' ? 'true' : 'false');
+        }
+
+        if (event.newState === 'open') {
+            this._openIndex = index;
+            const items = itemsInContent(content, 'navigation-menu');
+            if (items.length > 0) {
+                applyRovingTabindex(items, 0);
+                this._itemIndex = 0;
+            }
+        } else if (this._openIndex === index) {
+            this._openIndex = -1;
+        }
     }
 
     open(event) {

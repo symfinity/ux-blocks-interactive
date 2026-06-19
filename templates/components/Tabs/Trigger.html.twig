@@ -7,7 +7,7 @@
     data-value="{{ value }}"
     aria-selected="{{ active ? 'true' : 'false' }}"
     {% if disabled %}aria-disabled="true" tabindex="-1"{% endif %}
-    data-symfony--ux-blocks-interactive--tabs-target="trigger"
+    data-symfinity--ux-blocks-interactive--tabs-target="trigger"
     {{ attributes }}
 >
 {% else %}
@@ -18,8 +18,8 @@
     data-value="{{ value }}"
     aria-selected="{{ active ? 'true' : 'false' }}"
     {% if disabled %}disabled aria-disabled="true" data-ui-state="disabled"{% endif %}
-    data-action="click->symfony--ux-blocks-interactive--tabs#select"
-    data-symfony--ux-blocks-interactive--tabs-target="trigger"
+    data-action="click->symfinity--ux-blocks-interactive--tabs#select"
+    data-symfinity--ux-blocks-interactive--tabs-target="trigger"
     {{ attributes }}
 >
 {% endif %}

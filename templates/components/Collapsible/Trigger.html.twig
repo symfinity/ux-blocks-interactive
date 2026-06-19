@@ -1,6 +1,7 @@
 {% set is_open = outerScope.collapsible_is_open|default(false) %}
 {% set content_id = outerScope.collapsible_content_id|default('') %}
 {% set is_disabled = outerScope.collapsible_disabled|default(false) %}
+{% set is_controlled = outerScope.open is defined and outerScope.open is not null %}
 {% if as == 'summary' %}
 <summary
     data-ui-role="collapsible-trigger"
@@ -11,9 +12,11 @@
 <button
     type="button"
     data-ui-role="collapsible-trigger"
-    data-action="click->symfinity--ux-blocks-core--collapsible#toggle"
-    aria-expanded="{{ is_open ? 'true' : 'false' }}"
-    aria-controls="{{ content_id }}"
+    {% if is_controlled %}
+        data-action="click->symfinity--ux-blocks-core--collapsible#toggle"
+        aria-expanded="{{ is_open ? 'true' : 'false' }}"
+        aria-controls="{{ content_id }}"
+    {% endif %}
     {% if is_disabled %}disabled aria-disabled="true"{% endif %}
     {{ attributes }}
 >

@@ -22,8 +22,8 @@ final class TableOfContentsTest extends ComponentTestCase
         ]);
 
         $this->assertRootAttributes($html, 'table-of-contents', 'blocks.int.table-of-contents');
-        self::assertStringContainsString('data-controller="symfony--ux-blocks-interactive--table-of-contents"', $html);
-        self::assertStringContainsString('data-symfony--ux-blocks-interactive--table-of-contents-scroll-target-value="#docs-content"', $html);
+        self::assertStringContainsString('data-controller="symfinity--ux-blocks-interactive--table-of-contents"', $html);
+        self::assertStringContainsString('data-symfinity--ux-blocks-interactive--table-of-contents-scroll-target-value="#docs-content"', $html);
         self::assertStringContainsString('href="#intro"', $html);
         self::assertStringContainsString('ux-ext-toc__item--nested', $html);
         self::assertStringContainsString('aria-label="On this page"', $html);

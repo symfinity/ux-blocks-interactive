@@ -69,7 +69,7 @@ function scaffoldMenu(string $role, string $component, string $controllerSlug, a
     global $src, $tpl, $js;
 
     $kebab = $role;
-    $ctrl = 'symfony--ux-blocks-interactive--' . $controllerSlug;
+    $ctrl = 'symfinity--ux-blocks-interactive--' . $controllerSlug;
 
     writeFile(
         "{$src}/{$component}.php",
@@ -168,7 +168,7 @@ TWIG;
 function scaffoldSimple(string $role, string $component, string $controllerSlug, string $rootTag = 'div', string $extraAttrs = ''): void
 {
     global $src, $tpl, $js;
-    $ctrl = 'symfony--ux-blocks-interactive--' . $controllerSlug;
+    $ctrl = 'symfinity--ux-blocks-interactive--' . $controllerSlug;
 
     writeFile(
         "{$src}/{$component}.php",
@@ -218,14 +218,14 @@ scaffoldMenu('filter-chips', 'FilterChips', 'filter-chips', ['Chip']);
 // Sidebar (drawer-like)
 $role = 'sidebar';
 $component = 'Sidebar';
-$ctrl = 'symfony--ux-blocks-interactive--sidebar';
+$ctrl = 'symfinity--ux-blocks-interactive--sidebar';
 writeFile("{$src}/{$component}.php", phpClassWithProps($component, $component, "@UxBlocksInteractive/components/{$component}.html.twig", "    public string \$side = 'left';\n"));
 writeFile("{$tpl}/{$component}.html.twig", <<<TWIG
 <div
     data-ui-role="sidebar"
     data-ui-fragment="blocks.int.sidebar"
     data-controller="{$ctrl}"
-    data-symfony--ux-blocks-interactive--sidebar-side-value="{{ side }}"
+    data-symfinity--ux-blocks-interactive--sidebar-side-value="{{ side }}"
     {{ attributes }}
 >
     {% block content %}{% endblock %}
@@ -238,8 +238,8 @@ foreach (['Trigger' => 'button', 'Content' => 'aside', 'Header' => 'div', 'Title
     $target = strtolower($part);
     writeFile("{$src}/{$class}.php", phpClass($class, "{$component}:{$part}", "@UxBlocksInteractive/components/{$component}/{$part}.html.twig"));
     $attrs = $part === 'Trigger'
-        ? 'type="button" aria-expanded="false" data-symfony--ux-blocks-interactive--sidebar-target="trigger"'
-        : ($part === 'Content' ? 'data-symfony--ux-blocks-interactive--sidebar-target="content"' : '');
+        ? 'type="button" aria-expanded="false" data-symfinity--ux-blocks-interactive--sidebar-target="trigger"'
+        : ($part === 'Content' ? 'data-symfinity--ux-blocks-interactive--sidebar-target="content"' : '');
     writeFile("{$tpl}/{$component}/{$part}.html.twig", "<{$tag} data-ui-role=\"{$sub}\" {$attrs} {{ attributes }}>{% block content %}{% endblock %}</{$tag}>\n");
 }
 if (!is_file("{$js}/sidebar_controller.js")) {
@@ -250,15 +250,15 @@ if (!is_file("{$js}/sidebar_controller.js")) {
 scaffoldSimple('stacked-layout-interactive', 'StackedLayoutInteractive', 'stacked-layout-interactive');
 
 // Forms
-scaffoldSimple('slider', 'Slider', 'slider', 'div', 'data-symfony--ux-blocks-interactive--slider-target="track"');
+scaffoldSimple('slider', 'Slider', 'slider', 'div', 'data-symfinity--ux-blocks-interactive--slider-target="track"');
 writeFile("{$tpl}/Slider.html.twig", <<<TWIG
 <div
     data-ui-role="slider"
     data-ui-fragment="blocks.int.slider"
-    data-controller="symfony--ux-blocks-interactive--slider"
+    data-controller="symfinity--ux-blocks-interactive--slider"
     {{ attributes }}
 >
-    <input type="range" data-symfony--ux-blocks-interactive--slider-target="input" min="0" max="100" value="50" />
+    <input type="range" data-symfinity--ux-blocks-interactive--slider-target="input" min="0" max="100" value="50" />
     {% block content %}{% endblock %}
 </div>
 
@@ -272,10 +272,10 @@ writeFile("{$tpl}/Calendar.html.twig", <<<TWIG
 <div
     data-ui-role="calendar"
     data-ui-fragment="blocks.int.calendar"
-    data-controller="symfony--ux-blocks-interactive--calendar"
+    data-controller="symfinity--ux-blocks-interactive--calendar"
     {{ attributes }}
 >
-    <div data-ui-part="grid" data-symfony--ux-blocks-interactive--calendar-target="grid"></div>
+    <div data-ui-part="grid" data-symfinity--ux-blocks-interactive--calendar-target="grid"></div>
     {% block content %}{% endblock %}
 </div>
 
@@ -289,8 +289,8 @@ writeFile("{$tpl}/InputOtp.html.twig", <<<TWIG
 <div
     data-ui-role="input-otp"
     data-ui-fragment="blocks.int.input-otp"
-    data-controller="symfony--ux-blocks-interactive--input-otp"
-    data-symfony--ux-blocks-interactive--input-otp-length-value="{{ length }}"
+    data-controller="symfinity--ux-blocks-interactive--input-otp"
+    data-symfinity--ux-blocks-interactive--input-otp-length-value="{{ length }}"
     {{ attributes }}
 >
     {% block content %}{% endblock %}
@@ -312,7 +312,7 @@ export default class extends Controller {
                 input.type = 'text';
                 input.inputMode = 'numeric';
                 input.maxLength = 1;
-                input.setAttribute('data-symfony--ux-blocks-interactive--input-otp-target', 'input');
+                input.setAttribute('data-symfinity--ux-blocks-interactive--input-otp-target', 'input');
                 input.addEventListener('input', (e) => this._onInput(e, i));
                 this.element.appendChild(input);
             }
@@ -343,7 +343,7 @@ export default class extends Controller {
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.textContent = '★';
-                btn.setAttribute('data-symfony--ux-blocks-interactive--rating-target', 'star');
+                btn.setAttribute('data-symfinity--ux-blocks-interactive--rating-target', 'star');
                 btn.setAttribute('data-value', String(i));
                 btn.setAttribute('aria-pressed', 'false');
                 btn.addEventListener('click', () => this.select(i));
@@ -374,17 +374,17 @@ writeFile("{$tpl}/{$component}.html.twig", <<<TWIG
 <div
     data-ui-role="carousel-interactive"
     data-ui-fragment="blocks.int.carousel-interactive"
-    data-controller="symfony--ux-blocks-interactive--carousel-interactive"
+    data-controller="symfinity--ux-blocks-interactive--carousel-interactive"
     {{ attributes }}
 >
-    <div data-ui-role="carousel-interactive-viewport" data-symfony--ux-blocks-interactive--carousel-interactive-target="viewport">
+    <div data-ui-role="carousel-interactive-viewport" data-symfinity--ux-blocks-interactive--carousel-interactive-target="viewport">
         {% block content %}{% endblock %}
     </div>
 </div>
 
 TWIG);
 writeFile("{$src}/CarouselInteractiveItem.php", phpClass('CarouselInteractiveItem', 'CarouselInteractive:Item', '@UxBlocksInteractive/components/CarouselInteractive/Item.html.twig'));
-writeFile("{$tpl}/CarouselInteractive/Item.html.twig", '<div data-ui-role="carousel-interactive-item" data-symfony--ux-blocks-interactive--carousel-interactive-target="item" {{ attributes }}>{% block content %}{% endblock %}</div>' . "\n");
+writeFile("{$tpl}/CarouselInteractive/Item.html.twig", '<div data-ui-role="carousel-interactive-item" data-symfinity--ux-blocks-interactive--carousel-interactive-target="item" {{ attributes }}>{% block content %}{% endblock %}</div>' . "\n");
 writeFile("{$js}/carousel-interactive_controller.js", <<<'JS'
 import { Controller } from '@hotwired/stimulus';
 
@@ -416,7 +416,7 @@ writeFile("{$tpl}/{$component}.html.twig", <<<TWIG
 <div
     data-ui-role="resizable"
     data-ui-fragment="blocks.int.resizable"
-    data-controller="symfony--ux-blocks-interactive--resizable"
+    data-controller="symfinity--ux-blocks-interactive--resizable"
     {{ attributes }}
 >
     {% block content %}{% endblock %}
@@ -427,7 +427,7 @@ foreach (['Panel', 'Handle'] as $part) {
     $class = $component . $part;
     $sub = 'resizable-' . strtolower($part);
     writeFile("{$src}/{$class}.php", phpClass($class, "{$component}:{$part}", "@UxBlocksInteractive/components/{$component}/{$part}.html.twig"));
-    writeFile("{$tpl}/{$component}/{$part}.html.twig", "<div data-ui-role=\"{$sub}\" data-symfony--ux-blocks-interactive--resizable-target=\"" . strtolower($part) . "\" {{ attributes }}>{% block content %}{% endblock %}</div>\n");
+    writeFile("{$tpl}/{$component}/{$part}.html.twig", "<div data-ui-role=\"{$sub}\" data-symfinity--ux-blocks-interactive--resizable-target=\"" . strtolower($part) . "\" {{ attributes }}>{% block content %}{% endblock %}</div>\n");
 }
 writeFile("{$js}/resizable_controller.js", <<<'JS'
 import { Controller } from '@hotwired/stimulus';
@@ -467,7 +467,7 @@ writeFile("{$tpl}/Toast.html.twig", <<<TWIG
 <div
     data-ui-role="toast"
     data-ui-fragment="blocks.int.toast"
-    data-controller="symfony--ux-blocks-interactive--toast"
+    data-controller="symfinity--ux-blocks-interactive--toast"
     aria-live="polite"
     {{ attributes }}
 >
@@ -476,7 +476,7 @@ writeFile("{$tpl}/Toast.html.twig", <<<TWIG
 
 TWIG);
 writeFile("{$src}/ToastItem.php", phpClass('ToastItem', 'Toast:Item', '@UxBlocksInteractive/components/Toast/Item.html.twig'));
-writeFile("{$tpl}/Toast/Item.html.twig", '<div data-ui-role="toast-item" data-symfony--ux-blocks-interactive--toast-target="item" {{ attributes }}>{% block content %}{% endblock %}</div>' . "\n");
+writeFile("{$tpl}/Toast/Item.html.twig", '<div data-ui-role="toast-item" data-symfinity--ux-blocks-interactive--toast-target="item" {{ attributes }}>{% block content %}{% endblock %}</div>' . "\n");
 writeFile("{$js}/toast_controller.js", <<<'JS'
 import { Controller } from '@hotwired/stimulus';
 
@@ -486,7 +486,7 @@ export default class extends Controller {
     show(message) {
         const el = document.createElement('div');
         el.setAttribute('data-ui-role', 'toast-item');
-        el.setAttribute('data-symfony--ux-blocks-interactive--toast-target', 'item');
+        el.setAttribute('data-symfinity--ux-blocks-interactive--toast-target', 'item');
         el.textContent = message;
         this.element.appendChild(el);
         setTimeout(() => el.remove(), 4000);
@@ -506,9 +506,9 @@ writeFile("{$tpl}/CommandPalette.html.twig", <<<TWIG
 <div
     data-ui-role="command-palette"
     data-ui-fragment="blocks.int.command-palette"
-    data-controller="symfony--ux-blocks-interactive--command-palette"
-    data-symfony--ux-blocks-interactive--command-palette-commands-url-value="{{ commandsUrl }}"
-    data-symfony--ux-blocks-interactive--command-palette-placeholder-value="{{ placeholder }}"
+    data-controller="symfinity--ux-blocks-interactive--command-palette"
+    data-symfinity--ux-blocks-interactive--command-palette-commands-url-value="{{ commandsUrl }}"
+    data-symfinity--ux-blocks-interactive--command-palette-placeholder-value="{{ placeholder }}"
     hidden
     {{ attributes }}
 >
@@ -519,10 +519,10 @@ TWIG);
 foreach (['Input' => 'input', 'List' => 'list'] as $part => $partRole) {
     $class = 'CommandPalette' . $part;
     writeFile("{$src}/{$class}.php", phpClass($class, "CommandPalette:{$part}", "@UxBlocksInteractive/components/CommandPalette/{$part}.html.twig"));
-    writeFile("{$tpl}/CommandPalette/{$part}.html.twig", "<div data-ui-part=\"{$partRole}\" data-ui-role=\"command-palette-{$partRole}\" data-symfony--ux-blocks-interactive--command-palette-target=\"{$partRole}\" {{ attributes }}>{% block content %}{% endblock %}</div>\n");
+    writeFile("{$tpl}/CommandPalette/{$part}.html.twig", "<div data-ui-part=\"{$partRole}\" data-ui-role=\"command-palette-{$partRole}\" data-symfinity--ux-blocks-interactive--command-palette-target=\"{$partRole}\" {{ attributes }}>{% block content %}{% endblock %}</div>\n");
 }
 writeFile("{$src}/CommandPaletteItem.php", phpClass('CommandPaletteItem', 'CommandPalette:Item', '@UxBlocksInteractive/components/CommandPalette/Item.html.twig'));
-writeFile("{$tpl}/CommandPalette/Item.html.twig", '<button type="button" data-ui-role="command-palette-item" data-symfony--ux-blocks-interactive--command-palette-target="item" {{ attributes }}>{% block content %}{% endblock %}</button>' . "\n");
+writeFile("{$tpl}/CommandPalette/Item.html.twig", '<button type="button" data-ui-role="command-palette-item" data-symfinity--ux-blocks-interactive--command-palette-target="item" {{ attributes }}>{% block content %}{% endblock %}</button>' . "\n");
 writeFile("{$js}/command-palette_controller.js", <<<'JS'
 import { Controller } from '@hotwired/stimulus';
 
@@ -587,7 +587,7 @@ export default class extends Controller {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.setAttribute('data-ui-role', 'command-palette-item');
-            btn.setAttribute('data-symfony--ux-blocks-interactive--command-palette-target', 'item');
+            btn.setAttribute('data-symfinity--ux-blocks-interactive--command-palette-target', 'item');
             btn.textContent = cmd.label || cmd.title || cmd.id || 'Command';
             if (cmd.url) {
                 btn.addEventListener('click', () => {
@@ -632,10 +632,10 @@ writeFile("{$tpl}/StackedLayoutInteractive.html.twig", <<<TWIG
 <div
     data-ui-role="stacked-layout-interactive"
     data-ui-fragment="blocks.int.stacked-layout-interactive"
-    data-controller="symfony--ux-blocks-interactive--stacked-layout-interactive"
+    data-controller="symfinity--ux-blocks-interactive--stacked-layout-interactive"
     {{ attributes }}
 >
-    <nav data-ui-part="nav" data-symfony--ux-blocks-interactive--stacked-layout-interactive-target="nav">
+    <nav data-ui-part="nav" data-symfinity--ux-blocks-interactive--stacked-layout-interactive-target="nav">
         {% block nav %}{% endblock %}
     </nav>
     <main>

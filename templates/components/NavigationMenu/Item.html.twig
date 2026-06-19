@@ -2,8 +2,14 @@
     role="menuitem"
     href="{{ href|default('#') }}"
     data-ui-role="navigation-menu-item"
-    data-symfony--ux-blocks-interactive--navigation-menu-target="item"
+    data-symfinity--ux-blocks-interactive--navigation-menu-target="item"
     {{ attributes }}
 >
-    {% block content %}{% endblock %}
+    <span data-ui-part="menu-item-body">
+        {% include '@UxBlocksInteractive/components/_shared/p_menu_item_icon.html.twig' with {
+            iconName: resolved_menu_item_icon,
+            iconDecorative: iconDecorative,
+        } only %}
+        <span data-ui-part="content">{% block content %}{% endblock %}</span>
+    </span>
 </a>

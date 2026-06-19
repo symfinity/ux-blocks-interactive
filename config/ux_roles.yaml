@@ -49,6 +49,9 @@ roles:
     interaction: stl
     stage: A
     status: shipped
+    icon_slot:
+      position: locked-start
+      component: DropdownMenu:Item
   - role: slider
     twig_component: Slider
     php_class: Symfinity\UxBlocksInteractive\Twig\Components\Slider
@@ -70,6 +73,14 @@ roles:
     php_class: Symfinity\UxBlocksInteractive\Twig\Components\ToggleGroup
     fragment_id: blocks.int.toggle-group
     fragment_pattern: "blocks.int.toggle-group.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
+  - role: scheme-switch
+    twig_component: SchemeSwitch
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\SchemeSwitch
+    fragment_id: blocks.int.scheme-switch
+    fragment_pattern: "blocks.int.scheme-switch.{n}"
     interaction: stl
     stage: A
     status: shipped
@@ -121,6 +132,15 @@ roles:
     interaction: stl
     stage: A
     status: shipped
+    icon_slot:
+      position: locked-start
+      component: Toast:Item
+      default_by_variant:
+        success: lucide:circle-check
+        error: lucide:circle-x
+        destructive: lucide:circle-x
+        warning: lucide:triangle-alert
+        info: lucide:info
   - role: context-menu
     twig_component: ContextMenu
     php_class: Symfinity\UxBlocksInteractive\Twig\Components\ContextMenu
@@ -202,6 +222,14 @@ roles:
     stage: A
     status: shipped
     ref: kibo-ui
+  - role: bento-box-panel-interactive
+    twig_component: BentoBoxPanelInteractive
+    php_class: Symfinity\UxBlocksInteractive\Twig\Components\BentoBoxPanelInteractive
+    fragment_id: blocks.int.bento-box-panel-interactive
+    fragment_pattern: "blocks.int.bento-box-panel-interactive.{n}"
+    interaction: stl
+    stage: A
+    status: shipped
 deprecated_fragment_aliases:
   - from: blocks.ext.tabs
     to: blocks.int.tabs

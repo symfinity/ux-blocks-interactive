@@ -18,7 +18,7 @@ final class CommandPaletteTest extends ComponentTestCase
         ]);
 
         $this->assertRootAttributes($html, 'command-palette', 'blocks.int.command-palette');
-        self::assertStringContainsString('data-controller="symfony--ux-blocks-interactive--command-palette"', $html);
+        self::assertStringContainsString('data-controller="symfinity--ux-blocks-interactive--command-palette"', $html);
         self::assertStringContainsString('role="dialog"', $html);
     }
 
@@ -32,7 +32,7 @@ final class CommandPaletteTest extends ComponentTestCase
             ],
         ]);
 
-        self::assertStringContainsString('data-symfony--ux-blocks-interactive--command-palette-fallback-commands-value', $html);
+        self::assertStringContainsString('data-symfinity--ux-blocks-interactive--command-palette-fallback-commands-value', $html);
         self::assertStringContainsString('demo.home', $html);
     }
 }

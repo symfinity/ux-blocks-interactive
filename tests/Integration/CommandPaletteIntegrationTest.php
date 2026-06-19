@@ -31,7 +31,7 @@ final class CommandPaletteIntegrationTest extends KernelTestCase
 
         self::assertStringContainsString('data-ui-fragment="blocks.int.command-palette"', $html);
         self::assertStringContainsString(
-            'data-symfony--ux-blocks-interactive--command-palette-commands-url-value="/_ui/palette/commands"',
+            'data-symfinity--ux-blocks-interactive--command-palette-commands-url-value="/_ui/palette/commands"',
             $html,
         );
     }

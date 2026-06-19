@@ -15,6 +15,10 @@ export function itemsInContent(content, targetName) {
 
 export function hideAllContents(contentTargets) {
     contentTargets.forEach((content) => {
+        if (content.hasAttribute('popover')) {
+            return;
+        }
+
         content.hidden = true;
     });
 }

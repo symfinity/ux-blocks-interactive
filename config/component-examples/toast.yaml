@@ -11,3 +11,11 @@ sections:
         label: Toast
         props: {}
         render_partial: showcase/_compounds/by_twig.html.twig
+  - id: icons
+    title: Toast wave 2 icons
+    layout: stack
+    items:
+      - variant: success
+        label: Success toast
+        props: {}
+        render_partial: showcase/_compounds/toast_success.html.twig

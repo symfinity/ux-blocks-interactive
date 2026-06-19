@@ -1,10 +1,10 @@
 <nav
     data-ui-role="table-of-contents"
     data-ui-fragment="blocks.int.table-of-contents"
-    data-controller="symfony--ux-blocks-interactive--table-of-contents"
-    data-symfony--ux-blocks-interactive--table-of-contents-scroll-target-value="{{ scrollTarget }}"
-    data-symfony--ux-blocks-interactive--table-of-contents-offset-value="{{ offset }}"
-    data-symfony--ux-blocks-interactive--table-of-contents-smooth-value="{{ smooth ? 'true' : 'false' }}"
+    data-controller="symfinity--ux-blocks-interactive--table-of-contents"
+    data-symfinity--ux-blocks-interactive--table-of-contents-scroll-target-value="{{ scrollTarget }}"
+    data-symfinity--ux-blocks-interactive--table-of-contents-offset-value="{{ offset }}"
+    data-symfinity--ux-blocks-interactive--table-of-contents-smooth-value="{{ smooth ? 'true' : 'false' }}"
     aria-label="{{ ariaLabel }}"
     {{ attributes }}
 >
@@ -15,7 +15,7 @@
                 <a
                     href="#{{ section.id }}"
                     class="ux-ext-toc__link"
-                    data-symfony--ux-blocks-interactive--table-of-contents-target="link"
+                    data-symfinity--ux-blocks-interactive--table-of-contents-target="link"
                     data-section-id="{{ section.id }}"
                 >{{ section.label }}</a>
             </li>

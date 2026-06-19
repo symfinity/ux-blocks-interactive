@@ -2,13 +2,13 @@
     data-ui-role="rating"
     data-ui-fragment="blocks.int.rating"
     data-ui-variant="{{ semantic_variant }}"
-    data-controller="symfony--ux-blocks-interactive--rating"
-    data-symfony--ux-blocks-interactive--rating-max-value="{{ max }}"
-    data-symfony--ux-blocks-interactive--rating-value-value="{{ value }}"
+    data-controller="symfinity--ux-blocks-interactive--rating"
+    data-symfinity--ux-blocks-interactive--rating-max-value="{{ max }}"
+    data-symfinity--ux-blocks-interactive--rating-value-value="{{ value }}"
     role="group"
     aria-label="Rating"
     {{ attributes }}
 >
-    <input type="hidden" name="rating" value="{{ value }}" data-symfony--ux-blocks-interactive--rating-target="input" />
+    <input type="hidden" name="rating" value="{{ value }}" data-symfinity--ux-blocks-interactive--rating-target="input" />
     {% block content %}{% endblock %}
 </div>

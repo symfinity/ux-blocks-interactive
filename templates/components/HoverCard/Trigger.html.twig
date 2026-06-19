@@ -1,7 +1,21 @@
-<div
+{% set use_native_interest = outerScope.nativeInterest is defined ? outerScope.nativeInterest : outerScope.hover_card_native_interest|default(true) %}
+{% if use_native_interest %}
+<a
+    href="{{ href|default('#') }}"
+    interestfor="{{ outerScope.hover_card_id|default('') }}"
     data-ui-role="hover-card-trigger"
-    data-symfony--ux-blocks-interactive--hover-card-target="trigger"
     {{ attributes }}
 >
+{% else %}
+<div
+    data-ui-role="hover-card-trigger"
+    data-symfinity--ux-blocks-interactive--hover-card-target="trigger"
+    {{ attributes }}
+>
+{% endif %}
     {% block content %}{% endblock %}
+{% if use_native_interest %}
+</a>
+{% else %}
 </div>
+{% endif %}

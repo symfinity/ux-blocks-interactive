@@ -7,9 +7,14 @@ export default class extends Controller {
     static values = {
         openDelay: { type: Number, default: 200 },
         closeDelay: { type: Number, default: 100 },
+        nativeInterest: { type: Boolean, default: true },
     };
 
     connect() {
+        if (this.usesNativeInterest()) {
+            return;
+        }
+
         this._open = false;
         this._openTimer = null;
         this._closeTimer = null;
@@ -30,6 +35,10 @@ export default class extends Controller {
     }
 
     disconnect() {
+        if (this.usesNativeInterest()) {
+            return;
+        }
+
         this._clearTimers();
         if (this.hasTriggerTarget) {
             this.triggerTarget.removeEventListener('mouseenter', this._onEnter);
@@ -38,6 +47,15 @@ export default class extends Controller {
             this.triggerTarget.removeEventListener('focusout', this._onLeave);
         }
         this.close();
+    }
+
+    usesNativeInterest() {
+        if (!this.nativeInterestValue) {
+            return false;
+        }
+
+        return typeof HTMLAnchorElement !== 'undefined'
+            && 'interestForElement' in HTMLAnchorElement.prototype;
     }
 
     _scheduleOpen() {
@@ -64,10 +82,14 @@ export default class extends Controller {
 
         this._open = true;
         const content = this.contentTarget;
-        content.hidden = false;
-        content.style.position = 'absolute';
-        content.style.zIndex = uiZIndex('popover');
-        content.style.marginBlockStart = 'var(--ui-space-xs)';
+        if (typeof content.showPopover === 'function') {
+            content.showPopover();
+        } else {
+            content.hidden = false;
+            content.style.position = 'absolute';
+            content.style.zIndex = uiZIndex('popover');
+            content.style.marginBlockStart = 'var(--ui-space-xs)';
+        }
 
         if (this.hasTriggerTarget) {
             this.triggerTarget.setAttribute('aria-expanded', 'true');
@@ -80,7 +102,13 @@ export default class extends Controller {
         }
 
         this._open = false;
-        this.contentTarget.hidden = true;
+        const content = this.contentTarget;
+        if (typeof content.hidePopover === 'function') {
+            content.hidePopover();
+        } else {
+            content.hidden = true;
+        }
+
         if (this.hasTriggerTarget) {
             this.triggerTarget.setAttribute('aria-expanded', 'false');
         }

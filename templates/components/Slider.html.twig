@@ -2,10 +2,10 @@
     data-ui-role="slider"
     data-ui-fragment="blocks.int.slider"
     data-ui-variant="{{ semantic_variant }}"
-    data-controller="symfony--ux-blocks-interactive--slider"
-    data-symfony--ux-blocks-interactive--slider-min-value="{{ min }}"
-    data-symfony--ux-blocks-interactive--slider-max-value="{{ max }}"
-    data-symfony--ux-blocks-interactive--slider-step-value="{{ step }}"
+    data-controller="symfinity--ux-blocks-interactive--slider"
+    data-symfinity--ux-blocks-interactive--slider-min-value="{{ min }}"
+    data-symfinity--ux-blocks-interactive--slider-max-value="{{ max }}"
+    data-symfinity--ux-blocks-interactive--slider-step-value="{{ step }}"
     {{ attributes }}
 >
     <input
@@ -15,9 +15,9 @@
         value="{{ value }}"
         step="{{ step }}"
         data-ui-role="slider-input"
-        data-symfony--ux-blocks-interactive--slider-target="input"
-        data-action="input->symfony--ux-blocks-interactive--slider#syncValue change->symfony--ux-blocks-interactive--slider#syncValue keydown->symfony--ux-blocks-interactive--slider#keydown"
+        data-symfinity--ux-blocks-interactive--slider-target="input"
+        data-action="input->symfinity--ux-blocks-interactive--slider#syncValue change->symfinity--ux-blocks-interactive--slider#syncValue keydown->symfinity--ux-blocks-interactive--slider#keydown"
     />
-    <output data-symfony--ux-blocks-interactive--slider-target="output">{{ value }}</output>
+    <output data-symfinity--ux-blocks-interactive--slider-target="output">{{ value }}</output>
     {% block content %}{% endblock %}
 </div>

@@ -1,2 +1,4 @@
 /* symfinity/ux-blocks-interactive — overlay/menu CSS (065 W3) */
 @import url('roles/_bundle.css');
+@import url('roles/scheme-switch.css');
+@import url('roles/icon-slot.css');

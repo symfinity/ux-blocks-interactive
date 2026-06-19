@@ -1,0 +1,10 @@
+{% component 'DropdownMenu' %}
+    {% block content %}
+        {% component 'DropdownMenu:Trigger' %}Actions{% endcomponent %}
+        {% component 'DropdownMenu:Content' %}
+            {% block content %}
+                {% component 'DropdownMenu:Item' with { icon: 'lucide:copy' } %}Copy{% endcomponent %}
+            {% endblock %}
+        {% endcomponent %}
+    {% endblock %}
+{% endcomponent %}

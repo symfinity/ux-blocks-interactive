@@ -1,0 +1,3 @@
+services:
+  Symfinity\UxBlocksInteractive\Http\ThemeSchemeController:
+    tags: ['controller.service_arguments']

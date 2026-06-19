@@ -1,0 +1,77 @@
+/* SchemeSwitch — binary ghost switch; sun/moon SVG icons on thumb */
+[data-ui-part="scheme-switch-chrome"] {
+  --scheme-switch-track-width: 3.25rem;
+  --scheme-switch-track-height: 1.625rem;
+  --scheme-switch-thumb-size: 1.375rem;
+  --scheme-switch-icon-size: 0.875rem;
+  --ui-toggle-accent: var(--ui-color-text-muted);
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+[data-ui-part="scheme-switch-chrome"] [data-ui-fragment="blocks.int.scheme-switch"] {
+  --switch-thumb-size: var(--scheme-switch-thumb-size);
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: var(--scheme-switch-track-width);
+  height: var(--scheme-switch-track-height);
+  background-image: radial-gradient(circle closest-side, var(--ui-toggle-thumb) 96%, transparent 100%);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: var(--scheme-switch-thumb-size) var(--scheme-switch-thumb-size);
+}
+
+[data-ui-part="scheme-switch-chrome"] [data-ui-fragment="blocks.int.scheme-switch"]:checked {
+  background-position: right center;
+}
+
+[data-ui-part="scheme-switch-icon"] {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--scheme-switch-icon-size);
+  height: var(--scheme-switch-icon-size);
+  color: var(--ui-color-text);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    left 0.15s ease-in-out,
+    opacity 0.15s ease-in-out,
+    color 0.15s ease-in-out;
+}
+
+[data-ui-part="scheme-switch-icon"] svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+[data-scheme-switch-icon="sun"] {
+  left: calc(var(--scheme-switch-thumb-size) / 2);
+}
+
+[data-scheme-switch-icon="moon"] {
+  left: calc(var(--scheme-switch-track-width) - var(--scheme-switch-thumb-size) / 2);
+}
+
+[data-ui-part="scheme-switch-chrome"]:has([data-ui-fragment="blocks.int.scheme-switch"]:not(:checked)) [data-scheme-switch-icon="sun"] {
+  opacity: 1;
+}
+
+[data-ui-part="scheme-switch-chrome"]:has([data-ui-fragment="blocks.int.scheme-switch"]:checked) [data-scheme-switch-icon="moon"] {
+  opacity: 1;
+}
+
+[data-ui-part="scheme-switch-chrome"]:has([data-ui-fragment="blocks.int.scheme-switch"]:disabled) [data-scheme-switch-icon="sun"],
+[data-ui-part="scheme-switch-chrome"]:has([data-ui-fragment="blocks.int.scheme-switch"][data-ui-state="disabled"]:not(:checked)) [data-scheme-switch-icon="sun"],
+[data-ui-part="scheme-switch-chrome"]:has([data-ui-fragment="blocks.int.scheme-switch"]:disabled:checked) [data-scheme-switch-icon="moon"],
+[data-ui-part="scheme-switch-chrome"]:has([data-ui-fragment="blocks.int.scheme-switch"][data-ui-state="disabled"]:checked) [data-scheme-switch-icon="moon"] {
+  opacity: 0.45;
+}

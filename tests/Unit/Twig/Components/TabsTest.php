@@ -15,7 +15,7 @@ final class TabsTest extends ComponentTestCase
         $html = $this->renderComponent('Tabs', ['defaultValue' => 'a', 'orientation' => 'horizontal']);
 
         $this->assertRootAttributes($html, 'tabs', 'blocks.int.tabs');
-        self::assertStringContainsString('data-controller="symfony--ux-blocks-interactive--tabs"', $html);
+        self::assertStringContainsString('data-controller="symfinity--ux-blocks-interactive--tabs"', $html);
     }
 
     #[Test]
@@ -25,7 +25,7 @@ final class TabsTest extends ComponentTestCase
         $html = $this->renderComponent('Tabs:Trigger', ['value' => 'a', 'active' => true]);
 
         self::assertStringContainsString('data-ui-role="tabs-trigger"', $html);
-        self::assertStringContainsString('data-action="click->symfony--ux-blocks-interactive--tabs#select"', $html);
+        self::assertStringContainsString('data-action="click->symfinity--ux-blocks-interactive--tabs#select"', $html);
         self::assertStringContainsString('aria-selected="true"', $html);
     }
 

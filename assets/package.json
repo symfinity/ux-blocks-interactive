@@ -2,6 +2,11 @@
     "name": "@symfinity/ux-blocks-interactive",
     "symfony": {
         "controllers": {
+            "bento-box-panel": {
+                "main": "controllers/bento-box-panel_controller.js",
+                "fetch": "eager",
+                "enabled": true
+            },
             "alert-dialog": {
                 "main": "controllers/alert-dialog_controller.js",
                 "fetch": "eager",
@@ -79,6 +84,11 @@
             },
             "rating": {
                 "main": "controllers/rating_controller.js",
+                "fetch": "eager",
+                "enabled": true
+            },
+            "scheme-switch": {
+                "main": "controllers/scheme_switch_controller.js",
                 "fetch": "eager",
                 "enabled": true
             },

@@ -1,11 +1,14 @@
 {% set is_open = outerScope.collapsible_is_open|default(false) %}
 {% set content_id = outerScope.collapsible_content_id|default('') %}
+{% set is_controlled = outerScope.open is defined and outerScope.open is not null %}
 <div
     id="{{ content_id }}"
     data-ui-role="collapsible-content"
-    data-symfinity--ux-blocks-core--collapsible-target="content"
-    {% if not is_open and not forceMount %}hidden{% endif %}
-    {% if not is_open and forceMount %}aria-hidden="true"{% endif %}
+    {% if is_controlled %}
+        data-symfinity--ux-blocks-core--collapsible-target="content"
+        {% if not is_open and not forceMount %}hidden{% endif %}
+        {% if not is_open and forceMount %}aria-hidden="true"{% endif %}
+    {% endif %}
     {{ attributes }}
 >
     {% block content %}{% endblock %}

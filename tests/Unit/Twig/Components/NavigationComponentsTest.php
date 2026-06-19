@@ -40,7 +40,7 @@ final class NavigationComponentsTest extends ComponentTestCase
 
         $this->assertRootAttributes($html, $role, $fragment);
         self::assertStringContainsString(
-            sprintf('data-controller="symfony--ux-blocks-interactive--%s"', $controllerSlug),
+            sprintf('data-controller="symfinity--ux-blocks-interactive--%s"', $controllerSlug),
             $html,
         );
     }

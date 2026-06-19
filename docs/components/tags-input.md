@@ -2,7 +2,7 @@
 
 - **Twig:** `<twig:TagsInput />`
 - **Fragment:** `blocks.int.tags-input`
-- **Stimulus:** `symfony--ux-blocks-interactive--tags-input`
+- **Stimulus:** `symfinity--ux-blocks-interactive--tags-input`
 - **Interaction:** stl
 - **Contract:** [extended-r2-role-registry](../../../../../specs/symfinity/symfinity/046-ux-blocks-interactive-r2/contracts/extended-r2-role-registry.md)
 

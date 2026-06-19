@@ -1,91 +1,65 @@
 import { Controller } from '@hotwired/stimulus';
 import { applyRovingTabindex, rovingKeydown } from './shared/menu-roving.js';
-import { restoreFocus, trapFocus } from './shared/overlay-base.js';
 
 export default class extends Controller {
     static targets = ['trigger', 'content', 'item'];
 
     connect() {
-        this._open = false;
         this._activeIndex = 0;
-        this._onDocumentKeydown = this._onDocumentKeydown.bind(this);
-        this._onDocumentClick = this._onDocumentClick.bind(this);
+        this._onContentToggle = this._onContentToggle.bind(this);
+        this._onContentKeydown = this._onContentKeydown.bind(this);
+
+        this.contentTargets.forEach((content) => {
+            content.addEventListener('toggle', this._onContentToggle);
+            content.addEventListener('keydown', this._onContentKeydown);
+        });
     }
 
     disconnect() {
-        this.close();
-        document.removeEventListener('keydown', this._onDocumentKeydown);
-        document.removeEventListener('click', this._onDocumentClick);
+        this.contentTargets.forEach((content) => {
+            content.removeEventListener('toggle', this._onContentToggle);
+            content.removeEventListener('keydown', this._onContentKeydown);
+        });
     }
 
-    toggle(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this._open) {
-            this.close();
-        } else {
-            this.open(event.currentTarget);
+    _onContentToggle(event) {
+        const content = event.target;
+        const trigger = this._triggerForContent(content);
+        if (trigger) {
+            trigger.setAttribute('aria-expanded', event.newState === 'open' ? 'true' : 'false');
         }
-    }
 
-    open(trigger = this.triggerTarget) {
-        if (!this.hasContentTarget) {
+        if (event.newState !== 'open') {
             return;
         }
 
-        this._open = true;
-        this._lastTrigger = trigger;
-        this.contentTarget.hidden = false;
-        trigger.setAttribute('aria-expanded', 'true');
-
-        const items = this.itemTargets.filter((el) => !el.disabled);
-        if (items.length > 0) {
-            applyRovingTabindex(items, 0);
-            this._activeIndex = 0;
-        }
-
-        document.addEventListener('keydown', this._onDocumentKeydown);
-        document.addEventListener('click', this._onDocumentClick);
-    }
-
-    close() {
-        if (!this._open) {
+        const items = this.itemTargets.filter((element) => !element.disabled);
+        if (items.length === 0) {
             return;
         }
 
-        this._open = false;
-        if (this.hasContentTarget) {
-            this.contentTarget.hidden = true;
-        }
-        if (this.hasTriggerTarget) {
-            this.triggerTarget.setAttribute('aria-expanded', 'false');
-        }
-
-        document.removeEventListener('keydown', this._onDocumentKeydown);
-        document.removeEventListener('click', this._onDocumentClick);
-        restoreFocus(this._lastTrigger);
+        applyRovingTabindex(items, 0);
+        this._activeIndex = 0;
     }
 
-    _onDocumentClick(event) {
-        if (!this.element.contains(event.target)) {
-            this.close();
+    _triggerForContent(content) {
+        const id = content.id;
+        if (id) {
+            const matched = document.querySelector(`[popovertarget="${CSS.escape(id)}"]`);
+            if (matched) {
+                return matched;
+            }
         }
+
+        return this.hasTriggerTarget ? this.triggerTarget : null;
     }
 
-    _onDocumentKeydown(event) {
-        if (event.key === 'Escape') {
-            event.preventDefault();
-            this.close();
+    _onContentKeydown(event) {
+        if (!event.target.matches(':popover-open')) {
             return;
         }
 
-        if (!this._open || !this.hasContentTarget) {
-            return;
-        }
-
-        trapFocus(this.contentTarget, event);
-
-        const items = this.itemTargets.filter((el) => !el.disabled);
+        const items = this.itemTargets.filter((element) => !element.disabled);
         const next = rovingKeydown(event, items, this._activeIndex, 'vertical');
         if (next !== this._activeIndex) {
             this._activeIndex = next;

@@ -1,8 +1,8 @@
 <div
-    role="tooltip"
-    hidden
+    id="{{ outerScope.hover_card_id|default('') }}"
+    popover="hint"
     data-ui-role="hover-card-content"
-    data-symfony--ux-blocks-interactive--hover-card-target="content"
+    data-symfinity--ux-blocks-interactive--hover-card-target="content"
     {{ attributes }}
 >
     {% block content %}{% endblock %}
