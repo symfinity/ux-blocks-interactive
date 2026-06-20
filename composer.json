@@ -21,7 +21,6 @@
         "symfony/yaml": "^7.4||^8.0"
     },
     "suggest": {
-        "symfinity/ui-kernel": "SchemeSwitch enhanced mode (PATCH /_ui/theme/scheme) and theme shell view-model",
         "symfinity/ux-runtime": "Optional command palette JSON backend (blocks.int.command-palette)"
     },
     "repositories": [

@@ -757,6 +757,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         profile_globals_layer?: scalar|Param|null, // Default: "profile-globals.dtcg.yaml"
  *     },
  * }
+ * @psalm-type SymfinityUxBlocksCoreConfig = array{
+ *     fragment_ids?: bool|Param, // Emit data-ui-fragment from ux_roles.yaml (Stage B+). Stage A default: false. // Default: false
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -766,6 +769,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     stimulus?: StimulusConfig,
  *     twig_component?: TwigComponentConfig,
  *     symfinity_ui_kernel?: SymfinityUiKernelConfig,
+ *     symfinity_ux_blocks_core?: SymfinityUxBlocksCoreConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,

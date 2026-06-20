@@ -10,9 +10,6 @@ services:
       - '../src/DependencyInjection/'
       - '../src/Http/'
 
-  Symfinity\UxBlocksInteractive\Controller\CatalogController:
-    tags: ['controller.service_arguments']
-
   Symfinity\UxBlocksInteractive\Css\BlocksInteractiveCssProvider:
     arguments:
       $packageDir: '%ux_blocks_interactive.package_dir%'
