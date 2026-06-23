@@ -1,6 +1,15 @@
-/* generated: blocks-css:compile — do not edit */
-
 @charset "UTF-8";
+/* Collapse icon gutters when no glyph is rendered (optional ux-icons, icon=null). */
+[data-ui-role] [data-ui-part="icon"]:not(:has(:is(svg, img))) {
+  display: none;
+  width: 0;
+  min-width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 /* SchemeSwitch — binary ghost switch; sun/moon SVG icons on thumb */
 [data-ui-part="scheme-switch-chrome"] {
   --scheme-switch-track-width: 3.25rem;

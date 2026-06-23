@@ -1,0 +1,17 @@
+schema: showcase-examples/1.0
+role: slider
+twig_name: Slider
+requires_stimulus: true
+sections:
+  - id: variants
+    title: Variants
+    items:
+      - variant: primary
+        label: Primary
+        props: { variant: primary, value: 40 }
+      - variant: secondary
+        label: Secondary
+        props: { variant: secondary, value: 50 }
+      - variant: outline
+        label: Outline
+        props: { variant: outline, value: 60 }

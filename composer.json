@@ -6,6 +6,7 @@
     "require": {
         "php": ">=8.2",
         "symfinity/ux-blocks-extended": "@dev",
+        "symfinity/ux-blocks-form": "@dev",
         "symfony/asset-mapper": "^7.4||^8.0",
         "symfony/framework-bundle": "^7.4||^8.0",
         "symfony/twig-bundle": "^7.4||^8.0",
@@ -27,6 +28,11 @@
         {
             "type": "path",
             "url": "../ux-blocks-extended",
+            "options": { "symlink": true }
+        },
+        {
+            "type": "path",
+            "url": "../ux-blocks-form",
             "options": { "symlink": true }
         },
         {

@@ -15,7 +15,7 @@ Symfinity UX Blocks Interactive ships Stimulus-backed interactive widgets with `
 
 ## Registry
 
-See `config/ux_roles.yaml` — **26** shipped `stl` roles (including `scheme-switch` and `command-palette` UI chrome).
+See `config/ux_roles.yaml` — **27** shipped `stl` roles (including `scheme-switch` and `command-palette` UI chrome). Registry schema **1.4** declares composition-language facets where roles use the shared modifier lexicon (`variant` on `Slider`, `Toggle`, `Rating`). Universal region components (`Header`, `Footer`, `Media`, `Actions`, `Aside`) live in `symfinity/ux-blocks-core`.
 
 ## SchemeSwitch
 
@@ -25,8 +25,53 @@ Deprecated one-cycle aliases: `blocks.live.{role}` → `blocks.int.{role}` for f
 
 Optional: `composer require symfinity/ux-runtime` for command palette JSON backend.
 
+## Maintainer Sass pipeline (120)
+
+Author role CSS in `assets/scss/` (`_shared/`, `partials/`, per-role files). From product monorepo root:
+
+```bash
+cd src/symfinity
+bin/blocks-css-compile --package=ux-blocks-interactive --check
+bin/ux-blocks-scss-audit --package=ux-blocks-interactive --check
+```
+
+See [ux-blocks maintainer Sass pipeline](../ux-blocks/README.md#maintainer--sass-author-pipeline-120).
+
 ## Requirements
 
 - PHP 8.2+
 - Symfony 7.4+ / 8.0+
 - `symfinity/ux-blocks-extended`
+
+
+<!-- ux-blocks:registry:start -->
+| Role | Twig | Interaction | Fragment | Status |
+|------|------|-------------|----------|--------|
+| collapsible | Collapsible | stl | `blocks.int.collapsible` | shipped |
+| tabs | Tabs | stl | `blocks.int.tabs` | shipped |
+| alert-dialog-enhanced | AlertDialog | stl | `blocks.int.alert-dialog-enhanced` | shipped |
+| drawer | Drawer | stl | `blocks.int.drawer` | shipped |
+| sheet | Sheet | stl | `blocks.int.sheet` | shipped |
+| dropdown-menu | DropdownMenu | stl | `blocks.int.dropdown-menu` | shipped |
+| slider | Slider | stl | `blocks.int.slider` | shipped |
+| toggle | Toggle | stl | `blocks.int.toggle` | shipped |
+| toggle-group | ToggleGroup | stl | `blocks.int.toggle-group` | shipped |
+| scheme-switch | SchemeSwitch | stl | `blocks.int.scheme-switch` | shipped |
+| calendar | Calendar | stl | `blocks.int.calendar` | shipped |
+| input-otp | InputOtp | stl | `blocks.int.input-otp` | shipped |
+| sidebar | Sidebar | stl | `blocks.int.sidebar` | shipped |
+| stacked-layout-interactive | StackedLayoutInteractive | stl | `blocks.int.stacked-layout-interactive` | shipped |
+| command-palette | CommandPalette | stl, runtime | `blocks.int.command-palette` | shipped |
+| toast | Toast | stl | `blocks.int.toast` | shipped |
+| context-menu | ContextMenu | stl | `blocks.int.context-menu` | shipped |
+| hover-card | HoverCard | stl | `blocks.int.hover-card` | shipped |
+| resizable | Resizable | stl | `blocks.int.resizable` | shipped |
+| menubar | Menubar | stl | `blocks.int.menubar` | shipped |
+| navigation-menu | NavigationMenu | stl | `blocks.int.navigation-menu` | shipped |
+| carousel-interactive | CarouselInteractive | stl | `blocks.int.carousel-interactive` | shipped |
+| rating | Rating | stl | `blocks.int.rating` | shipped |
+| filter-chips | FilterChips | stl | `blocks.int.filter-chips` | shipped |
+| table-of-contents | TableOfContents | stl | `blocks.int.table-of-contents` | shipped |
+| tree-view | TreeView | stl | `blocks.int.tree-view` | shipped |
+| bento-box-panel-interactive | BentoBoxPanelInteractive | stl | `blocks.int.bento-box-panel-interactive` | shipped |
+<!-- ux-blocks:registry:end -->

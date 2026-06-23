@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace Symfinity\UxBlocksInteractive\Twig\Components;
 
 use Symfinity\UxBlocksCore\Twig\ExposesSemanticVariant;
+use Symfinity\UxBlocksCore\Twig\NormalizesSemanticColourVariant;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent('Slider', template: '@UxBlocksInteractive/components/Slider.html.twig')]
 final class Slider
 {
     use ExposesSemanticVariant;
+    use NormalizesSemanticColourVariant;
 
     public string $variant = 'primary';
 

@@ -36,7 +36,7 @@ final class BlocksInteractiveCssTest extends TestCase
     {
         $css = self::bundleCss();
 
-        self::assertStringContainsString('[data-ui-anchor="trigger"]', $css);
+        self::assertStringContainsString('[data-ui-anchor=trigger]', $css);
         self::assertStringContainsString('[data-ui-role="menu"]', $css);
         self::assertStringContainsString('[data-ui-role="menu"][popover][anchor]', $css);
         self::assertStringContainsString('top: anchor(bottom)', $css);
@@ -52,7 +52,7 @@ final class BlocksInteractiveCssTest extends TestCase
         $css = self::bundleCss();
 
         self::assertStringContainsString(
-            '[data-ui-role="dropdown-menu-item"]:hover:not(:disabled):not([aria-disabled="true"])',
+            '[data-ui-role="dropdown-menu-item"]:hover:not(:disabled):not([aria-disabled=true])',
             $css,
         );
         self::assertStringContainsString(
@@ -70,8 +70,8 @@ final class BlocksInteractiveCssTest extends TestCase
     {
         $css = self::bundleCss();
 
-        self::assertStringContainsString('[data-ui-role="drawer-content"][data-ui-side="bottom"]', $css);
-        self::assertStringContainsString('[data-ui-role="sheet-content"][data-ui-side="right"]', $css);
+        self::assertStringContainsString('[data-ui-role="drawer-content"][data-ui-side=bottom]', $css);
+        self::assertStringContainsString('[data-ui-role="sheet-content"][data-ui-side=right]', $css);
         self::assertStringContainsString('[data-ui-role="hover-card-content"]:not([hidden])', $css);
         self::assertStringContainsString('z-index: var(--ui-z-popover)', $css);
     }

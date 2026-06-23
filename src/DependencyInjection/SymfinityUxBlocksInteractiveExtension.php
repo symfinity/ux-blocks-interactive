@@ -49,4 +49,9 @@ final class SymfinityUxBlocksInteractiveExtension extends Extension implements P
             $loader->load('services_theme_scheme.yaml');
         }
     }
+
+    public function getAlias(): string
+    {
+        return 'symfinity_ux_blocks_interactive';
+    }
 }
