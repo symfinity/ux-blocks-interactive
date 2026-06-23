@@ -1,47 +1,41 @@
-# Ux Blocks Interactive
+<div align="center">
 
-**Client interactive tier — default `stl`; package Stimulus widgets.**
+# UX Blocks Interactive
 
-Symfinity UX Blocks Interactive ships Stimulus-backed interactive widgets with `blocks.int.*` fragment ids. Requires `symfinity/ux-blocks-extended` (compounds) and transitively `symfinity/ux-blocks-core` (atoms).
+### Stimulus-backed interactive widgets with blocks.int fragments
 
-## Tier model (057)
+[![PHP Version](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php&logoColor=white)](composer.json)
+[![Symfony](https://img.shields.io/badge/Symfony-7.4+-343434?style=flat&logo=symfony&logoColor=white)](composer.json)
+<br/>
+[![CI](https://github.com/symfinity/ux-blocks-interactive/actions/workflows/ci.yml/badge.svg)](https://github.com/symfinity/ux-blocks-interactive/actions/workflows/ci.yml)
+<br/>
+[![Release](https://img.shields.io/packagist/v/symfinity/ux-blocks-interactive.svg?style=flat&logo=packagist&logoColor=white)](https://packagist.org/packages/symfinity/ux-blocks-interactive)
+[![Downloads](https://img.shields.io/packagist/dt/symfinity/ux-blocks-interactive.svg?style=flat&logo=packagist&logoColor=white)](https://packagist.org/packages/symfinity/ux-blocks-interactive)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-| Tier | Package | Prefix | Interaction |
-|------|---------|--------|-------------|
-| Foundation | `ux-blocks-core` | `blocks` | `nat` atoms |
-| Application | `ux-blocks-extended` | `blocks.ext` | `nat`/`act` compounds |
-| **Interactive** | **`ux-blocks-interactive`** | **`blocks.int`** | **`stl`** widgets |
-| Live | `ux-blocks-live` | `blocks.live` | `live` LiveComponents |
+</div>
 
-## Registry
+> [!NOTE]
+> **Read-only mirror.**
+> See [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose changes.
 
-See `config/ux_roles.yaml` — **27** shipped `stl` roles (including `scheme-switch` and `command-palette` UI chrome). Registry schema **1.4** declares composition-language facets where roles use the shared modifier lexicon (`variant` on `Slider`, `Toggle`, `Rating`). Universal region components (`Header`, `Footer`, `Media`, `Actions`, `Aside`) live in `symfinity/ux-blocks-core`.
+## Features
 
-## SchemeSwitch
+- **27 interactive roles** — tabs, drawers, menus, toasts, and scheme switch
+- **Client widgets (`stl`)** — package Stimulus controllers with ui-kernel styling
+- **Registry-aligned** — `blocks.int.*` fragment ids
+- **Requires extended tier** — compounds from `symfinity/ux-blocks-extended`
+- **Flex recipe** — bundle and Stimulus assets on install
 
-Binary ghost light/dark toggle with Stimulus PATCH to `/_ui/theme/scheme` when **symfinity/ui-kernel** is installed. Import `config/routes/theme-scheme.yaml` in the host app. Wire props from `ui_kernel_theme_shell()` or equivalent; non-interactive hosts should use ui-kernel redirect links or boot script instead.
+## Interaction profile
 
-Deprecated one-cycle aliases: `blocks.live.{role}` → `blocks.int.{role}` for former live-tier stl roles.
+| Token | In this package |
+|-------|-----------------|
+| `stl` | Default for all roles — Stimulus widgets with package CSS |
+| `runtime` | Optional on `CommandPalette` when `symfinity/ux-runtime` is installed |
+| `live` | **Not included** — LiveComponents ship in `symfinity/ux-blocks-live` |
 
-Optional: `composer require symfinity/ux-runtime` for command palette JSON backend.
-
-## Maintainer Sass pipeline (120)
-
-Author role CSS in `assets/scss/` (`_shared/`, `partials/`, per-role files). From product monorepo root:
-
-```bash
-cd src/symfinity
-bin/blocks-css-compile --package=ux-blocks-interactive --check
-bin/ux-blocks-scss-audit --package=ux-blocks-interactive --check
-```
-
-See [ux-blocks maintainer Sass pipeline](../ux-blocks/README.md#maintainer--sass-author-pipeline-120).
-
-## Requirements
-
-- PHP 8.2+
-- Symfony 7.4+ / 8.0+
-- `symfinity/ux-blocks-extended`
+## Component inventory
 
 
 <!-- ux-blocks:registry:start -->
@@ -75,3 +69,54 @@ See [ux-blocks maintainer Sass pipeline](../ux-blocks/README.md#maintainer--sass
 | tree-view | TreeView | stl | `blocks.int.tree-view` | shipped |
 | bento-box-panel-interactive | BentoBoxPanelInteractive | stl | `blocks.int.bento-box-panel-interactive` | shipped |
 <!-- ux-blocks:registry:end -->
+
+**Highlights:** scheme switch for light/dark toggle; command palette UI chrome; sidebar and navigation menus.
+
+Handbook: [docs/components.md](docs/components.md).
+
+## Prerequisites
+
+Add the [symfinity/recipes](https://github.com/symfinity/recipes) Flex endpoint to your project's `composer.json` (see [recipes README](https://github.com/symfinity/recipes/blob/main/README.md)) — recipes are not in Symfony's official recipe repository yet.
+
+## Installation
+
+```bash
+composer require symfinity/ux-blocks-interactive
+```
+
+See [Installation](docs/installation.md).
+
+## Quick Start
+
+```twig
+<twig:Tabs>
+  <twig:Header>Account</twig:Header>
+</twig:Tabs>
+<twig:SchemeSwitch />
+```
+
+See [Quick start](docs/quickstart.md) for the full walkthrough.
+
+## Documentation
+
+- **[Quick start](docs/quickstart.md)** — minimal setup path
+- **[Installation](docs/installation.md)** — Flex, dependencies, verify
+- **[Configuration](docs/configuration.md)** — bundle and app options
+- **[Usage](docs/usage.md)** — day-to-day patterns
+- **[Upgrade](docs/upgrade.md)** — version migrations
+
+## Requirements
+
+- PHP 8.2 or higher
+- Symfony 7.4 or 8.x
+- `symfinity/ux-blocks-extended` ^0.1
+
+## Support
+
+- [GitHub Issues](https://github.com/symfinity/ux-blocks-interactive/issues)
+- [Security](.github/SECURITY.md)
+- [Contributing](CONTRIBUTING.md)
+
+## License
+
+[MIT](LICENSE)
