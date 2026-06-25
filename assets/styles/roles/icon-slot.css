@@ -1,7 +1,5 @@
-/* generated: blocks-css:compile — do not edit */
-
 /* Collapse icon gutters when no glyph is rendered (optional ux-icons, icon=null). */
-[data-ui-role] [data-ui-part="icon"]:not(:has(:is(svg, img))) {
+[data-ui-role] [data-ui-part=icon]:not(:has(:is(svg, img))) {
   display: none;
   width: 0;
   min-width: 0;
