@@ -25,7 +25,7 @@ jobs:
           - { php: '8.4', symfony: '8.1' }
           - { php: '8.5', symfony: '8.1' }
 
-    name: PHPUnit (PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}.*)
+    name: PHPUnit + PHPStan (PHP ${{ matrix.php }}, Symfony ${{ matrix.symfony }}.*)
 
     steps:
       - uses: actions/checkout@v5
@@ -46,6 +46,7 @@ jobs:
           done
           composer require --no-update \
             'symfinity/ux-blocks:dev-main' \
+            'symfinity/ux-blocks-core:dev-main' \
             'symfinity/ux-blocks-extended:dev-main' \
             'symfinity/ux-blocks-form:dev-main'
 
@@ -73,3 +74,6 @@ jobs:
 
       - name: PHPUnit
         run: vendor/bin/phpunit --colors=always
+
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse --memory-limit=512M

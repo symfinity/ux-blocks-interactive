@@ -106,7 +106,7 @@ final class BlocksInteractiveCssTest extends TestCase
 
         self::assertStringContainsString('[data-ui-role="scheme-switch"]', $css);
         self::assertStringContainsString('--scheme-switch-track-width', $css);
-        self::assertStringContainsString('[data-ui-part="scheme-switch-chrome"]', $css);
+        self::assertStringContainsString('[data-ui-part=scheme-switch-chrome]', $css);
         self::assertStringContainsString('[data-ui-role="collapsible"]', $css);
     }
 }

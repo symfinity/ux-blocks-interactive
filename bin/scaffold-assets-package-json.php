@@ -20,9 +20,10 @@ if (!is_dir($controllersDir)) {
 
 $controllers = [];
 foreach (glob($controllersDir . '/*_controller.js') ?: [] as $file) {
-    $slug = basename($file, '_controller.js');
+    $base = basename($file, '_controller.js');
+    $slug = str_replace('_', '-', $base);
     $controllers[$slug] = [
-        'main' => 'controllers/' . $slug . '_controller.js',
+        'main' => 'controllers/' . $base . '_controller.js',
         'fetch' => 'eager',
         'enabled' => true,
     ];

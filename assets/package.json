@@ -2,13 +2,13 @@
     "name": "@symfinity/ux-blocks-interactive",
     "symfony": {
         "controllers": {
-            "bento-box-panel": {
-                "main": "controllers/bento-box-panel_controller.js",
+            "alert-dialog": {
+                "main": "controllers/alert-dialog_controller.js",
                 "fetch": "eager",
                 "enabled": true
             },
-            "alert-dialog": {
-                "main": "controllers/alert-dialog_controller.js",
+            "bento-box-panel": {
+                "main": "controllers/bento-box-panel_controller.js",
                 "fetch": "eager",
                 "enabled": true
             },
@@ -22,11 +22,6 @@
                 "fetch": "eager",
                 "enabled": true
             },
-            "combobox": {
-                "main": "controllers/combobox_controller.js",
-                "fetch": "eager",
-                "enabled": true
-            },
             "command-palette": {
                 "main": "controllers/command-palette_controller.js",
                 "fetch": "eager",
@@ -34,16 +29,6 @@
             },
             "context-menu": {
                 "main": "controllers/context-menu_controller.js",
-                "fetch": "eager",
-                "enabled": true
-            },
-            "date-picker": {
-                "main": "controllers/date-picker_controller.js",
-                "fetch": "eager",
-                "enabled": true
-            },
-            "date-range-picker": {
-                "main": "controllers/date-range-picker_controller.js",
                 "fetch": "eager",
                 "enabled": true
             },
@@ -87,13 +72,13 @@
                 "fetch": "eager",
                 "enabled": true
             },
-            "scheme-switch": {
-                "main": "controllers/scheme_switch_controller.js",
+            "resizable": {
+                "main": "controllers/resizable_controller.js",
                 "fetch": "eager",
                 "enabled": true
             },
-            "resizable": {
-                "main": "controllers/resizable_controller.js",
+            "scheme-switch": {
+                "main": "controllers/scheme_switch_controller.js",
                 "fetch": "eager",
                 "enabled": true
             },
@@ -127,16 +112,6 @@
                 "fetch": "eager",
                 "enabled": true
             },
-            "tags-input": {
-                "main": "controllers/tags-input_controller.js",
-                "fetch": "eager",
-                "enabled": true
-            },
-            "tree-view": {
-                "main": "controllers/tree-view_controller.js",
-                "fetch": "eager",
-                "enabled": true
-            },
             "toast": {
                 "main": "controllers/toast_controller.js",
                 "fetch": "eager",
@@ -152,8 +127,8 @@
                 "fetch": "eager",
                 "enabled": true
             },
-            "data-table-chrome-interactive": {
-                "main": "controllers/data-table-chrome-interactive_controller.js",
+            "tree-view": {
+                "main": "controllers/tree-view_controller.js",
                 "fetch": "eager",
                 "enabled": true
             }
