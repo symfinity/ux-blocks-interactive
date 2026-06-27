@@ -38,18 +38,6 @@ jobs:
           coverage: none
           tools: composer:v2
 
-      - name: Resolve Symfinity siblings from GitHub mirrors
-        run: |
-          composer config --unset repositories
-          for repo in ux-blocks ux-blocks-core ux-blocks-form ux-blocks-extended; do
-            composer config "repositories.symfinity-${repo}" "{\"type\":\"vcs\",\"url\":\"https://github.com/symfinity/${repo}\"}"
-          done
-          composer require --no-update \
-            'symfinity/ux-blocks:dev-main' \
-            'symfinity/ux-blocks-core:dev-main' \
-            'symfinity/ux-blocks-extended:dev-main' \
-            'symfinity/ux-blocks-form:dev-main'
-
       - name: Pin Symfony ${{ matrix.symfony }}
         run: |
           composer require --no-update \
