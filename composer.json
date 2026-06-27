@@ -28,6 +28,7 @@
     ],
     "require": {
         "php": ">=8.2",
+        "symfinity/ux-blocks-core": "^0.1",
         "symfinity/ux-blocks-extended": "^0.1",
         "symfinity/ux-blocks-form": "^0.1",
         "symfony/asset-mapper": "^7.4||^8.0",
