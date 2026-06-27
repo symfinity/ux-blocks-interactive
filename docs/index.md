@@ -1,40 +1,15 @@
 # Overview
 
-Package handbook for this library.
+Consumer handbook for **symfinity/ux-blocks-interactive** — Stimulus-backed widgets and navigation chrome (27 roles, `blocks.int.*` fragments).
 
 ## Pages
 
 - [Installation](installation.md)
-- [Quickstart](quickstart.md)
+- [Quick start](quickstart.md)
 - [Configuration](configuration.md)
 - [Usage](usage.md)
-- [Components](components.md)
+- [Components](components.md) — full handbook index
 - [Upgrade](upgrade.md)
 - [Troubleshooting](troubleshooting.md)
-- [Reference](reference.md)
-- [Components — Alert Dialog Enhanced](components/alert-dialog-enhanced.md)
-- [Components — Calendar](components/calendar.md)
-- [Components — Carousel Interactive](components/carousel-interactive.md)
-- [Components — Combobox](components/combobox.md)
-- [Components — Command Palette](components/command-palette.md)
-- [Components — Context Menu](components/context-menu.md)
-- [Components — Data Table Chrome](components/data-table-chrome.md)
-- [Components — Date Picker](components/date-picker.md)
-- [Components — Drawer](components/drawer.md)
-- [Components — Dropdown Menu](components/dropdown-menu.md)
-- [Components — Filter Chips](components/filter-chips.md)
-- [Components — Hover Card](components/hover-card.md)
-- [Components — Input Otp](components/input-otp.md)
-- [Components — Menubar](components/menubar.md)
-- [Components — Navigation Menu](components/navigation-menu.md)
-- [Components — Rating](components/rating.md)
-- [Components — Resizable](components/resizable.md)
-- [Components — Sheet](components/sheet.md)
-- [Components — Sidebar](components/sidebar.md)
-- [Components — Slider](components/slider.md)
-- [Components — Stacked Layout Interactive](components/stacked-layout-interactive.md)
-- [Components — Tabs](components/tabs.md)
-- [Components — Toast](components/toast.md)
-- [Components — Toggle Group](components/toggle-group.md)
-- [Components — Toggle](components/toggle.md)
-- [Porting](porting.md)
+
+Compound layout roles ship in **ux-blocks-extended**; LiveComponents ship in **ux-blocks-live** — not covered here.

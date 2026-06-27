@@ -1,8 +1,21 @@
 # Installation
 
-## Requirements
+## Prerequisites
 
-PHP 8.2+ and Symfony 7.4.
+1. Add the [symfinity/recipes](https://github.com/symfinity/recipes) Flex endpoint to your project's `composer.json` (see [recipes README](https://github.com/symfinity/recipes/blob/main/README.md)).
+2. Install **core**, **form**, and **extended** tiers first — interactive widgets compose their primitives:
+
+```bash
+composer require symfinity/ux-blocks-core symfinity/ux-blocks-form symfinity/ux-blocks-extended
+```
+
+3. For **styled** apps, install **ui-kernel** (theme CSS). The registry SDK `symfinity/ux-blocks` is pulled transitively from Packagist.
+
+```bash
+composer require symfinity/ui-kernel   # optional — themed apps only
+```
+
+See [UX Blocks install profiles](https://github.com/symfinity/ux-blocks#install-profiles) for tier choices.
 
 ## Composer
 
@@ -12,16 +25,24 @@ composer require symfinity/ux-blocks-interactive
 
 ## Symfony Flex
 
-Describe recipe output: `config/packages/`, routes, assets (if any).
+The `0.1` recipe applies:
+
+- Registers `SymfinityUxBlocksInteractiveBundle` for **all** environments
+- Wires AssetMapper paths, Twig namespaces, and UX Twig components
+- Optionally imports `theme-scheme.yaml` routes when **ui-kernel** is present (for `SchemeSwitch`)
 
 ## Manual installation
 
-Only when Flex is unavailable: register bundle, copy config skeleton.
+When Flex is unavailable:
+
+1. `composer require symfinity/ux-blocks symfinity/ux-blocks-core symfinity/ux-blocks-form symfinity/ux-blocks-extended symfinity/ux-blocks-interactive`
+2. Register `Symfinity\UxBlocksInteractive\SymfinityUxBlocksInteractiveBundle` in `config/bundles.php`
+3. Ensure AssetMapper, Stimulus, and UX Twig Component bundles are enabled
 
 ## Verify installation
 
 ```bash
-# example: bin/console debug:config symfinity_* 
+php bin/console debug:container --tag=twig.component | grep -i DropdownMenu
 ```
 
 ## Next steps

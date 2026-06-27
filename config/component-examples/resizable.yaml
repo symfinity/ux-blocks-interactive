@@ -1,0 +1,15 @@
+role: resizable
+twig_name: Resizable
+requires_stimulus: true
+groups:
+  - id: two-panel
+    section: Examples
+    layout: inline-row
+    items:
+      - id: sidebar-main
+        label: Sidebar + main
+        props: {}
+        slot_twig: |
+          <twig:Resizable:Panel>Sidebar</twig:Resizable:Panel>
+          <twig:Resizable:Handle />
+          <twig:Resizable:Panel>Main content</twig:Resizable:Panel>

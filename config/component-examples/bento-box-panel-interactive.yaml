@@ -1,0 +1,26 @@
+role: bento-box-panel-interactive
+twig_name: BentoBoxPanelInteractive
+requires_stimulus: true
+groups:
+  - id: fixture
+    section: Examples
+    layout: inline-row
+    items:
+      - id: electronics-fixture
+        label: Electronics fixture (default)
+        props: {}
+  - id: custom-boxes
+    section: Custom boxes
+    layout: inline-row
+    items:
+      - id: single-box
+        label: Single category
+        props:
+          boxes:
+            - heading: Components
+              column: 1
+              items:
+                - label: Buttons
+                  href: /kiosk/blocks/core/button
+                - label: Cards
+                  href: /kiosk/blocks/extended/card

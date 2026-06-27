@@ -1,0 +1,25 @@
+role: menubar
+twig_name: Menubar
+requires_stimulus: true
+examples:
+  - id: file-edit
+    title: Desktop menu bar
+    section: Examples
+    props: {}
+    slot_twig: |
+      <twig:Menubar>
+          <twig:Menubar:Panel>
+              <twig:Menubar:Trigger>File</twig:Menubar:Trigger>
+              <twig:Menubar:Content>
+                  <twig:Menubar:Item icon="file-plus">New</twig:Menubar:Item>
+                  <twig:Menubar:Item icon="save">Save</twig:Menubar:Item>
+              </twig:Menubar:Content>
+          </twig:Menubar:Panel>
+          <twig:Menubar:Panel>
+              <twig:Menubar:Trigger>Edit</twig:Menubar:Trigger>
+              <twig:Menubar:Content>
+                  <twig:Menubar:Item>Undo</twig:Menubar:Item>
+                  <twig:Menubar:Item>Redo</twig:Menubar:Item>
+              </twig:Menubar:Content>
+          </twig:Menubar:Panel>
+      </twig:Menubar>

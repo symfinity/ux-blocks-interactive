@@ -1,0 +1,15 @@
+role: carousel-interactive
+twig_name: CarouselInteractive
+requires_stimulus: true
+groups:
+  - id: slides
+    section: Examples
+    layout: inline-row
+    items:
+      - id: three-slides
+        label: Three slides
+        props: {}
+        slot_twig: |
+          <twig:CarouselInteractive:Item>Slide 1</twig:CarouselInteractive:Item>
+          <twig:CarouselInteractive:Item>Slide 2</twig:CarouselInteractive:Item>
+          <twig:CarouselInteractive:Item>Slide 3</twig:CarouselInteractive:Item>

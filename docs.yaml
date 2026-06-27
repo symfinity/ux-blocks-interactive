@@ -7,7 +7,6 @@ sidebar:
   - configuration
   - installation
   - quickstart
-  - reference
   - troubleshooting
   - upgrade
   - usage
@@ -17,13 +16,12 @@ slices:
     sources:
       - components.md
       - components/alert-dialog-enhanced.md
+      - components/bento-box-panel-interactive.md
       - components/calendar.md
       - components/carousel-interactive.md
-      - components/combobox.md
+      - components/collapsible.md
       - components/command-palette.md
       - components/context-menu.md
-      - components/data-table-chrome.md
-      - components/date-picker.md
       - components/drawer.md
       - components/dropdown-menu.md
       - components/filter-chips.md
@@ -33,20 +31,21 @@ slices:
       - components/navigation-menu.md
       - components/rating.md
       - components/resizable.md
+      - components/scheme-switch.md
       - components/sheet.md
       - components/sidebar.md
       - components/slider.md
       - components/stacked-layout-interactive.md
+      - components/table-of-contents.md
       - components/tabs.md
       - components/toast.md
       - components/toggle-group.md
       - components/toggle.md
+      - components/tree-view.md
       - configuration.md
       - index.md
       - installation.md
-      - porting.md
       - quickstart.md
-      - reference.md
       - troubleshooting.md
       - upgrade.md
       - usage.md

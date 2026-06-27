@@ -1,0 +1,26 @@
+role: tree-view
+twig_name: TreeView
+requires_stimulus: true
+groups:
+  - id: browse
+    section: Examples
+    layout: inline-row
+    items:
+      - id: selectable-tree
+        label: Selectable tree
+        props:
+          label: Project files
+          selectable: true
+          selected: readme
+          expanded: [src]
+          nodes:
+            - id: src
+              label: src
+              children:
+                - id: readme
+                  label: README.md
+                - id: kernel
+                  label: Kernel.php
+            - id: docs
+              label: docs
+              children: []

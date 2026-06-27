@@ -1,0 +1,22 @@
+role: toast
+twig_name: Toast
+requires_stimulus: true
+examples:
+  - id: success
+    title: Success
+    section: Examples
+    props: {}
+    slot_twig: |
+      <twig:Toast>
+          <twig:Toast:Item variant="success">Profile updated</twig:Toast:Item>
+      </twig:Toast>
+  - id: variants
+    title: Semantic variants
+    section: Variants
+    props: {}
+    slot_twig: |
+      <twig:Toast>
+          <twig:Toast:Item variant="info">Syncing changes…</twig:Toast:Item>
+          <twig:Toast:Item variant="warning">Storage almost full</twig:Toast:Item>
+          <twig:Toast:Item variant="danger">Could not save</twig:Toast:Item>
+      </twig:Toast>

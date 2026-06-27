@@ -2,7 +2,7 @@
 
 # UX Blocks Interactive
 
-### Stimulus-backed interactive widgets with blocks.int fragments
+### Stimulus-backed interactive widgets
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php&logoColor=white)](composer.json)
 [![Symfony](https://img.shields.io/badge/Symfony-7.4+-343434?style=flat&logo=symfony&logoColor=white)](composer.json)
@@ -72,7 +72,7 @@
 
 **Highlights:** scheme switch for light/dark toggle; command palette UI chrome; sidebar and navigation menus.
 
-Handbook: [docs/components.md](docs/components.md).
+Handbook: [docs/index.md](docs/index.md) · [27 component pages](docs/components.md).
 
 ## Prerequisites
 
@@ -83,6 +83,8 @@ Add the [symfinity/recipes](https://github.com/symfinity/recipes) Flex endpoint 
 ```bash
 composer require symfinity/ux-blocks-interactive
 ```
+
+For the **complete official catalog**, use [`symfinity/ux-blocks-full`](https://github.com/symfinity/ux-blocks-full).
 
 See [Installation](docs/installation.md).
 

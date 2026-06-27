@@ -1,0 +1,37 @@
+role: table-of-contents
+twig_name: TableOfContents
+requires_stimulus: true
+examples:
+  - id: handbook
+    title: On this page
+    section: Examples
+    props:
+      sections:
+        - id: intro
+          label: Introduction
+          level: 2
+        - id: setup
+          label: Setup
+          level: 2
+        - id: config
+          label: Configuration
+          level: 3
+      scrollTarget: '#content'
+      offset: 80
+      smooth: true
+      ariaLabel: On this page
+    slot_text: ''
+  - id: compact-offset
+    title: Sticky header offset
+    section: Behavior
+    props:
+      sections:
+        - id: overview
+          label: Overview
+          level: 2
+        - id: api
+          label: API
+          level: 2
+      scrollTarget: '#docs-content'
+      offset: 64
+    slot_text: ''

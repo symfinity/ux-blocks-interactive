@@ -1,6 +1,6 @@
 {
     "name": "symfinity/ux-blocks-interactive",
-    "description": "Symfinity UX Blocks Interactive — client stl tier with blocks.int fragments",
+    "description": "Stimulus-backed interactive widgets",
     "license": "MIT",
     "type": "symfony-bundle",
     "require": {

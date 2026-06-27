@@ -1,55 +1,57 @@
-# Quickstart: symfinity/ux-blocks-interactive
+# Quick start
 
-**Status:** shipped 2026-06-03 — 24 `stl` roles, `blocks.int.*` fragments.
+Use UX Blocks Interactive widgets in a Symfony app with ui-kernel theme CSS.
 
 ## Prerequisites
 
-- Product monorepo `src/symfinity/` with Docker (`docker compose`, `make test`)
-- **003** / **024** `DONE`: `symfinity/ux-blocks-core`, `symfinity/ux-blocks-demo`
-- Recommended: `symfinity/ui-kernel` for themed previews
+[Installation](installation.md) completed — `symfinity/ux-blocks-core`, `symfinity/ux-blocks-form`, `symfinity/ux-blocks-extended`, and `symfinity/ux-blocks-interactive` installed. Add `symfinity/ui-kernel` for themed apps.
 
-## Install
+## 1. Include ui-kernel CSS
 
-```bash
-cd src/symfinity
-./bin/composer require symfinity/ux-blocks-interactive
-
-# Optional command palette backend:
-./bin/composer require symfinity/ux-runtime
-```
-
-Flex: `recipes/symfinity/ux-blocks-interactive/0.1/`
-
-## Minimal Twig
+Interactive roles rely on ui-kernel design tokens. In your base layout `<head>`:
 
 ```twig
-<twig:DropdownMenu>
-  <twig:DropdownMenu:Trigger>Open</twig:DropdownMenu:Trigger>
-  <twig:DropdownMenu:Content>
-    <twig:DropdownMenu:Item href="/settings">Settings</twig:DropdownMenu:Item>
-  </twig:DropdownMenu:Content>
-</twig:DropdownMenu>
-
-<twig:CommandPalette commandsUrl="/_ui/palette/commands" />
+{# templates/base.html.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My app{% endblock %}</title>
+    {{ ui_kernel_theme_boot_script() }}
+    {{ ui_kernel_css()|raw }}
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>
 ```
 
-## Demo hub (`ux-blocks-demo`)
+## 2. Render interactive components
 
-| Route | Category |
-|-------|----------|
-| `/extended` | Index |
-| `/extended/overlays` | Overlays |
-| `/extended/navigation` | Navigation |
-| `/extended/app-shell` | Sidebar, menubar, nav menu |
-| `/extended/forms` | Form micro-UX |
-| `/extended/data` | Table chrome, carousel, resizable, toast |
-| `/extended/command-palette` | With / without ux-runtime |
+Use UX Twig component tags with nested region components:
 
-## Verification
+```twig
+<twig:Tabs defaultValue="account">
+    <twig:Tabs:List>
+        <twig:Tabs:Trigger value="account">Account</twig:Tabs:Trigger>
+        <twig:Tabs:Trigger value="billing">Billing</twig:Tabs:Trigger>
+    </twig:Tabs:List>
+    <twig:Tabs:Content value="account">Account settings</twig:Tabs:Content>
+    <twig:Tabs:Content value="billing">Billing details</twig:Tabs:Content>
+</twig:Tabs>
 
-| Check | Command |
-|-------|---------|
-| Package tests | `docker compose run php vendor/bin/phpunit -c packages/ux-blocks-interactive/phpunit.xml.dist` |
-| Monorepo gate | `make test` |
+<twig:DropdownMenu>
+    <twig:DropdownMenu:Trigger>Open menu</twig:DropdownMenu:Trigger>
+    <twig:DropdownMenu:Content>
+        <twig:DropdownMenu:Item href="/settings">Settings</twig:DropdownMenu:Item>
+    </twig:DropdownMenu:Content>
+</twig:DropdownMenu>
+```
 
-## Related
+## Next steps
+
+- [Components](components.md) — handbook index
+- [Tabs](components/tabs.md) · [Dropdown menu](components/dropdown-menu.md)
+- [Usage](usage.md) — overlay, navigation, and app chrome patterns
+- [CHANGELOG](../CHANGELOG.md) · [Contributing](../CONTRIBUTING.md)

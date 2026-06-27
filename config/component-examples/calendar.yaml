@@ -1,0 +1,11 @@
+role: calendar
+twig_name: Calendar
+requires_stimulus: true
+groups:
+  - id: default
+    section: Examples
+    layout: inline-row
+    items:
+      - id: month-grid
+        label: Month grid
+        props: {}

@@ -1,0 +1,28 @@
+role: dropdown-menu
+twig_name: DropdownMenu
+requires_stimulus: true
+examples:
+  - id: basic
+    title: Action menu
+    section: Examples
+    props: {}
+    slot_twig: |
+      <twig:DropdownMenu>
+          <twig:DropdownMenu:Trigger>Open menu</twig:DropdownMenu:Trigger>
+          <twig:DropdownMenu:Content>
+              <twig:DropdownMenu:Item icon="user">Profile</twig:DropdownMenu:Item>
+              <twig:DropdownMenu:Item icon="settings">Settings</twig:DropdownMenu:Item>
+          </twig:DropdownMenu:Content>
+      </twig:DropdownMenu>
+  - id: disabled-item
+    title: With disabled item
+    section: States
+    props: {}
+    slot_twig: |
+      <twig:DropdownMenu>
+          <twig:DropdownMenu:Trigger>Actions</twig:DropdownMenu:Trigger>
+          <twig:DropdownMenu:Content>
+              <twig:DropdownMenu:Item>Edit</twig:DropdownMenu:Item>
+              <twig:DropdownMenu:Item disabled>Unavailable</twig:DropdownMenu:Item>
+          </twig:DropdownMenu:Content>
+      </twig:DropdownMenu>
