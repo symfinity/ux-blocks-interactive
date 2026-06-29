@@ -62,7 +62,3 @@ First public Packagist release — twenty-seven Stimulus-backed interactive role
 
 - LiveComponents (`blocks.live.*`) ship in `symfinity/ux-blocks-live`, not this package
 - Install the complete catalog with `symfinity/ux-blocks-full` or require tiers individually
-
-[Unreleased]: https://github.com/symfinity/ux-blocks-interactive/compare/v0.1.1...main
-[0.1.1]: https://github.com/symfinity/ux-blocks-interactive/releases/tag/v0.1.1
-[0.1.0]: https://github.com/symfinity/ux-blocks-interactive/releases/tag/v0.1.0
