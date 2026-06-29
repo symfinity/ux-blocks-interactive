@@ -10,6 +10,22 @@ export default class extends Controller {
     };
 
     connect() {
+        this._syncOffsetFromCss();
+        this._onHeaderOffsetChanged = this._onHeaderOffsetChanged.bind(this);
+        document.addEventListener('docs:header-offset-changed', this._onHeaderOffsetChanged);
+        this._mountObserver();
+    }
+
+    disconnect() {
+        this._observer?.disconnect();
+        document.removeEventListener('docs:header-offset-changed', this._onHeaderOffsetChanged);
+        this.linkTargets.forEach((link) => {
+            link.removeEventListener('click', this._onLinkClick);
+        });
+    }
+
+    _mountObserver() {
+        this._observer?.disconnect();
         this._scrollRoot = this._resolveScrollRoot();
         if (!this._scrollRoot || this.linkTargets.length === 0) {
             return;
@@ -31,15 +47,37 @@ export default class extends Controller {
         }
 
         this.linkTargets.forEach((link) => {
+            link.removeEventListener('click', this._onLinkClick);
             link.addEventListener('click', this._onLinkClick);
         });
     }
 
-    disconnect() {
-        this._observer?.disconnect();
-        this.linkTargets.forEach((link) => {
-            link.removeEventListener('click', this._onLinkClick);
-        });
+    _syncOffsetFromCss() {
+        const cssOffset = this._readCssOffset();
+        if (cssOffset !== null) {
+            this.offsetValue = cssOffset;
+        }
+    }
+
+    _readCssOffset() {
+        const raw = getComputedStyle(document.documentElement).getPropertyValue('--ui-scroll-offset').trim();
+        const match = raw.match(/^(\d+(?:\.\d+)?)px$/);
+        if (!match) {
+            return null;
+        }
+
+        const parsed = Math.ceil(parseFloat(match[1]));
+        return Number.isFinite(parsed) && parsed > 0 ? parsed : null;
+    }
+
+    _onHeaderOffsetChanged(event) {
+        const next = event.detail?.offset;
+        if (typeof next !== 'number' || next <= 0 || next === this.offsetValue) {
+            return;
+        }
+
+        this.offsetValue = next;
+        this._mountObserver();
     }
 
     _resolveScrollRoot() {
@@ -101,8 +139,7 @@ export default class extends Controller {
         }
 
         event.preventDefault();
-        const behavior = this._scrollBehavior();
-        target.scrollIntoView({ behavior, block: 'start' });
+        this._scrollToSection(target);
         this._setActive(id);
     };
 
@@ -112,5 +149,24 @@ export default class extends Controller {
         }
 
         return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    }
+
+    _scrollToSection(target) {
+        const behavior = this._scrollBehavior();
+        const offset = this.offsetValue;
+        const root = this._scrollRoot ?? document.documentElement;
+
+        if (root === document.documentElement || root === document.body) {
+            const top = window.scrollY + target.getBoundingClientRect().top - offset;
+            window.scrollTo({ top: Math.max(0, top), behavior });
+            return;
+        }
+
+        if (root instanceof Element) {
+            const rootRect = root.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            const top = root.scrollTop + (targetRect.top - rootRect.top) - offset;
+            root.scrollTo({ top: Math.max(0, top), behavior });
+        }
     }
 }

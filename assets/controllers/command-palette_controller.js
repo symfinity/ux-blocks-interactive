@@ -13,7 +13,9 @@ export default class extends Controller {
     connect() {
         this._commands = [];
         this._onKeydown = this._onKeydown.bind(this);
+        this._onOpen = () => this.open();
         document.addEventListener('keydown', this._onKeydown);
+        this.element.addEventListener('command-palette:open', this._onOpen);
 
         if (this.hasInputTarget) {
             this.inputTarget.placeholder = this.placeholderValue;
@@ -36,18 +38,29 @@ export default class extends Controller {
 
     disconnect() {
         document.removeEventListener('keydown', this._onKeydown);
+        this.element.removeEventListener('command-palette:open', this._onOpen);
+    }
+
+    open(event) {
+        event?.preventDefault();
+        this.element.hidden = false;
+        if (this.hasInputTarget) {
+            this.inputTarget.focus();
+            this.inputTarget.select();
+        }
+    }
+
+    close() {
+        this.element.hidden = true;
     }
 
     _onKeydown(event) {
         if ((event.metaKey || event.ctrlKey) && event.key === this.openHotkeyValue) {
             event.preventDefault();
-            this.element.hidden = !this.element.hidden;
-            if (!this.element.hidden && this.hasInputTarget) {
-                this.inputTarget.focus();
-            }
+            this.open(event);
         }
         if (event.key === 'Escape' && !this.element.hidden) {
-            this.element.hidden = true;
+            this.close();
         }
     }
 
@@ -59,10 +72,19 @@ export default class extends Controller {
     }
 
     _filter() {
-        const q = this.hasInputTarget ? this.inputTarget.value.toLowerCase() : '';
+        const q = this.hasInputTarget ? this.inputTarget.value.toLowerCase().trim() : '';
+        const tokens = q === '' ? [] : q.split(/\s+/).filter(Boolean);
+
         this.itemTargets.forEach((el) => {
-            const label = (el.textContent || '').toLowerCase();
-            el.hidden = q !== '' && !label.includes(q);
+            const haystack = [
+                el.textContent || '',
+                el.dataset.searchKeywords || '',
+                el.dataset.searchCategory || '',
+            ]
+                .join(' ')
+                .toLowerCase();
+
+            el.hidden = tokens.length > 0 && !tokens.every((token) => haystack.includes(token));
         });
     }
 
@@ -76,10 +98,17 @@ export default class extends Controller {
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.setAttribute('data-ui-role', 'command-palette-item');
-            btn.setAttribute('data-symfony--ux-blocks-interactive--command-palette-target', 'item');
+            btn.setAttribute('data-symfinity--ux-blocks-interactive--command-palette-target', 'item');
             btn.textContent = cmd.title || cmd.label || cmd.id || 'Command';
+            if (cmd.category) {
+                btn.dataset.searchCategory = cmd.category;
+            }
+            if (Array.isArray(cmd.keywords) && cmd.keywords.length > 0) {
+                btn.dataset.searchKeywords = cmd.keywords.join(' ');
+            }
             const url = cmd.url || cmd.handler?.url;
             if (url) {
+                btn.dataset.url = url;
                 btn.addEventListener('click', () => {
                     window.location.href = url;
                 });
