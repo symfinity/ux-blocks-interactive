@@ -5,6 +5,20 @@ All notable changes to **symfinity/ux-blocks-interactive** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-06-29
+
+### Added
+
+- **[ROADMAP.md](ROADMAP.md)** — public milestone table for the 0.1.x → 1.0.x release line
+- **[SUPPORTERS.md](SUPPORTERS.md)** — sponsor acknowledgment page linked from Symfinity OSS funding
+- **`.github/FUNDING.yml`** — GitHub Sponsors link on the split mirror (Composer `funding` metadata shipped in **0.1.1**)
+
+### Notes
+
+- No registry role id, Twig prop, or Stimulus API changes — maintainer metadata and split-mirror hygiene after **0.1.1**
+- PHPUnit CSS regression coverage asserts **SchemeSwitch** `appearance: none` chrome delivered in **0.1.1**
+- Hard-refresh Asset Mapper assets in dev after upgrade if interactive widgets look stale
+
 ## [0.1.1] - 2026-06-29
 
 ### Added
