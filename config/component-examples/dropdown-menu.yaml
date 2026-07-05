@@ -1,28 +1,34 @@
 role: dropdown-menu
 twig_name: DropdownMenu
 requires_stimulus: true
-examples:
-  - id: basic
-    title: Action menu
+groups:
+  - id: examples
     section: Examples
-    props: {}
-    slot_twig: |
-      <twig:DropdownMenu>
-          <twig:DropdownMenu:Trigger>Open menu</twig:DropdownMenu:Trigger>
-          <twig:DropdownMenu:Content>
-              <twig:DropdownMenu:Item icon="user">Profile</twig:DropdownMenu:Item>
-              <twig:DropdownMenu:Item icon="settings">Settings</twig:DropdownMenu:Item>
-          </twig:DropdownMenu:Content>
-      </twig:DropdownMenu>
-  - id: disabled-item
-    title: With disabled item
+    layout: inline-row
+    items:
+      - id: basic
+        label: "Action menu"
+        props: {}
+        slot_twig: |
+          <twig:DropdownMenu>
+              <twig:DropdownMenu:Trigger>Open menu</twig:DropdownMenu:Trigger>
+              <twig:DropdownMenu:Content>
+                  <twig:DropdownMenu:Item icon="user">Profile</twig:DropdownMenu:Item>
+                  <twig:DropdownMenu:Item icon="settings">Settings</twig:DropdownMenu:Item>
+              </twig:DropdownMenu:Content>
+          </twig:DropdownMenu>
+  - id: states
     section: States
-    props: {}
-    slot_twig: |
-      <twig:DropdownMenu>
-          <twig:DropdownMenu:Trigger>Actions</twig:DropdownMenu:Trigger>
-          <twig:DropdownMenu:Content>
-              <twig:DropdownMenu:Item>Edit</twig:DropdownMenu:Item>
-              <twig:DropdownMenu:Item disabled>Unavailable</twig:DropdownMenu:Item>
-          </twig:DropdownMenu:Content>
-      </twig:DropdownMenu>
+    layout: inline-row
+    items:
+      - id: disabled-item
+        label: "With disabled item"
+        props: {}
+        slot_twig: |
+          <twig:DropdownMenu>
+              <twig:DropdownMenu:Trigger>Actions</twig:DropdownMenu:Trigger>
+              <twig:DropdownMenu:Content>
+                  <twig:DropdownMenu:Item>Edit</twig:DropdownMenu:Item>
+                  <twig:DropdownMenu:Item disabled>Unavailable</twig:DropdownMenu:Item>
+              </twig:DropdownMenu:Content>
+          </twig:DropdownMenu>

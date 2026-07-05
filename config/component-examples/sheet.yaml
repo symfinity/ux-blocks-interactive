@@ -1,30 +1,34 @@
 role: sheet
 twig_name: Sheet
 requires_stimulus: true
-examples:
-  - id: right
-    title: Edit panel
+groups:
+  - id: examples
     section: Examples
-    props:
-      side: right
-    slot_twig: |
-      <twig:Sheet side="right">
-          <twig:Sheet:Trigger>Edit profile</twig:Sheet:Trigger>
-          <twig:Sheet:Content>
-              <twig:Sheet:Header>
-                  <twig:Sheet:Title>Profile</twig:Sheet:Title>
-                  <twig:Sheet:Close />
-              </twig:Sheet:Header>
-              Update your details.
-          </twig:Sheet:Content>
-      </twig:Sheet>
-  - id: left
-    title: Left panel
+    layout: stack
+    items:
+      - id: right
+        label: "Edit panel"
+        props: {}
+        slot_twig: |
+          <twig:Sheet side="right">
+              <twig:Sheet:Trigger>Edit profile</twig:Sheet:Trigger>
+              <twig:Sheet:Content>
+                  <twig:Sheet:Header>
+                      <twig:Sheet:Title>Profile</twig:Sheet:Title>
+                      <twig:Sheet:Close />
+                  </twig:Sheet:Header>
+                  Update your details.
+              </twig:Sheet:Content>
+          </twig:Sheet>
+  - id: placement
     section: Placement
-    props:
-      side: left
-    slot_twig: |
-      <twig:Sheet side="left">
-          <twig:Sheet:Trigger>Details</twig:Sheet:Trigger>
-          <twig:Sheet:Content>Supporting information</twig:Sheet:Content>
-      </twig:Sheet>
+    layout: stack
+    items:
+      - id: left
+        label: "Left panel"
+        props: {}
+        slot_twig: |
+          <twig:Sheet side="left">
+              <twig:Sheet:Trigger>Details</twig:Sheet:Trigger>
+              <twig:Sheet:Content>Supporting information</twig:Sheet:Content>
+          </twig:Sheet>

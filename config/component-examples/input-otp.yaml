@@ -7,8 +7,10 @@ groups:
     layout: inline-row
     items:
       - id: six-digit
-        label: 6 digits
-        props: { length: 6 }
+        label: "6 digits"
+        props:
+          length: 6
       - id: four-digit
-        label: 4 digits
-        props: { length: 4 }
+        label: "4 digits"
+        props:
+          length: 4

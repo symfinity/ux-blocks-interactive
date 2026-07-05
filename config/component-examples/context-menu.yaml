@@ -1,18 +1,21 @@
 role: context-menu
 twig_name: ContextMenu
 requires_stimulus: true
-examples:
-  - id: basic
-    title: Canvas menu
+groups:
+  - id: examples
     section: Examples
-    props: {}
-    slot_twig: |
-      <twig:ContextMenu>
-          <twig:ContextMenu:Trigger>
-              <div>Right-click here</div>
-          </twig:ContextMenu:Trigger>
-          <twig:ContextMenu:Content>
-              <twig:ContextMenu:Item icon="copy">Copy</twig:ContextMenu:Item>
-              <twig:ContextMenu:Item icon="trash">Delete</twig:ContextMenu:Item>
-          </twig:ContextMenu:Content>
-      </twig:ContextMenu>
+    layout: inline-row
+    items:
+      - id: basic
+        label: "Canvas menu"
+        props: {}
+        slot_twig: |
+          <twig:ContextMenu>
+              <twig:ContextMenu:Trigger>
+                  <div>Right-click here</div>
+              </twig:ContextMenu:Trigger>
+              <twig:ContextMenu:Content>
+                  <twig:ContextMenu:Item icon="copy">Copy</twig:ContextMenu:Item>
+                  <twig:ContextMenu:Item icon="trash">Delete</twig:ContextMenu:Item>
+              </twig:ContextMenu:Content>
+          </twig:ContextMenu>

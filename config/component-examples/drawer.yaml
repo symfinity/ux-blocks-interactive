@@ -1,32 +1,36 @@
 role: drawer
 twig_name: Drawer
 requires_stimulus: true
-examples:
-  - id: bottom
-    title: Bottom sheet
+groups:
+  - id: examples
     section: Examples
-    props:
-      side: bottom
-    slot_twig: |
-      <twig:Drawer side="bottom">
-          <twig:Drawer:Trigger>View cart</twig:Drawer:Trigger>
-          <twig:Drawer:Content>
-              <twig:Drawer:Header>
-                  <twig:Drawer:Title>Your cart</twig:Drawer:Title>
-                  <twig:Drawer:Close />
-              </twig:Drawer:Header>
-              2 items
-          </twig:Drawer:Content>
-      </twig:Drawer>
-  - id: left
-    title: Left edge
+    layout: stack
+    items:
+      - id: bottom
+        label: "Bottom sheet"
+        props: {}
+        slot_twig: |
+          <twig:Drawer side="bottom">
+              <twig:Drawer:Trigger>View cart</twig:Drawer:Trigger>
+              <twig:Drawer:Content>
+                  <twig:Drawer:Header>
+                      <twig:Drawer:Title>Your cart</twig:Drawer:Title>
+                      <twig:Drawer:Close />
+                  </twig:Drawer:Header>
+                  2 items
+              </twig:Drawer:Content>
+          </twig:Drawer>
+  - id: placement
     section: Placement
-    props:
-      side: left
-    slot_twig: |
-      <twig:Drawer side="left">
-          <twig:Drawer:Trigger>Filters</twig:Drawer:Trigger>
-          <twig:Drawer:Content>
-              <twig:Drawer:Title>Filters</twig:Drawer:Title>
-          </twig:Drawer:Content>
-      </twig:Drawer>
+    layout: stack
+    items:
+      - id: left
+        label: "Left edge"
+        props: {}
+        slot_twig: |
+          <twig:Drawer side="left">
+              <twig:Drawer:Trigger>Filters</twig:Drawer:Trigger>
+              <twig:Drawer:Content>
+                  <twig:Drawer:Title>Filters</twig:Drawer:Title>
+              </twig:Drawer:Content>
+          </twig:Drawer>

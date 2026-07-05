@@ -7,15 +7,24 @@ groups:
     layout: inline-row
     items:
       - id: warning-three
-        label: Warning · 3/5
-        props: { variant: warning, max: 5, value: 3 }
+        label: "Warning · 3/5"
+        props:
+          max: 5
+          value: 3
+          variant: warning
       - id: primary-five
-        label: Primary · 5/5
-        props: { variant: primary, max: 5, value: 5 }
+        label: "Primary · 5/5"
+        props:
+          max: 5
+          value: 5
+          variant: primary
   - id: scale
     section: Scale
     layout: inline-row
     items:
       - id: ten-point
-        label: 10-point scale
-        props: { variant: warning, max: 10, value: 7 }
+        label: "10-point scale"
+        props:
+          max: 10
+          value: 7
+          variant: warning

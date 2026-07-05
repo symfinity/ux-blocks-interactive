@@ -8,13 +8,19 @@ groups:
     items:
       - id: primary-off
         label: Primary
-        props: { variant: primary, pressed: false }
+        props:
+          pressed: false
+          variant: primary
         slot_text: Bold
       - id: secondary-on
-        label: Secondary pressed
-        props: { variant: secondary, pressed: true }
+        label: "Secondary pressed"
+        props:
+          pressed: true
+          variant: secondary
         slot_text: Italic
       - id: outline-off
         label: Outline
-        props: { variant: outline, pressed: false }
+        props:
+          pressed: false
+          variant: outline
         slot_text: Underline

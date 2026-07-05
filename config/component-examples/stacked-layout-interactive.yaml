@@ -4,10 +4,10 @@ requires_stimulus: true
 groups:
   - id: settings
     section: Examples
-    layout: inline-row
+    layout: stack
     items:
       - id: overview-billing
-        label: Overview + billing
+        label: "Overview + billing"
         props:
           defaultPanel: overview
         slot_twig: |

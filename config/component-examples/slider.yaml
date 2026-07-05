@@ -8,20 +8,45 @@ groups:
     items:
       - id: primary
         label: Primary
-        props: { variant: primary, min: 0, max: 100, step: 1, value: 40 }
+        props:
+          max: 100
+          min: 0
+          step: 1
+          value: 40
+          variant: primary
       - id: secondary
         label: Secondary
-        props: { variant: secondary, min: 0, max: 100, step: 1, value: 50 }
+        props:
+          max: 100
+          min: 0
+          step: 1
+          value: 50
+          variant: secondary
       - id: outline
         label: Outline
-        props: { variant: outline, min: 0, max: 100, step: 1, value: 60 }
+        props:
+          max: 100
+          min: 0
+          step: 1
+          value: 60
+          variant: outline
   - id: range
     section: Range
     layout: inline-row
     items:
       - id: narrow-range
-        label: 0–10 step 1
-        props: { variant: primary, min: 0, max: 10, step: 1, value: 7 }
+        label: "0–10 step 1"
+        props:
+          max: 10
+          min: 0
+          step: 1
+          value: 7
+          variant: primary
       - id: wide-range
-        label: 0–200 step 10
-        props: { variant: primary, min: 0, max: 200, step: 10, value: 120 }
+        label: "0–200 step 10"
+        props:
+          max: 200
+          min: 0
+          step: 10
+          value: 120
+          variant: primary

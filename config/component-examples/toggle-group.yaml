@@ -7,7 +7,7 @@ groups:
     layout: inline-row
     items:
       - id: text-align
-        label: Text alignment
+        label: "Text alignment"
         props: {}
         slot_twig: |
           <twig:ToggleGroup:Item>Left</twig:ToggleGroup:Item>

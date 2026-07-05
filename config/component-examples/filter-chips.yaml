@@ -7,7 +7,7 @@ groups:
     layout: inline-row
     items:
       - id: two-chips
-        label: Active filters
+        label: "Active filters"
         props: {}
         slot_twig: |
           <twig:FilterChips:Chip>Design</twig:FilterChips:Chip>

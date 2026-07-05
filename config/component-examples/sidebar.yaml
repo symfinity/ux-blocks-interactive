@@ -1,30 +1,34 @@
 role: sidebar
 twig_name: Sidebar
 requires_stimulus: true
-examples:
-  - id: left
-    title: App navigation
+groups:
+  - id: examples
     section: Examples
-    props:
-      side: left
-    slot_twig: |
-      <twig:Sidebar side="left">
-          <twig:Sidebar:Trigger>Menu</twig:Sidebar:Trigger>
-          <twig:Sidebar:Content>
-              <twig:Sidebar:Header>
-                  <twig:Sidebar:Title>Acme Admin</twig:Sidebar:Title>
-                  <twig:Sidebar:Close />
-              </twig:Sidebar:Header>
-              Dashboard · Settings
-          </twig:Sidebar:Content>
-      </twig:Sidebar>
-  - id: right
-    title: Right auxiliary panel
+    layout: stack
+    items:
+      - id: left
+        label: "App navigation"
+        props: {}
+        slot_twig: |
+          <twig:Sidebar side="left">
+              <twig:Sidebar:Trigger>Menu</twig:Sidebar:Trigger>
+              <twig:Sidebar:Content>
+                  <twig:Sidebar:Header>
+                      <twig:Sidebar:Title>Acme Admin</twig:Sidebar:Title>
+                      <twig:Sidebar:Close />
+                  </twig:Sidebar:Header>
+                  Dashboard · Settings
+              </twig:Sidebar:Content>
+          </twig:Sidebar>
+  - id: placement
     section: Placement
-    props:
-      side: right
-    slot_twig: |
-      <twig:Sidebar side="right">
-          <twig:Sidebar:Trigger>Help</twig:Sidebar:Trigger>
-          <twig:Sidebar:Content>Contextual help links</twig:Sidebar:Content>
-      </twig:Sidebar>
+    layout: stack
+    items:
+      - id: right
+        label: "Right auxiliary panel"
+        props: {}
+        slot_twig: |
+          <twig:Sidebar side="right">
+              <twig:Sidebar:Trigger>Help</twig:Sidebar:Trigger>
+              <twig:Sidebar:Content>Contextual help links</twig:Sidebar:Content>
+          </twig:Sidebar>

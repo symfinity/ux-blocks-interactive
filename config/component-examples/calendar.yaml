@@ -4,8 +4,9 @@ requires_stimulus: true
 groups:
   - id: default
     section: Examples
-    layout: inline-row
+    layout: stack
     items:
       - id: month-grid
-        label: Month grid
+        label: "Month grid"
         props: {}
+        slot_text: Preview

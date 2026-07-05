@@ -4,23 +4,13 @@ requires_stimulus: true
 groups:
   - id: browse
     section: Examples
-    layout: inline-row
+    layout: stack
     items:
       - id: selectable-tree
-        label: Selectable tree
+        label: "Selectable tree"
         props:
-          label: Project files
+          expanded: "['src']"
+          label: "Project files"
+          nodes: "[{'id': 'src', 'label': 'src', 'children': [{'id': 'readme', 'label': 'README.md'}, {'id': 'kernel', 'label': 'Kernel.php'}]}, {'id': 'docs', 'label': 'docs', 'children': []}]"
           selectable: true
           selected: readme
-          expanded: [src]
-          nodes:
-            - id: src
-              label: src
-              children:
-                - id: readme
-                  label: README.md
-                - id: kernel
-                  label: Kernel.php
-            - id: docs
-              label: docs
-              children: []

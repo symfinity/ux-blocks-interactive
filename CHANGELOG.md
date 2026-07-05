@@ -5,6 +5,26 @@ All notable changes to **symfinity/ux-blocks-interactive** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.3] - 2026-07-05
+
+### Added
+
+- Handbook [verification.md](docs/verification.md) — P2 integration profile and clean-app smoke (`composer require`, interactive tier CSS markers with ux-blocks-core auto-inject)
+- **`integration_profile: P2`** frontmatter on handbook index
+
+### Changed
+
+- **Grouped component examples** — all twenty-seven `config/component-examples/*.yaml` manifests use `groups[]` with `slot_twig` for symfinity-docs handbook SSR
+- **Role CSS cascade** — committed `blocks-interactive.css` and `BlocksInteractiveCssProvider::stylesheet()` wrap tier output in `@layer blocks.interactive`; dedicated `icon-slot.css` collapses empty icon gutters when optional UX Icons are absent
+- **PHPUnit bootstrap** — `tests/bootstrap.php` resolves monorepo or split-mirror Composer autoload; optional `tests/bootstrap.local.php` hook
+
+### Notes
+
+- No Twig component props or registry role ids changed — OOTB handbook and CSS cascade hygiene after **v0.1.2**
+- Pair with `symfinity/ux-blocks-core` **^0.1.6** (or newer) for automatic inline tier CSS when interactive fragments render
+- **Toast:Item** uses `ResolvesFeedbackVariantIcon` from core — require `symfinity/ux-blocks-core` **^0.1.3** when upgrading from early **0.1.x** patches
+- Upgrading from **0.1.2** needs no config edits; clear Symfony cache if AssetMapper or Twig cached CSS in dev
+
 ## [0.1.2] - 2026-06-29
 
 ### Added

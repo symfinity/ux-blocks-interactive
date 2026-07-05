@@ -21,7 +21,7 @@ groups:
           <twig:Collapsible:Trigger>Shipping options</twig:Collapsible:Trigger>
           <twig:Collapsible:Content>Free delivery on orders over €50.</twig:Collapsible:Content>
       - id: controlled
-        label: Controlled (core Stimulus)
+        label: "Controlled (core Stimulus)"
         props:
           open: true
         slot_twig: |

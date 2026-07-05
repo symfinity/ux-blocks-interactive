@@ -7,7 +7,7 @@ groups:
     layout: inline-row
     items:
       - id: sidebar-main
-        label: Sidebar + main
+        label: "Sidebar + main"
         props: {}
         slot_twig: |
           <twig:Resizable:Panel>Sidebar</twig:Resizable:Panel>

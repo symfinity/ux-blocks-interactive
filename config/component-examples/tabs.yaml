@@ -1,34 +1,36 @@
 role: tabs
 twig_name: Tabs
 requires_stimulus: true
-examples:
-  - id: horizontal
-    title: Account settings
+groups:
+  - id: examples
     section: Examples
-    props:
-      defaultValue: account
-      orientation: horizontal
-    slot_twig: |
-      <twig:Tabs defaultValue="account">
-          <twig:Tabs:List>
-              <twig:Tabs:Trigger value="account" active>Account</twig:Tabs:Trigger>
-              <twig:Tabs:Trigger value="billing">Billing</twig:Tabs:Trigger>
-          </twig:Tabs:List>
-          <twig:Tabs:Content value="account" active>Account settings</twig:Tabs:Content>
-          <twig:Tabs:Content value="billing">Billing details</twig:Tabs:Content>
-      </twig:Tabs>
-  - id: vertical
-    title: Vertical tabs
+    layout: stack
+    items:
+      - id: horizontal
+        label: "Account settings"
+        props: {}
+        slot_twig: |
+          <twig:Tabs defaultValue="account">
+              <twig:Tabs:List>
+                  <twig:Tabs:Trigger value="account" active>{{ lorem_words(1)|capitalize }}</twig:Tabs:Trigger>
+                  <twig:Tabs:Trigger value="billing">{{ lorem_words(1)|capitalize }}</twig:Tabs:Trigger>
+              </twig:Tabs:List>
+              <twig:Tabs:Content value="account" active>{{ lorem_sentence() }}</twig:Tabs:Content>
+              <twig:Tabs:Content value="billing">{{ lorem_sentence() }}</twig:Tabs:Content>
+          </twig:Tabs>
+  - id: orientation
     section: Orientation
-    props:
-      defaultValue: general
-      orientation: vertical
-    slot_twig: |
-      <twig:Tabs defaultValue="general" orientation="vertical">
-          <twig:Tabs:List>
-              <twig:Tabs:Trigger value="general" active>General</twig:Tabs:Trigger>
-              <twig:Tabs:Trigger value="security">Security</twig:Tabs:Trigger>
-          </twig:Tabs:List>
-          <twig:Tabs:Content value="general" active>General preferences</twig:Tabs:Content>
-          <twig:Tabs:Content value="security">Security settings</twig:Tabs:Content>
-      </twig:Tabs>
+    layout: stack
+    items:
+      - id: vertical
+        label: "Vertical tabs"
+        props: {}
+        slot_twig: |
+          <twig:Tabs defaultValue="general" orientation="vertical">
+              <twig:Tabs:List>
+                  <twig:Tabs:Trigger value="general" active>{{ lorem_words(1)|capitalize }}</twig:Tabs:Trigger>
+                  <twig:Tabs:Trigger value="security">{{ lorem_words(1)|capitalize }}</twig:Tabs:Trigger>
+              </twig:Tabs:List>
+              <twig:Tabs:Content value="general" active>{{ lorem_sentence() }}</twig:Tabs:Content>
+              <twig:Tabs:Content value="security">{{ lorem_sentence() }}</twig:Tabs:Content>
+          </twig:Tabs>

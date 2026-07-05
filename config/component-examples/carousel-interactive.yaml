@@ -7,7 +7,7 @@ groups:
     layout: inline-row
     items:
       - id: three-slides
-        label: Three slides
+        label: "Three slides"
         props: {}
         slot_twig: |
           <twig:CarouselInteractive:Item>Slide 1</twig:CarouselInteractive:Item>

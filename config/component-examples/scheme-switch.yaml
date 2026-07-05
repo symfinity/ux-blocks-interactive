@@ -1,30 +1,22 @@
 role: scheme-switch
 twig_name: SchemeSwitch
 requires_stimulus: true
-examples:
-  - id: light
-    title: Light mode
+groups:
+  - id: examples
     section: Examples
-    props:
-      label: Color scheme
-      scheme: light
-      colorScheme: light
-      enhanced: true
-    slot_text: ''
-  - id: dark
-    title: Dark mode
+    layout: inline-row
+    items:
+      - id: light
+        label: "Light mode"
+        props: {}
+        slot_twig: |
+          <twig:SchemeSwitch label="{{ lorem_words(2)|capitalize }}" scheme="light" colorScheme="light" />
+  - id: states
     section: States
-    props:
-      label: Color scheme
-      scheme: dark
-      colorScheme: dark
-      enhanced: true
-    slot_text: ''
-  - id: auto
-    title: System preference
-    section: Behavior
-    props:
-      scheme: auto
-      colorScheme: light
-      schemeEndpoint: /_ui/theme/scheme
-    slot_text: ''
+    layout: inline-row
+    items:
+      - id: dark
+        label: "Dark mode"
+        props: {}
+        slot_twig: |
+          <twig:SchemeSwitch label="{{ lorem_words(2)|capitalize }}" scheme="dark" colorScheme="dark" />

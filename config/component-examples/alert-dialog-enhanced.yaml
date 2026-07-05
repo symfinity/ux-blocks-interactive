@@ -1,20 +1,23 @@
 role: alert-dialog-enhanced
 twig_name: AlertDialog
 requires_stimulus: true
-examples:
-  - id: destructive
-    title: Destructive confirmation
+groups:
+  - id: examples
     section: Examples
-    props: {}
-    slot_twig: |
-      <twig:AlertDialog>
-          <twig:AlertDialog:Trigger>Delete project</twig:AlertDialog:Trigger>
-          <twig:AlertDialog:Content>
-              <twig:AlertDialog:Title>Delete this project?</twig:AlertDialog:Title>
-              <twig:AlertDialog:Description>This action cannot be undone.</twig:AlertDialog:Description>
-              <twig:AlertDialog:Footer>
-                  <twig:AlertDialog:Cancel>Cancel</twig:AlertDialog:Cancel>
-                  <twig:AlertDialog:Action>Delete</twig:AlertDialog:Action>
-              </twig:AlertDialog:Footer>
-          </twig:AlertDialog:Content>
-      </twig:AlertDialog>
+    layout: stack
+    items:
+      - id: destructive
+        label: "Destructive confirmation"
+        props: {}
+        slot_twig: |
+          <twig:AlertDialog>
+              <twig:AlertDialog:Trigger>Delete project</twig:AlertDialog:Trigger>
+              <twig:AlertDialog:Content>
+                  <twig:AlertDialog:Title>Delete this project?</twig:AlertDialog:Title>
+                  <twig:AlertDialog:Description>This action cannot be undone.</twig:AlertDialog:Description>
+                  <twig:AlertDialog:Footer>
+                      <twig:AlertDialog:Cancel>Cancel</twig:AlertDialog:Cancel>
+                      <twig:AlertDialog:Action>Delete</twig:AlertDialog:Action>
+                  </twig:AlertDialog:Footer>
+              </twig:AlertDialog:Content>
+          </twig:AlertDialog>

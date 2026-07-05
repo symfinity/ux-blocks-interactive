@@ -1,32 +1,19 @@
 role: command-palette
 twig_name: CommandPalette
 requires_stimulus: true
-examples:
-  - id: fallback
-    title: Static commands
+groups:
+  - id: examples
     section: Examples
-    props:
-      placeholder: Search commands…
-      openHotkey: k
-      fallbackCommands:
-        - id: home
-          title: Go home
-          url: /
-        - id: settings
-          title: Settings
-          url: /settings
-    slot_twig: |
-      <twig:CommandPalette placeholder="Search commands…">
-          <twig:CommandPalette:Input />
-          <twig:CommandPalette:List>
-              <twig:CommandPalette:Item icon="home">Go home</twig:CommandPalette:Item>
-              <twig:CommandPalette:Item icon="settings">Settings</twig:CommandPalette:Item>
-          </twig:CommandPalette:List>
-      </twig:CommandPalette>
-  - id: runtime
-    title: Runtime backend
-    section: Integration
-    props:
-      commandsUrl: /ux-runtime/commands
-      placeholder: Jump to…
-    slot_text: ''
+    layout: stack
+    items:
+      - id: fallback
+        label: "Static commands"
+        props: {}
+        slot_twig: |
+          <twig:CommandPalette placeholder="{{ lorem_words(2) }}">
+              <twig:CommandPalette:Input />
+              <twig:CommandPalette:List>
+                  <twig:CommandPalette:Item icon="home">{{ lorem_words(2)|capitalize }}</twig:CommandPalette:Item>
+                  <twig:CommandPalette:Item icon="settings">{{ lorem_words(2)|capitalize }}</twig:CommandPalette:Item>
+              </twig:CommandPalette:List>
+          </twig:CommandPalette>

@@ -41,6 +41,20 @@ Roles that previously lived in **ux-blocks-extended** or **ux-blocks-live** now 
 
 Update tests and custom templates to use `blocks.int.{role}` fragment ids.
 
+## 0.1.3
+
+OOTB handbook and CSS cascade hygiene after [v0.1.2](https://github.com/symfinity/ux-blocks-interactive/releases/tag/v0.1.2). Grouped component example manifests, `@layer blocks.interactive` tier CSS, verification page, and PHPUnit bootstrap cleanup — no component props or registry ids changed.
+
+```bash
+composer update symfinity/ux-blocks-interactive symfinity/ux-blocks-core
+```
+
+After upgrade:
+
+1. Clear Symfony cache and hard-refresh the browser if AssetMapper serves cached CSS in dev.
+2. Pair with `symfinity/ux-blocks-core` **^0.1.6** so interactive fragments get auto-injected inline tier CSS (`id="ux-blocks-interactive-css"`).
+3. Optional: run the [verification](verification.md) clean-app smoke if you embed interactive components without ui-kernel.
+
 ## Future releases
 
 See [CHANGELOG](https://github.com/symfinity/ux-blocks-interactive/blob/main/CHANGELOG.md) for version-to-version notes.
