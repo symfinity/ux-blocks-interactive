@@ -1,0 +1,15 @@
+{% set panel_id = outerScope.menubar_panel_id|default('') %}
+<div
+    {% if panel_id %}
+        id="{{ panel_id }}"
+        popover
+    {% else %}
+        hidden
+    {% endif %}
+    role="menu"
+    data-ui-role="menubar-content"
+    data-symfinity--ux-blocks-interactive--menubar-target="content"
+    {{ attributes }}
+>
+    {% block content %}{% endblock %}
+</div>

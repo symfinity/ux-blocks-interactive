@@ -1,0 +1,19 @@
+{% set panel_id = outerScope.menubar_panel_id|default('') %}
+<button
+    type="button"
+    role="menuitem"
+    aria-haspopup="true"
+    aria-expanded="false"
+    data-ui-role="menubar-trigger"
+    {% if panel_id %}
+        popovertarget="{{ panel_id }}"
+        data-ui-anchor="trigger"
+        data-symfinity--ux-blocks-interactive--menubar-target="trigger"
+    {% else %}
+        data-action="click->symfinity--ux-blocks-interactive--menubar#toggle"
+        data-symfinity--ux-blocks-interactive--menubar-target="trigger"
+    {% endif %}
+    {{ attributes }}
+>
+    {% block content %}{% endblock %}
+</button>

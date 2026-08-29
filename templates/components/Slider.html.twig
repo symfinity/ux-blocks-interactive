@@ -1,0 +1,23 @@
+<div
+    data-ui-role="slider"
+    data-ui-fragment="blocks.int.slider"
+    data-ui-variant="{{ semantic_variant }}"
+    data-controller="symfinity--ux-blocks-interactive--slider"
+    data-symfinity--ux-blocks-interactive--slider-min-value="{{ min }}"
+    data-symfinity--ux-blocks-interactive--slider-max-value="{{ max }}"
+    data-symfinity--ux-blocks-interactive--slider-step-value="{{ step }}"
+    {{ attributes }}
+>
+    <input
+        type="range"
+        min="{{ min }}"
+        max="{{ max }}"
+        value="{{ value }}"
+        step="{{ step }}"
+        data-ui-role="slider-input"
+        data-symfinity--ux-blocks-interactive--slider-target="input"
+        data-action="input->symfinity--ux-blocks-interactive--slider#syncValue change->symfinity--ux-blocks-interactive--slider#syncValue keydown->symfinity--ux-blocks-interactive--slider#keydown"
+    />
+    <output data-symfinity--ux-blocks-interactive--slider-target="output">{{ value }}</output>
+    {% block content %}{% endblock %}
+</div>

@@ -1,0 +1,10 @@
+<div
+    data-ui-role="input-otp"
+    data-ui-fragment="blocks.int.input-otp"
+    data-controller="symfinity--ux-blocks-interactive--input-otp"
+    data-symfinity--ux-blocks-interactive--input-otp-length-value="{{ length }}"
+    {{ attributes }}
+>
+    <input type="hidden" name="otp" value="" data-symfinity--ux-blocks-interactive--input-otp-target="hidden" />
+    {% block content %}{% endblock %}
+</div>

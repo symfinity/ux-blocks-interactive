@@ -1,0 +1,15 @@
+{% set panel_id = outerScope.navigation_menu_panel_id|default('') %}
+<div
+    {% if panel_id %}
+        id="{{ panel_id }}"
+        popover
+    {% else %}
+        hidden
+    {% endif %}
+    role="region"
+    data-ui-role="navigation-menu-content"
+    data-symfinity--ux-blocks-interactive--navigation-menu-target="content"
+    {{ attributes }}
+>
+    {% block content %}{% endblock %}
+</div>

@@ -1,0 +1,51 @@
+composer_name: symfinity/ux-blocks-interactive
+package_major: "0.x"
+handbook_family: ux-blocks
+
+sidebar:
+  - components
+  - configuration
+  - installation
+  - quickstart
+  - troubleshooting
+  - upgrade
+  - usage
+
+slices:
+  - symfony: "7.4"
+    sources:
+      - components.md
+      - components/alert-dialog-enhanced.md
+      - components/bento-box-panel-interactive.md
+      - components/calendar.md
+      - components/carousel-interactive.md
+      - components/collapsible.md
+      - components/command-palette.md
+      - components/context-menu.md
+      - components/drawer.md
+      - components/dropdown-menu.md
+      - components/filter-chips.md
+      - components/hover-card.md
+      - components/input-otp.md
+      - components/menubar.md
+      - components/navigation-menu.md
+      - components/rating.md
+      - components/resizable.md
+      - components/scheme-switch.md
+      - components/sheet.md
+      - components/sidebar.md
+      - components/slider.md
+      - components/stacked-layout-interactive.md
+      - components/table-of-contents.md
+      - components/tabs.md
+      - components/toast.md
+      - components/toggle-group.md
+      - components/toggle.md
+      - components/tree-view.md
+      - configuration.md
+      - index.md
+      - installation.md
+      - quickstart.md
+      - troubleshooting.md
+      - upgrade.md
+      - usage.md

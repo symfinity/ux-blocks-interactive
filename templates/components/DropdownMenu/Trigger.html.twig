@@ -1,0 +1,13 @@
+<button
+    type="button"
+    id="{{ outerScope.dropdown_menu_id|default('') }}-trigger"
+    popovertarget="{{ outerScope.dropdown_menu_id|default('') }}"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    data-ui-role="dropdown-menu-trigger"
+    data-ui-anchor="trigger"
+    data-symfinity--ux-blocks-interactive--dropdown-menu-target="trigger"
+    {{ attributes }}
+>
+    {% block content %}{% endblock %}
+</button>

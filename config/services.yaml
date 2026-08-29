@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Symfinity\UxBlocksInteractive\:
+    resource: '../src/'
+    exclude:
+      - '../src/SymfinityUxBlocksInteractiveBundle.php'
+      - '../src/DependencyInjection/'
+      - '../src/Http/'
+
+  Symfinity\UxBlocksInteractive\Css\BlocksInteractiveCssProvider:
+    arguments:
+      $packageDir: '%ux_blocks_interactive.package_dir%'

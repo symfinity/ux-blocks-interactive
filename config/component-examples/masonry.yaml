@@ -1,0 +1,37 @@
+role: masonry
+twig_name: Masonry
+requires_stimulus: true
+groups:
+  - id: loose-children
+    section: Examples
+    layout: stack
+    items:
+      - id: packed-wall
+        label: "Mixed-height cards"
+        props:
+          columns: 3
+          density: comfortable
+        slot_twig: |
+          <twig:Masonry columns="3" density="comfortable">
+              <twig:Card><twig:block name="content">Short tile</twig:block></twig:Card>
+              <twig:Card><twig:block name="content">A taller tile with enough copy to span more rows once the masonry controller measures sibling heights in the packed wall.</twig:block></twig:Card>
+              <twig:Card><twig:block name="content">Medium tile</twig:block></twig:Card>
+              <twig:Card><twig:block name="content">Another short one</twig:block></twig:Card>
+              <twig:Card><twig:block name="content">Extra prose makes this tile the tallest in the demo so kiosk visitors can see span-grid reflow after images and fonts settle.</twig:block></twig:Card>
+              <twig:Card><twig:block name="content">Closing tile</twig:block></twig:Card>
+          </twig:Masonry>
+  - id: cell-wrapper
+    section: Composition
+    layout: stack
+    items:
+      - id: alert-cell
+        label: "Optional Masonry:Cell"
+        props:
+          columns: 2
+        slot_twig: |
+          <twig:Masonry columns="2">
+              <twig:Masonry:Cell>
+                  <twig:Alert variant="info">Wrapped tile</twig:Alert>
+              </twig:Masonry:Cell>
+              <twig:Card><twig:block name="content">Loose child tile</twig:block></twig:Card>
+          </twig:Masonry>

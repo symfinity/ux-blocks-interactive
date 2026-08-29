@@ -1,0 +1,54 @@
+[data-ui-role="alert-dialog-enhanced"] {
+font-family: var(--ui-font-family-sans);
+}
+[data-ui-role="dropdown-menu-trigger"],
+[data-ui-role="drawer-trigger"],
+[data-ui-role="sheet-trigger"],
+[data-ui-role="context-menu-trigger"],
+[data-ui-role="hover-card-trigger"] {
+cursor: pointer;
+  font-family: var(--ui-font-family-sans);
+}
+[data-ui-role="drawer-title"],
+[data-ui-role="sheet-title"] {
+font-family: var(--ui-font-family-sans);
+  font-size: var(--ui-font-size-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ui-color-text);
+  margin: 0 0 var(--ui-space-sm);
+}
+[data-ui-role="drawer-close"],
+[data-ui-role="sheet-close"] {
+cursor: pointer;
+  font-family: var(--ui-font-family-sans);
+}
+[data-ui-role="drawer-header"],
+[data-ui-role="sheet-header"] {
+display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ui-space-sm);
+  margin-block-end: var(--ui-space-md);
+}
+[data-ui-role="drawer"],
+[data-ui-role="sheet"],
+[data-ui-role="sidebar"] {
+position: relative;
+  font-family: var(--ui-font-family-sans);
+}
+[data-ui-role="drawer-content"],
+[data-ui-role="sheet-content"],
+[data-ui-role="sidebar-content"] {
+background: var(--ui-overlay-surface);
+  color: var(--ui-color-text);
+  border: 1px solid var(--ui-overlay-border);
+  box-shadow: var(--ui-overlay-shadow);
+  padding: var(--ui-space-lg);
+  font-family: var(--ui-font-family-sans);
+}
+[data-ui-role="hover-card"] {
+position: relative;
+  display: inline-block;
+}

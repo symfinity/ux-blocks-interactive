@@ -1,0 +1,11 @@
+<div
+    role="dialog"
+    aria-modal="true"
+    hidden
+    data-ui-role="drawer-content"
+    {{ surface_attr|raw }}
+    data-symfinity--ux-blocks-interactive--drawer-target="content"
+    {{ attributes }}
+>
+    {% block content %}{% endblock %}
+</div>

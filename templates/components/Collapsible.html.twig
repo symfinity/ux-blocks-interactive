@@ -1,0 +1,27 @@
+{% if open is not null %}
+<div
+    data-ui-role="collapsible"
+    data-ui-fragment="blocks.int.collapsible"
+    data-ui-state="{{ collapsible_is_open ? 'open' : 'closed' }}"
+    data-controller="symfinity--ux-blocks-core--collapsible"
+    data-symfinity--ux-blocks-core--collapsible-open-value="{{ collapsible_is_open ? 'true' : 'false' }}"
+    data-symfinity--ux-blocks-core--collapsible-content-id-value="{{ collapsible_content_id }}"
+    data-symfinity--ux-blocks-core--collapsible-disabled-value="{{ collapsible_disabled ? 'true' : 'false' }}"
+    {{ attributes }}
+>
+{% else %}
+<details
+    data-ui-role="collapsible"
+    data-ui-fragment="blocks.int.collapsible"
+    data-ui-state="{{ collapsible_is_open ? 'open' : 'closed' }}"
+    {% if collapsible_is_open %}open{% endif %}
+    {% if collapsible_disabled %}data-ui-disabled="true"{% endif %}
+    {{ attributes }}
+>
+{% endif %}
+    {% block content %}{% endblock %}
+{% if open is not null %}
+</div>
+{% else %}
+</details>
+{% endif %}
