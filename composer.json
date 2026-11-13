@@ -41,7 +41,7 @@
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^10.5 || ^11.0",
-        "symfinity/ui-kernel": "^0.2",
+        "symfinity/ui-kernel": "^0.3",
         "symfinity/ux-blocks": "^0.1.3",
         "symfony/browser-kit": "^7.4||^8.0",
         "symfony/css-selector": "^7.4||^8.0",

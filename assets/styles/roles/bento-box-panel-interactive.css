@@ -1,0 +1,4 @@
+[data-ui-role="bento-box-panel-interactive"] {
+  display: grid;
+  gap: var(--ui-space-md);
+}
