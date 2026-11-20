@@ -49,8 +49,9 @@ Patterns align with [shadcn Alert Dialog](https://ui.shadcn.com/docs/components/
 | `AlertDialog:Content` | — | — | — | `role="alertdialog"` surface |
 | `AlertDialog:Title` | — | — | — | Accessible dialog name |
 | `AlertDialog:Description` | — | — | — | Supporting detail |
-| `AlertDialog:Action` | — | — | — | Confirms the destructive action |
-| `AlertDialog:Cancel` | — | — | — | Dismisses without action |
+| `AlertDialog:Action` | — | — | — | Button that confirms. The words inside it are shown |
+| `AlertDialog:Cancel` | — | — | — | Button that dismisses. The words inside it are shown |
+| `AlertDialog:Trigger` | — | — | — | Button that opens the alert. The words inside it are shown |
 
 Region components: `AlertDialog:Trigger`, `AlertDialog:Content`, `AlertDialog:Title`, `AlertDialog:Description`, `AlertDialog:Footer`, `AlertDialog:Action`, `AlertDialog:Cancel`.
 

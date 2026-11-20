@@ -9,10 +9,13 @@ export default class extends Controller {
     };
 
     show(event) {
-        const message =
-            event.params?.message ||
-            event.currentTarget?.dataset?.toastMessage ||
-            'Notification';
+        const params = event?.params ?? {};
+        const detail = event?.detail ?? {};
+        const message = params.message !== undefined ? params.message : detail.message;
+        if (message === undefined || message === '') {
+            return;
+        }
+        const variant = params.variant !== undefined ? params.variant : detail.variant;
 
         while (this.itemTargets.length >= this.stackLimitValue) {
             this.itemTargets[0].remove();
@@ -21,7 +24,15 @@ export default class extends Controller {
         const el = document.createElement('div');
         el.setAttribute('data-ui-role', 'toast-item');
         el.setAttribute(`data-${this.identifier}-target`, 'item');
-        el.setAttribute('role', 'status');
+        if (variant === 'error') {
+            el.setAttribute('role', 'alert');
+            el.setAttribute('data-ui-variant', 'error');
+        } else if (variant === 'success') {
+            el.setAttribute('role', 'status');
+            el.setAttribute('data-ui-variant', 'success');
+        } else {
+            el.setAttribute('role', 'status');
+        }
 
         const text = document.createElement('span');
         text.textContent = message;

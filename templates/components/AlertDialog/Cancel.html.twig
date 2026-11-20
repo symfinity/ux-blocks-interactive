@@ -1,8 +1,11 @@
-<button
-    type="button"
-    data-ui-role="alert-dialog-cancel"
-    data-action="click->symfinity--ux-blocks-interactive--alert-dialog#close"
-    {{ attributes }}
+<twig:Button
+    variant="{{ variant ?? 'neutral' }}"
+    appearance="{{ appearance ?? 'outline' }}"
+    size="{{ size ?? 'md' }}"
+    {{ ...attributes.without('data-ui-role').defaults({
+        type: 'button',
+        'data-action': 'click->symfinity--ux-blocks-interactive--alert-dialog#close',
+    }) }}
 >
-    {% block content %}{% endblock %}
-</button>
+    {{- block(outerBlocks.content) -}}
+</twig:Button>

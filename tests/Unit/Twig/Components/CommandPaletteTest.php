@@ -35,4 +35,15 @@ final class CommandPaletteTest extends ComponentTestCase
         self::assertStringContainsString('data-symfinity--ux-blocks-interactive--command-palette-fallback-commands-value', $html);
         self::assertStringContainsString('demo.home', $html);
     }
+
+    #[Test]
+    public function labelBecomesAccessibleName(): void
+    {
+        self::bootKernel();
+        $named = $this->renderComponent('CommandPalette', ['label' => 'Catalogue commands']);
+        $fallback = $this->renderComponent('CommandPalette');
+
+        self::assertStringContainsString('aria-label="Catalogue commands"', $named);
+        self::assertStringContainsString('aria-label="Command palette"', $fallback);
+    }
 }

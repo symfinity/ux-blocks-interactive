@@ -69,6 +69,20 @@ composer update symfinity/ux-blocks-interactive
 
 After upgrade, clear the Symfony cache and hard-refresh the browser so the controller scripts reload.
 
+## 0.1.5
+
+The colour-scheme endpoint is constructed with its dependencies. An app can delete an `autowire: true` override for that controller.
+
+Alert open, cancel, and confirm controls are the same Button used elsewhere, and the words inside them are shown.
+
+The command list opens over the page. `label` is the accessible name. A link result stays inside the list and shows its hint. `show()` accepts a success or error kind with the message. An empty message does not appear.
+
+```bash
+composer update symfinity/ux-blocks-interactive
+```
+
+After upgrade, clear the Symfony cache and hard-refresh the browser so the controller scripts reload.
+
 ## Future releases
 
 See [CHANGELOG](https://github.com/symfinity/ux-blocks-interactive/blob/main/CHANGELOG.md) for version-to-version notes.

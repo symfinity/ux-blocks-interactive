@@ -21,6 +21,7 @@ final class ThemeSchemeServiceLoadingTest extends TestCase
         $container = $this->load(['UiKernelBundle' => 'Symfinity\\UiKernel\\UiKernelBundle']);
 
         self::assertTrue($container->hasDefinition(ThemeSchemeController::class));
+        self::assertTrue($container->getDefinition(ThemeSchemeController::class)->isAutowired());
     }
 
     #[Test]

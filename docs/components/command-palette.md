@@ -55,8 +55,11 @@ Requires `symfinity/ux-runtime` when using remote command search.
 | `placeholder` | `string` | `Search…` | Input placeholder |
 | `openHotkey` | `string` | `k` | Letter combined with Ctrl/⌘ to open |
 | `fallbackCommands` | `list<array>` | `[]` | Static commands `{ id, title, url, … }` |
+| `label` | `string?` | — | Accessible name of the command list |
 
-Region components: `CommandPalette:Input`, `CommandPalette:List`, `CommandPalette:Item` (`icon`, `iconDecorative`).
+The list opens over the page. Typing searches again. Arrow keys, Enter, and Escape move through it.
+
+Region components: `CommandPalette:Input`, `CommandPalette:List`, `CommandPalette:Item` (`icon`, `iconDecorative`, `href`, `hint`). A link result stays inside the list. `hint` is shown in full.
 
 ## Accessibility
 

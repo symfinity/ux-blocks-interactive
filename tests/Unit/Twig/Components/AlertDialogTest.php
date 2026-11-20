@@ -37,7 +37,42 @@ final class AlertDialogTest extends ComponentTestCase
 
         self::assertStringContainsString('aria-haspopup="dialog"', $html);
         self::assertStringContainsString('aria-expanded="false"', $html);
-        self::assertStringContainsString('data-ui-role="alert-dialog-trigger"', $html);
+        self::assertStringContainsString('data-ui-role="button"', $html);
+        self::assertStringNotContainsString('alert-dialog-trigger', $html);
+    }
+
+    #[Test]
+    public function triggerCancelAndActionAreButtons(): void
+    {
+        self::bootKernel();
+
+        $trigger = $this->renderComponent('AlertDialog:Trigger', [
+            'variant' => 'danger',
+            'appearance' => 'outline',
+            'size' => 'sm',
+        ], 'Open alert');
+        $cancel = $this->renderComponent('AlertDialog:Cancel', [], 'Cancel');
+        $action = $this->renderComponent('AlertDialog:Action', [], 'Delete');
+
+        foreach ([$trigger, $cancel, $action] as $html) {
+            self::assertStringContainsString('data-ui-role="button"', $html);
+            self::assertStringNotContainsString('alert-dialog-trigger', $html);
+            self::assertStringNotContainsString('alert-dialog-cancel', $html);
+        }
+
+        self::assertStringContainsString('aria-haspopup="dialog"', $trigger);
+        self::assertStringContainsString('alert-dialog#open', $trigger);
+        self::assertStringContainsString('alert-dialog#close', $cancel);
+        self::assertStringContainsString('alert-dialog#confirm', $action);
+        self::assertStringContainsString('data-ui-variant="danger"', $trigger);
+        self::assertStringContainsString('data-ui-appearance="outline"', $trigger);
+        self::assertStringContainsString('data-ui-size="sm"', $trigger);
+        self::assertStringContainsString('data-ui-variant="neutral"', $cancel);
+        self::assertStringContainsString('data-ui-appearance="outline"', $cancel);
+        self::assertStringContainsString('data-ui-variant="danger"', $action);
+        self::assertStringContainsString('Open alert', $trigger);
+        self::assertStringContainsString('Cancel', $cancel);
+        self::assertStringContainsString('Delete', $action);
     }
 
     #[Test]

@@ -9,8 +9,9 @@
     hidden
     role="dialog"
     aria-modal="true"
-    aria-label="Command palette"
-    {{ attributes }}
+    {{ attributes.defaults({
+        'aria-label': label ?: 'Command palette',
+    }) }}
 >
     {% block content %}{% endblock %}
 </div>

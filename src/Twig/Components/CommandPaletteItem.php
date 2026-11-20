@@ -16,6 +16,10 @@ final class CommandPaletteItem
     /** Ignored — locked start. */
     public string $iconPosition = 'end';
 
+    public ?string $href = null;
+
+    public ?string $hint = null;
+
     #[ExposeInTemplate('resolved_menu_item_icon')]
     public function resolvedMenuItemIcon(): ?string
     {

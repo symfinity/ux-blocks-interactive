@@ -1,11 +1,14 @@
-<button
-    type="button"
-    aria-haspopup="dialog"
-    aria-expanded="false"
-    data-ui-role="alert-dialog-trigger"
-    data-action="click->symfinity--ux-blocks-interactive--alert-dialog#open"
-    data-symfinity--ux-blocks-interactive--alert-dialog-target="trigger"
-    {{ attributes }}
+<twig:Button
+    variant="{{ variant ?? 'primary' }}"
+    appearance="{{ appearance ?? 'solid' }}"
+    size="{{ size ?? 'md' }}"
+    {{ ...attributes.without('data-ui-role').defaults({
+        type: 'button',
+        'aria-haspopup': 'dialog',
+        'aria-expanded': 'false',
+        'data-action': 'click->symfinity--ux-blocks-interactive--alert-dialog#open',
+        'data-symfinity--ux-blocks-interactive--alert-dialog-target': 'trigger',
+    }) }}
 >
-    {% block content %}{% endblock %}
-</button>
+    {{- block(outerBlocks.content) -}}
+</twig:Button>

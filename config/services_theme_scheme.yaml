@@ -1,3 +1,7 @@
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
   Symfinity\UxBlocksInteractive\Http\ThemeSchemeController:
     tags: ['controller.service_arguments']

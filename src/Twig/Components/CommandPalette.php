@@ -17,4 +17,6 @@ final class CommandPalette
 
     /** @var list<array<string, mixed>> */
     public array $fallbackCommands = [];
+
+    public ?string $label = null;
 }

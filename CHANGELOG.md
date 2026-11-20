@@ -5,6 +5,19 @@ All notable changes to **symfinity/ux-blocks-interactive** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2026-11-20
+
+### Changed
+
+- The Sass build keeps quoted attribute selectors (`extra.symfinity.sass.quote_attributes`)
+
+### Fixed
+
+- The colour-scheme endpoint is constructed with its dependencies, so a light/dark switch can save. An app can delete an `autowire: true` override for that controller
+- Alert open, cancel, and confirm controls are the same Button used elsewhere, and the words inside them are shown. Open still opens the alert, cancel still closes it, and confirm still confirms
+- The command list opens over the page, searches again as you type, and moves with the arrow keys, Enter, and Escape. The `label` prop is the accessible name. A link result stays inside the list and its hint is shown in full
+- `show()` accepts a success or error kind with the message. Success is a status, error is an alert, and a toast with no kind stays a status. An empty message does not appear
+
 ## [0.1.4] - 2026-11-20
 
 ### Added

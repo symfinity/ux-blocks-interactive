@@ -44,6 +44,8 @@ Dispatch new items from Stimulus actions or Turbo streams in your app layer.
 
 Region component: `Toast:Item`.
 
+From the browser, `show()` takes a message and an optional kind. `success` is a status, `error` is an alert, and a toast with no kind stays a status. An empty message does not appear.
+
 ## Accessibility
 
 - Root sets `aria-live="polite"` for non-critical updates.
