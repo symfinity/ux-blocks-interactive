@@ -17,10 +17,10 @@ export default class extends Controller {
             input.max = String(this.maxValue);
             input.step = String(this.stepValue);
             input.value = String(this.minValue);
-            input.setAttribute('data-symfony--ux-blocks-interactive--slider-target', 'input');
+            input.setAttribute(`data-${this.identifier}-target`, 'input');
             input.setAttribute(
                 'data-action',
-                'input->symfony--ux-blocks-interactive--slider#syncValue change->symfony--ux-blocks-interactive--slider#syncValue keydown->symfony--ux-blocks-interactive--slider#keydown',
+                `input->${this.identifier}#syncValue change->${this.identifier}#syncValue keydown->${this.identifier}#keydown`,
             );
             this.element.appendChild(input);
         } else {

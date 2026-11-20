@@ -65,7 +65,7 @@ export default class extends Controller {
 
         if (event.newState === 'open') {
             this._openIndex = index;
-            const items = itemsInContent(content, 'menubar');
+            const items = itemsInContent(content, this.identifier);
             if (items.length > 0) {
                 applyRovingTabindex(items, 0);
                 this._itemIndex = 0;
@@ -105,7 +105,7 @@ export default class extends Controller {
         content.hidden = false;
         trigger.setAttribute('aria-expanded', 'true');
 
-        const items = itemsInContent(content, 'menubar');
+        const items = itemsInContent(content, this.identifier);
         if (items.length > 0) {
             applyRovingTabindex(items, 0);
             this._itemIndex = 0;
@@ -180,7 +180,7 @@ export default class extends Controller {
             return;
         }
 
-        const items = itemsInContent(content, 'menubar');
+        const items = itemsInContent(content, this.identifier);
         this._itemIndex = handleSubmenuKeydown(event, content, items, this._itemIndex, 'vertical');
     }
 }

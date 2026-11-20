@@ -45,7 +45,8 @@ final class SymfinityUxBlocksInteractiveExtension extends Extension implements P
         $loader->load('services.yaml');
 
         $bundles = $container->getParameter('kernel.bundles');
-        if (\is_array($bundles) && isset($bundles['Symfinity\\UiKernel\\SymfinityUiKernelBundle'])) {
+        // kernel.bundles maps short name => class; string literal keeps ui-kernel a soft dependency.
+        if (\is_array($bundles) && \in_array('Symfinity\\UiKernel\\UiKernelBundle', $bundles, true)) {
             $loader->load('services_theme_scheme.yaml');
         }
     }

@@ -12,20 +12,20 @@ export default class extends Controller {
         event.stopPropagation();
 
         const button = event.currentTarget;
-        const chip = button.closest('[data-symfony--ux-blocks-interactive--filter-chips-target="chip"]')
-            || button.parentElement;
+        const chip = this.chipTargets.find((el) => el.contains(button));
 
         if (!chip) {
             return;
         }
 
         const label = (chip.textContent || '').replace(/×\s*$/, '').trim();
+        const value = chip.dataset.value ?? null;
         chip.remove();
 
         this.element.dispatchEvent(
             new CustomEvent('ux-blocks-interactive:filter-chips-remove', {
                 bubbles: true,
-                detail: { label },
+                detail: { label, value },
             }),
         );
     }

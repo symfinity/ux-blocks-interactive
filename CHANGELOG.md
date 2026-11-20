@@ -5,6 +5,20 @@ All notable changes to **symfinity/ux-blocks-interactive** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-11-20
+
+### Added
+
+- Filter chip accepts `value`. Removing a chip sends that value with the label
+- Slider accepts `name` and other `input:*` attributes on the range input
+
+### Fixed
+
+- Browser scripts address their Stimulus controller by the name AssetMapper assigned, including toast items created by `show()`. A toast opened from the browser can be closed and times out
+- The theme scheme endpoint is registered when `UiKernelBundle` is installed
+- Shipped role stylesheets quote attribute values. The selectors match the same elements
+- PHPUnit bootstrap registers this package's PSR-4 prefixes from `composer.json` after loading the monorepo or package autoload, and narrows the decoded autoload sections before reading `psr-4`
+
 ## [0.1.3] - 2026-07-05
 
 ### Added

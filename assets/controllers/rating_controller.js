@@ -16,10 +16,10 @@ export default class extends Controller {
                 button.textContent = '★';
                 button.dataset.value = String(i);
                 button.setAttribute('aria-label', `Rate ${i} of ${this.maxValue}`);
-                button.setAttribute('data-symfony--ux-blocks-interactive--rating-target', 'star');
+                button.setAttribute(`data-${this.identifier}-target`, 'star');
                 button.setAttribute(
                     'data-action',
-                    'click->symfony--ux-blocks-interactive--rating#select mouseenter->symfony--ux-blocks-interactive--rating#preview mouseleave->symfony--ux-blocks-interactive--rating#clearPreview',
+                    `click->${this.identifier}#select mouseenter->${this.identifier}#preview mouseleave->${this.identifier}#clearPreview`,
                 );
                 this.element.appendChild(button);
             }

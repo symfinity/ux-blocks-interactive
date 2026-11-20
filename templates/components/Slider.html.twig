@@ -17,6 +17,8 @@
         data-ui-role="slider-input"
         data-symfinity--ux-blocks-interactive--slider-target="input"
         data-action="input->symfinity--ux-blocks-interactive--slider#syncValue change->symfinity--ux-blocks-interactive--slider#syncValue keydown->symfinity--ux-blocks-interactive--slider#keydown"
+        {% if name %}name="{{ name }}"{% endif %}
+        {{ attributes.nested('input') }}
     />
     <output data-symfinity--ux-blocks-interactive--slider-target="output">{{ value }}</output>
     {% block content %}{% endblock %}

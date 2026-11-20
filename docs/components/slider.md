@@ -34,6 +34,19 @@ Single-axis numeric selection where a precise value matters more than free text.
 />
 ```
 
+### In a form or Live component
+
+`name` names the range input. Any other attribute for the input itself goes through the `input:` prefix; attributes without the prefix stay on the wrapper.
+
+```twig
+<form id="search">
+    <twig:Slider name="price" input:id="price" input:aria-label="Maximum price" max="{{ 500 }}" />
+</form>
+
+{# Live component: bind the input to a writable LiveProp #}
+<twig:Slider input:data-model="price" input:aria-label="Maximum price" />
+```
+
 Keyboard and pointer interaction follow native `<input type="range">` behaviour with Stimulus syncing the readout.
 
 ## API Reference
@@ -45,6 +58,8 @@ Keyboard and pointer interaction follow native `<input type="range">` behaviour 
 | `max` | `int` | `100` | Maximum value |
 | `step` | `int` | `1` | Step increment |
 | `value` | `int` | `50` | Initial value |
+| `name` | `?string` | `null` | Form field name of the range input |
+| `input:*` | attributes | — | Passed to the `<input type="range">` (e.g. `input:id`, `input:data-model`, `input:form`) |
 
 ## Accessibility
 

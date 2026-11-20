@@ -40,4 +40,38 @@ final class SliderTest extends ComponentTestCase
 
         self::assertStringContainsString('data-ui-variant="success"', $html);
     }
+
+    #[Test]
+    public function nameLandsOnTheRangeInput(): void
+    {
+        $html = $this->renderComponent('Slider', ['name' => 'price']);
+
+        self::assertStringContainsString('name="price"', $this->rangeInput($html));
+    }
+
+    #[Test]
+    public function nestedInputAttributesLandOnTheInputOnly(): void
+    {
+        $html = $this->renderComponent('Slider', [
+            'input:id' => 'p',
+            'input:data-model' => 'price',
+            'class' => 'wide',
+        ]);
+
+        $input = $this->rangeInput($html);
+        self::assertStringContainsString('id="p"', $input);
+        self::assertStringContainsString('data-model="price"', $input);
+
+        $wrapper = substr($html, 0, (int) strpos($html, '<input'));
+        self::assertStringContainsString('class="wide"', $wrapper);
+        self::assertStringNotContainsString('id="p"', $wrapper);
+        self::assertStringNotContainsString('data-model=', $wrapper);
+    }
+
+    private function rangeInput(string $html): string
+    {
+        $start = (int) strpos($html, '<input');
+
+        return substr($html, $start, (int) strpos($html, '/>', $start) - $start);
+    }
 }

@@ -20,7 +20,7 @@ export default class extends Controller {
 
         const el = document.createElement('div');
         el.setAttribute('data-ui-role', 'toast-item');
-        el.setAttribute('data-symfony--ux-blocks-interactive--toast-target', 'item');
+        el.setAttribute(`data-${this.identifier}-target`, 'item');
         el.setAttribute('role', 'status');
 
         const text = document.createElement('span');

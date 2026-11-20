@@ -33,6 +33,17 @@ Listing pages and data tables where users apply several filters and need to see 
 
 Each chip includes a remove button; Stimulus removes the chip from the list on click.
 
+### Reacting to removal
+
+Give each chip a `value` (the filter key). Removing a chip dispatches the bubbling event `ux-blocks-interactive:filter-chips-remove` with `detail: { label, value }`; `value` is `null` when the chip has none.
+
+```twig
+<twig:FilterChips data-action="ux-blocks-interactive:filter-chips-remove->search#dropFilter">
+    <twig:FilterChips:Chip value="brand:acme">Acme</twig:FilterChips:Chip>
+    <twig:FilterChips:Chip value="status:published">Published</twig:FilterChips:Chip>
+</twig:FilterChips>
+```
+
 ## API Reference
 
 | Prop | Type | Default | Description |
@@ -40,6 +51,10 @@ Each chip includes a remove button; Stimulus removes the chip from the list on c
 | — | — | — | Root has no props; compose `FilterChips:Chip` children |
 
 **FilterChips:Chip:** default slot for chip label text.
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `?string` | `null` | Filter key, rendered as `data-value` and sent as `detail.value` on removal |
 
 ## Accessibility
 

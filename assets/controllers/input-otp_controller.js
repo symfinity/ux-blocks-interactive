@@ -15,10 +15,10 @@ export default class extends Controller {
                 input.maxLength = 1;
                 input.autocomplete = 'one-time-code';
                 input.setAttribute('aria-label', `Digit ${i + 1} of ${n}`);
-                input.setAttribute('data-symfony--ux-blocks-interactive--input-otp-target', 'input');
+                input.setAttribute(`data-${this.identifier}-target`, 'input');
                 input.setAttribute(
                     'data-action',
-                    'input->symfony--ux-blocks-interactive--input-otp#onInput keydown->symfony--ux-blocks-interactive--input-otp#onKeydown paste->symfony--ux-blocks-interactive--input-otp#onPaste',
+                    `input->${this.identifier}#onInput keydown->${this.identifier}#onKeydown paste->${this.identifier}#onPaste`,
                 );
                 this.element.appendChild(input);
             }

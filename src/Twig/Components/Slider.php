@@ -23,4 +23,7 @@ final class Slider
     public int $step = 1;
 
     public int $value = 50;
+
+    /** Form field name of the range input; other input attributes go through `input:*`. */
+    public ?string $name = null;
 }

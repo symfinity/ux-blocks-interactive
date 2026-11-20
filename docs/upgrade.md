@@ -55,6 +55,20 @@ After upgrade:
 2. Pair with `symfinity/ux-blocks-core` **^0.1.6** so interactive fragments get auto-injected inline tier CSS (`id="ux-blocks-interactive-css"`).
 3. Optional: run the [verification](verification.md) clean-app smoke if you embed interactive components without ui-kernel.
 
+## 0.1.4
+
+A filter chip accepts `value`. Removing it sends that value with the label. A slider accepts `name` and other `input:*` attributes on the range input.
+
+Browser scripts address their Stimulus controller by the name AssetMapper assigned. A toast opened from the browser can be closed and times out.
+
+The theme scheme endpoint is registered when `UiKernelBundle` is installed. Dev installs require `symfinity/ui-kernel` `^0.3`. Runtime requirements are unchanged.
+
+```bash
+composer update symfinity/ux-blocks-interactive
+```
+
+After upgrade, clear the Symfony cache and hard-refresh the browser so the controller scripts reload.
+
 ## Future releases
 
 See [CHANGELOG](https://github.com/symfinity/ux-blocks-interactive/blob/main/CHANGELOG.md) for version-to-version notes.

@@ -65,7 +65,7 @@ export default class extends Controller {
 
         if (event.newState === 'open') {
             this._openIndex = index;
-            const items = itemsInContent(content, 'navigation-menu');
+            const items = itemsInContent(content, this.identifier);
             if (items.length > 0) {
                 applyRovingTabindex(items, 0);
                 this._itemIndex = 0;
@@ -110,7 +110,7 @@ export default class extends Controller {
             this.viewportTarget.hidden = false;
         }
 
-        const items = itemsInContent(content, 'navigation-menu');
+        const items = itemsInContent(content, this.identifier);
         if (items.length > 0) {
             applyRovingTabindex(items, 0);
             this._itemIndex = 0;
@@ -183,7 +183,7 @@ export default class extends Controller {
             return;
         }
 
-        const items = itemsInContent(content, 'navigation-menu');
+        const items = itemsInContent(content, this.identifier);
         this._itemIndex = handleSubmenuKeydown(event, content, items, this._itemIndex, 'vertical');
     }
 }

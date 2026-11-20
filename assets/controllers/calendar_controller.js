@@ -144,10 +144,10 @@ export default class extends Controller {
             button.setAttribute('aria-selected', 'false');
             button.dataset.date = iso;
             button.textContent = String(day);
-            button.setAttribute('data-symfony--ux-blocks-interactive--calendar-target', 'day');
+            button.setAttribute(`data-${this.identifier}-target`, 'day');
             button.setAttribute(
                 'data-action',
-                'click->symfony--ux-blocks-interactive--calendar#selectDay',
+                `click->${this.identifier}#selectDay`,
             );
             row.appendChild(button);
             dayButtons.push(button);

@@ -2,6 +2,7 @@
     role="listitem"
     data-ui-role="filter-chip"
     data-symfinity--ux-blocks-interactive--filter-chips-target="chip"
+    {% if value is not null %}data-value="{{ value }}"{% endif %}
     {{ attributes }}
 >
     {% block content %}{% endblock %}
