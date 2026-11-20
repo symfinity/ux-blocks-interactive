@@ -27,5 +27,10 @@ final class ToastShowTest extends TestCase
         self::assertStringContainsString('return;', $source);
         self::assertStringContainsString('dismissItem', $source);
         self::assertStringContainsString('this.durationValue', $source);
+        self::assertStringContainsString("setAttribute('data-ui-part', 'toast-body')", $source);
+        self::assertStringContainsString("setAttribute('data-ui-part', 'content')", $source);
+        self::assertStringContainsString('this.dismissLabelValue', $source);
+        self::assertStringNotContainsString("setAttribute('aria-label', 'Dismiss notification')", $source);
+        self::assertStringNotContainsString("setAttribute('data-ui-variant', 'ghost')", $source);
     }
 }

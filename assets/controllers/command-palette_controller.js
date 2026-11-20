@@ -8,6 +8,9 @@ export default class extends Controller {
         placeholder: { type: String, default: 'Search…' },
         openHotkey: { type: String, default: 'k' },
         fallbackCommands: { type: Array, default: [] },
+        emptyLabel: { type: String, default: 'No matching commands' },
+        loadingLabel: { type: String, default: 'Loading commands' },
+        failureLabel: { type: String, default: 'Could not load commands' },
     };
 
     connect() {
@@ -18,23 +21,28 @@ export default class extends Controller {
         this._debounce = null;
         this._onKeydown = this._onKeydown.bind(this);
         this._onOpen = () => this.open();
+        this._onBackdropClick = (event) => {
+            if (event.target === this.element) {
+                this.close();
+            }
+        };
         document.addEventListener('keydown', this._onKeydown);
         this.element.addEventListener('command-palette:open', this._onOpen);
+        this.element.addEventListener('click', this._onBackdropClick);
 
         if (this.hasInputTarget) {
             this.inputTarget.placeholder = this.placeholderValue;
             this.inputTarget.addEventListener('input', () => this._onInput());
         }
 
-        if (!this.commandsUrlValue && this.fallbackCommandsValue.length > 0) {
-            this._commands = this.fallbackCommandsValue;
-            this._renderDynamic();
-        }
+        this._ensureListbox();
+        this._seedFallback();
     }
 
     disconnect() {
         document.removeEventListener('keydown', this._onKeydown);
         this.element.removeEventListener('command-palette:open', this._onOpen);
+        this.element.removeEventListener('click', this._onBackdropClick);
         window.clearTimeout(this._debounce);
     }
 
@@ -42,6 +50,8 @@ export default class extends Controller {
         event?.preventDefault();
         this._opener = document.activeElement;
         this.element.hidden = false;
+        this._syncExpanded(true);
+        this.commandsUrlValue && this._fetchCommands();
         if (this.hasInputTarget) {
             this.inputTarget.focus();
             this.inputTarget.select();
@@ -50,6 +60,8 @@ export default class extends Controller {
 
     close() {
         this.element.hidden = true;
+        this._syncExpanded(false);
+        window.clearTimeout(this._debounce);
         if (this._opener instanceof HTMLElement) {
             this._opener.focus();
         }
@@ -61,6 +73,10 @@ export default class extends Controller {
             this.open(event);
         }
         if (this.element.hidden) {
+            return;
+        }
+        if (event.key === 'Tab') {
+            this._trapTab(event);
             return;
         }
         if (event.key === 'Escape') {
@@ -96,7 +112,7 @@ export default class extends Controller {
             this._scheduleFetch();
             return;
         }
-        this._filterFallback();
+        this._filterExisting();
     }
 
     _scheduleFetch() {
@@ -109,8 +125,15 @@ export default class extends Controller {
         const seq = ++this._requestSeq;
         const url = new URL(this.commandsUrlValue, window.location.href);
         url.searchParams.set('q', query);
+        this._setStatus('loading');
         fetch(url.toString())
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Command search failed');
+                }
+
+                return response.json();
+            })
             .then((data) => {
                 if (seq !== this._requestSeq) {
                     return;
@@ -118,39 +141,63 @@ export default class extends Controller {
                 this._commands = Array.isArray(data?.commands) ? data.commands : [];
                 this._renderDynamic();
             })
-            .catch(() => {});
+            .catch(() => {
+                if (seq !== this._requestSeq) {
+                    return;
+                }
+                this._setStatus('failure');
+            });
     }
 
-    _filterFallback() {
-        const query = (this.hasInputTarget ? this.inputTarget.value : '').toLowerCase().trim();
-        const tokens = query === '' ? [] : query.split(/\s+/).filter(Boolean);
-        this._commands = this.fallbackCommandsValue.filter((command) => {
-            const haystack = [command.title, command.label, command.id, command.hint, ...(command.keywords || [])]
-                .filter(Boolean)
-                .join(' ')
-                .toLowerCase();
-
-            return tokens.every((token) => haystack.includes(token));
-        });
+    _seedFallback() {
+        if (this.commandsUrlValue || !this.hasListTarget || this.itemTargets.length > 0 || this.fallbackCommandsValue.length === 0) {
+            return;
+        }
+        this._commands = this.fallbackCommandsValue;
         this._renderDynamic();
     }
 
+    _filterExisting() {
+        const query = (this.hasInputTarget ? this.inputTarget.value : '').toLowerCase().trim();
+        const tokens = query === '' ? [] : query.split(/\s+/).filter(Boolean);
+        let visible = 0;
+        this.itemTargets.forEach((item) => {
+            const haystack = (item.textContent || '').toLowerCase();
+            const match = tokens.every((token) => haystack.includes(token));
+            item.hidden = !match;
+            if (!match) {
+                item.removeAttribute('aria-selected');
+            }
+            if (match) {
+                visible += 1;
+            }
+        });
+        this._selectedIndex = -1;
+        this._clearActiveDescendant();
+        this._setStatus(visible === 0 ? 'empty' : null);
+    }
+
     _move(delta) {
-        const items = this.itemTargets;
+        const items = this.itemTargets.filter((item) => !item.hidden);
         if (items.length === 0) {
             return;
         }
-        if (this._selectedIndex >= 0 && items[this._selectedIndex]) {
-            items[this._selectedIndex].removeAttribute('aria-selected');
-        }
-        const next = (this._selectedIndex + delta + items.length) % items.length;
+        items.forEach((item) => item.removeAttribute('aria-selected'));
+        const start = this._selectedIndex < 0 ? (delta > 0 ? -1 : 0) : this._selectedIndex;
+        const next = (start + delta + items.length) % items.length;
         this._selectedIndex = next;
-        items[next].setAttribute('aria-selected', 'true');
+        const current = items[next];
+        this._markOption(current, next);
+        current.setAttribute('aria-selected', 'true');
+        if (this.hasInputTarget) {
+            this.inputTarget.setAttribute('aria-activedescendant', current.id);
+        }
     }
 
     _activateSelected() {
-        const item = this.itemTargets.find((entry) => entry.getAttribute('aria-selected') === 'true')
-            || this.itemTargets[0];
+        const visible = this.itemTargets.filter((entry) => !entry.hidden);
+        const item = visible.find((entry) => entry.getAttribute('aria-selected') === 'true')
+            || visible[0];
         if (!item) {
             return;
         }
@@ -167,15 +214,13 @@ export default class extends Controller {
 
         this.listTarget.replaceChildren();
         this._selectedIndex = -1;
+        this._clearActiveDescendant();
         if (this._commands.length === 0) {
-            const empty = document.createElement('p');
-            empty.setAttribute('data-ui-part', 'empty');
-            empty.textContent = 'No matching commands';
-            this.listTarget.appendChild(empty);
+            this._setStatus('empty');
             return;
         }
 
-        this._commands.forEach((command) => {
+        this._commands.forEach((command, index) => {
             const url = command.url || command.handler?.url;
             const el = url ? document.createElement('a') : document.createElement('button');
             if (url) {
@@ -186,6 +231,7 @@ export default class extends Controller {
             }
             el.setAttribute('data-ui-role', 'command-palette-item');
             el.setAttribute('data-symfinity--ux-blocks-interactive--command-palette-target', 'item');
+            this._markOption(el, index);
             const text = document.createElement('span');
             text.textContent = command.title || command.label || command.id || 'Command';
             el.appendChild(text);
@@ -208,5 +254,86 @@ export default class extends Controller {
             }
             this.listTarget.appendChild(el);
         });
+    }
+
+    _ensureListbox() {
+        if (this.hasListTarget) {
+            if (!this.listTarget.id) {
+                this.listTarget.id = `command-palette-list-${Math.random().toString(16).slice(2, 10)}`;
+            }
+            this.listTarget.setAttribute('role', 'listbox');
+        }
+        if (this.hasInputTarget) {
+            this.inputTarget.setAttribute('role', 'combobox');
+            this.inputTarget.setAttribute('aria-autocomplete', 'list');
+            this.inputTarget.setAttribute('aria-expanded', this.element.hidden ? 'false' : 'true');
+            if (this.hasListTarget) {
+                this.inputTarget.setAttribute('aria-controls', this.listTarget.id);
+            }
+        }
+        this.itemTargets.forEach((item, index) => this._markOption(item, index));
+    }
+
+    _markOption(el, index) {
+        el.setAttribute('role', 'option');
+        if (!el.id) {
+            const prefix = this.hasListTarget && this.listTarget.id ? this.listTarget.id : 'command-palette';
+            el.id = `${prefix}-option-${index}`;
+        }
+    }
+
+    _syncExpanded(open) {
+        if (!this.hasInputTarget) {
+            return;
+        }
+        this.inputTarget.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (!open) {
+            this._clearActiveDescendant();
+        }
+    }
+
+    _clearActiveDescendant() {
+        if (this.hasInputTarget) {
+            this.inputTarget.removeAttribute('aria-activedescendant');
+        }
+    }
+
+    _setStatus(kind) {
+        if (!this.hasListTarget) {
+            return;
+        }
+        this.listTarget.querySelectorAll('[data-ui-part="status"]').forEach((node) => node.remove());
+        if (kind === null) {
+            return;
+        }
+        const labels = {
+            empty: this.emptyLabelValue,
+            loading: this.loadingLabelValue,
+            failure: this.failureLabelValue,
+        };
+        const status = document.createElement('p');
+        status.setAttribute('data-ui-part', 'status');
+        status.setAttribute('data-ui-state', kind);
+        status.setAttribute('role', 'status');
+        status.textContent = labels[kind] ?? '';
+        this.listTarget.appendChild(status);
+    }
+
+    _trapTab(event) {
+        const focusable = [...this.element.querySelectorAll('a, button, input, textarea, select, [tabindex]')]
+            .filter((node) => !node.hidden && node.getAttribute('tabindex') !== '-1');
+        if (focusable.length === 0) {
+            event.preventDefault();
+            return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+        }
     }
 }

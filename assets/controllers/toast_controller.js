@@ -6,6 +6,7 @@ export default class extends Controller {
     static values = {
         stackLimit: { type: Number, default: 5 },
         duration: { type: Number, default: 4000 },
+        dismissLabel: { type: String, default: 'Dismiss notification' },
     };
 
     show(event) {
@@ -34,18 +35,22 @@ export default class extends Controller {
             el.setAttribute('role', 'status');
         }
 
+        const body = document.createElement('div');
+        body.setAttribute('data-ui-part', 'toast-body');
+
         const text = document.createElement('span');
+        text.setAttribute('data-ui-part', 'content');
         text.textContent = message;
-        el.appendChild(text);
+        body.appendChild(text);
 
         const dismiss = document.createElement('button');
         dismiss.type = 'button';
-        dismiss.setAttribute('data-ui-role', 'button');
-        dismiss.setAttribute('data-ui-variant', 'ghost');
-        dismiss.setAttribute('aria-label', 'Dismiss notification');
+        dismiss.setAttribute('data-ui-part', 'dismiss');
+        dismiss.setAttribute('aria-label', this.dismissLabelValue);
         dismiss.textContent = '×';
         dismiss.addEventListener('click', () => this.dismissItem(el));
-        el.appendChild(dismiss);
+        body.appendChild(dismiss);
+        el.appendChild(body);
 
         this.element.appendChild(el);
 

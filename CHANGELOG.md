@@ -5,6 +5,13 @@ All notable changes to **symfinity/ux-blocks-interactive** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.6] - 2026-11-20
+
+### Fixed
+
+- The command list asks for results when it opens, including an empty query. Results are a listbox, the highlighted row is exposed to the field, and a click on the backdrop closes the list. Empty, loading, and failure text can be passed in. Without a search address, typing hides rows that are already in the list
+- A toast created by `show()` uses the same body and content parts as a toast rendered with the page. The close control sits beside the message, and its accessible name can be passed in
+
 ## [0.1.5] - 2026-11-20
 
 ### Changed

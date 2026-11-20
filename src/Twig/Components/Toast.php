@@ -9,4 +9,5 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent('Toast', template: '@UxBlocksInteractive/components/Toast.html.twig')]
 final class Toast
 {
+    public string $dismissLabel = 'Dismiss notification';
 }

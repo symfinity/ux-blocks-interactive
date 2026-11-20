@@ -37,14 +37,14 @@ Dispatch new items from Stimulus actions or Turbo streams in your app layer.
 
 | Component | Prop | Type | Default | Description |
 |-----------|------|------|---------|-------------|
-| `Toast` | — | — | — | Live region container |
+| `Toast` | `dismissLabel` | `string` | `Dismiss notification` | Accessible name of the close control on a toast created by `show()`. Pass a translated string |
 | `Toast:Item` | `variant` | `string` | `info` | Semantic tone: `success`, `info`, `warning`, `danger`, … |
 | `Toast:Item` | `icon` | `string?` | — | Override default variant icon |
 | `Toast:Item` | `iconDecorative` | `bool` | `true` | Decorative icon flag |
 
 Region component: `Toast:Item`.
 
-From the browser, `show()` takes a message and an optional kind. `success` is a status, `error` is an alert, and a toast with no kind stays a status. An empty message does not appear.
+From the browser, `show()` takes a message and an optional kind. `success` is a status, `error` is an alert, and a toast with no kind stays a status. An empty message does not appear. The item uses the same `toast-body` and `content` parts as `Toast:Item`, with the message padded inside the body and the close control beside it.
 
 ## Accessibility
 

@@ -1,6 +1,7 @@
 {% if href %}
 <a
     href="{{ href }}"
+    role="option"
     data-ui-role="command-palette-item"
     data-symfinity--ux-blocks-interactive--command-palette-target="item"
     data-action="click->symfinity--ux-blocks-interactive--command-palette#visit"
@@ -9,6 +10,7 @@
 {% else %}
 <button
     type="button"
+    role="option"
     data-ui-role="command-palette-item"
     data-symfinity--ux-blocks-interactive--command-palette-target="item"
     data-action="click->symfinity--ux-blocks-interactive--command-palette#visit"

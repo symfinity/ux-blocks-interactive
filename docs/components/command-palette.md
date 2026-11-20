@@ -56,15 +56,19 @@ Requires `symfinity/ux-runtime` when using remote command search.
 | `openHotkey` | `string` | `k` | Letter combined with Ctrl/⌘ to open |
 | `fallbackCommands` | `list<array>` | `[]` | Static commands `{ id, title, url, … }` |
 | `label` | `string?` | — | Accessible name of the command list |
+| `emptyLabel` | `string` | `No matching commands` | Status when nothing matches. Pass a translated string |
+| `loadingLabel` | `string` | `Loading commands` | Status while a search request is in flight |
+| `failureLabel` | `string` | `Could not load commands` | Status when the search request fails |
 
-The list opens over the page. Typing searches again. Arrow keys, Enter, and Escape move through it.
+Opening the list asks `commandsUrl` immediately, including an empty query. Typing searches again. The field is a combobox and the results are a listbox: the highlighted result is `aria-activedescendant`. A dimmed backdrop covers the page; clicking it closes the list. Tab stays inside the list. With no `commandsUrl`, keystrokes hide existing results instead of replacing the list. Arrow keys, Enter, and Escape move through it.
 
 Region components: `CommandPalette:Input`, `CommandPalette:List`, `CommandPalette:Item` (`icon`, `iconDecorative`, `href`, `hint`). A link result stays inside the list. `hint` is shown in full.
 
 ## Accessibility
 
 - Root uses `role="dialog"` and `aria-modal="true"`.
-- Focus moves to the search input when opened.
+- The search field is a combobox; results are options in a listbox.
+- Focus moves to the search input when opened and stays in the palette until it closes.
 - Escape closes the palette and restores focus.
 
 ## Related

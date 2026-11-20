@@ -99,7 +99,7 @@ position: fixed;
   flex-direction: column;
   align-items: center;
   padding-block-start: 12vh;
-  background: transparent;
+  background: var(--ui-backdrop-color);
 }
 [data-ui-role="command-palette"][hidden] {
 display: none;
@@ -113,6 +113,7 @@ width: 100%;
   padding: var(--ui-space-sm) var(--ui-space-md);
   border: 1px solid var(--ui-color-border);
   border-radius: var(--ui-radius-md);
+  background: var(--ui-overlay-surface);
   font-size: var(--ui-font-size-md);
 }
 [data-ui-role="command-palette"] [data-ui-part="list"] {

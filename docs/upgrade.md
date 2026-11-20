@@ -83,6 +83,18 @@ composer update symfinity/ux-blocks-interactive
 
 After upgrade, clear the Symfony cache and hard-refresh the browser so the controller scripts reload.
 
+## 0.1.6
+
+Opening the command list asks `commandsUrl` immediately, including an empty query. Results are a listbox. Empty, loading, and failure text are `emptyLabel`, `loadingLabel`, and `failureLabel`. Without `commandsUrl`, typing hides rows already in the list.
+
+A toast created by `show()` uses the same body and content parts as a toast rendered with the page. The close control's accessible name is `dismissLabel`.
+
+```bash
+composer update symfinity/ux-blocks-interactive
+```
+
+After upgrade, clear the Symfony cache and hard-refresh the browser so the controller scripts and palette CSS reload. An app can drop a replacement palette controller and hand-built toast markup once those screens match.
+
 ## Future releases
 
 See [CHANGELOG](https://github.com/symfinity/ux-blocks-interactive/blob/main/CHANGELOG.md) for version-to-version notes.

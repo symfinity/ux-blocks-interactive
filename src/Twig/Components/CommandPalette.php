@@ -19,4 +19,10 @@ final class CommandPalette
     public array $fallbackCommands = [];
 
     public ?string $label = null;
+
+    public string $emptyLabel = 'No matching commands';
+
+    public string $loadingLabel = 'Loading commands';
+
+    public string $failureLabel = 'Could not load commands';
 }

@@ -26,6 +26,10 @@ final class CommandPaletteLayerTest extends TestCase
             $css,
         );
         self::assertMatchesRegularExpression(
+            '/\[data-ui-role="command-palette"\]:not\(\[hidden\]\)\s*\{[^}]*background:\s*var\(--ui-backdrop-color\)/s',
+            $css,
+        );
+        self::assertMatchesRegularExpression(
             '/\[data-ui-role="command-palette-item"\]\s*\{[^}]*box-sizing:\s*border-box[^}]*width:\s*100%[^}]*min-width:\s*0/s',
             $css,
         );

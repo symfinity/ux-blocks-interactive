@@ -494,7 +494,7 @@ dialog::backdrop {
   flex-direction: column;
   align-items: center;
   padding-block-start: 12vh;
-  background: transparent;
+  background: var(--ui-backdrop-color);
 }
 
 [data-ui-role="command-palette"][hidden] {
@@ -511,6 +511,7 @@ dialog::backdrop {
   padding: var(--ui-space-sm) var(--ui-space-md);
   border: 1px solid var(--ui-color-border);
   border-radius: var(--ui-radius-md);
+  background: var(--ui-overlay-surface);
   font-size: var(--ui-font-size-md);
 }
 
@@ -607,6 +608,18 @@ dialog::backdrop {
 [data-ui-role="toast-item"] [data-ui-part="content"] {
   flex: 1 1 auto;
   min-width: 0;
+}
+
+[data-ui-role="toast-item"] [data-ui-part="dismiss"] {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  padding: var(--ui-space-xs);
+  cursor: pointer;
 }
 
 [data-ui-role="carousel-interactive-controls"] {
